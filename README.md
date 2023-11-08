@@ -1,5 +1,10 @@
 # やる気の森(やるもり) 
 
+## 画面遷移図
+
+https://www.figma.com/file/APtDnf6tTURLfPYZeyrXrS/%E7%84%A1%E9%A1%8C?type=design&node-id=0%3A1&mode=design&t=zRG6aChBaXVxw17S-1
+
+
 ## サービス概要
 - `やる気の森(やるもり)`は同じような学習目的や目標を持ったプログラミング学習者同士をつなげ、
 学習時間を計測し、目標学習時間をチームで達成させる学習時間記録サービスです。
