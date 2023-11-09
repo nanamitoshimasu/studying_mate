@@ -63,8 +63,7 @@ https://www.figma.com/file/APtDnf6tTURLfPYZeyrXrS/%E3%82%84%E3%82%8B%E3%82%82%E3
 動物に親しむこともでき、みんなで楽しく学習に取り組めるのが最大の推しポイントです。
 
 ## 実装を予定している機能
-  - 会員登録(Github)
-  - ログイン機能
+  - 認証ログイン機能(Github)
   - プロフィール機能(編集)
   - 個人学習時間一覧
   - チーム目標達成一覧
@@ -88,8 +87,7 @@ https://www.figma.com/file/APtDnf6tTURLfPYZeyrXrS/%E3%82%84%E3%82%8B%E3%82%82%E3
   - テスト機能(RSpec)
 
 ### MVP
-  - 会員登録(Github)
-  - ログイン機能
+  - 認証ログイン機能(Github)
   - プロフィール機能(編集)
   - 個人学習時間一覧
   - チーム目標達成一覧
