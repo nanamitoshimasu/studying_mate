@@ -3,6 +3,8 @@
 ## 画面遷移図
 https://www.figma.com/file/APtDnf6tTURLfPYZeyrXrS/%E3%82%84%E3%82%8B%E3%82%82%E3%82%8A%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=zRG6aChBaXVxw17S-1
 
+## ER図
+[![Image from Gyazo](https://i.gyazo.com/28901c5ee53f2edca41a88163ee07309.png)](https://gyazo.com/28901c5ee53f2edca41a88163ee07309)
 
 ## サービス概要
 - `やる気の森(やるもり)`は同じような学習目的や目標を持ったプログラミング学習者同士をつなげ、
