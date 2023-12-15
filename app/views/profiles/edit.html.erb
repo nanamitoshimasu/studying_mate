@@ -1,25 +1,22 @@
-
 <div class="pl-12 flex justify-start items-center min-h-screen bg-gray-100">
   <div class="card bg-base-200 shadow-xl w-full lg:w-3/4 xl:w-1/2">
     <div class="card-body">
       <h1 class="card-title">Profile Edit</h1>
       <!-- Form -->
-      <%= form_with(model: current_user, url: profile_path(current_user.id)) do |f| %>
-        <div class="form-group">
-          <div class='mt-2 mb-4'>
-            <%= image_tag current_user.avatar.url, 
-                          id: 'preview', 
-                          class: 'avatar w-24 rounded-full', 
-                          size: '200x200' %>
-          </div>
-          <%= f.label :avatar, class: 'label mb-0 text-lg font-semibold text-gray-700' %>
-          <div class="file-input file-input-bordered file-input-success w-full max-w-xs">
-            <%= f.file_field :avatar, 
-                              class: "file-input", 
-                              accept: 'image/*', 
-                              onchange:  'previewFileWithId(preview)' %>
-          </div>
+      <%= form_with model: @user, url: profile_path do |f| %>
+        <div class="form-group" data-controller="avatar-preview">
+          <%= f.label :avatar %>
+          <%= f.file_field :avatar, 
+                            class: "file-input", 
+                            accept: 'image/*', 
+                            data: { "action" => "change->avatar-preview#preview", "avatar-preview-target" => "input" } %>
           <%= f.hidden_field :avatar_cache %>
+          <div class='mt-2 mb-4'>
+            <%= image_tag @user.avatar.url, 
+                          id: 'preview', 
+                          class: 'w-24 h-24 rounded-full object-cover', 
+                          data: { "avatar-preview-target" => "preview" } %>
+          </div>
         </div>
         <div class="mb-4">
           <%= f.label :name, class: 'label mb-0 text-lg font-semibold text-gray-700' %>
