@@ -54,6 +54,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'carrierwave'
 gem "mini_magick"
 
+gem 'rails-i18n'
 # Use Sass to process CSS
 # gem "sassc-rails"
 

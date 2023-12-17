@@ -1,7 +1,7 @@
 <div class="pl-12 flex justify-start items-center min-h-screen bg-gray-100">
   <div class="card bg-base-200 shadow-xlw-full lg:w-3/4 xl:w-1/2">
     <div class="card-body">
-      <h1 class="card-title">Profile</h1>
+      <h1 class="card-title"><%= t('.title') %></h1>
         <div class="avatar">
           <div class="w-24 rounded-full">  
             <%= image_tag image_path(current_user.avatar.url), size: '200x200' %>
@@ -9,11 +9,11 @@
         </div>
       <hr class="my-5">
       <div>
-        <h3 class="mb-0 text-lg font-semibold text-gray-700" >Name</h3>
+        <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:name)) %></h3>
         <p class="mb-4">
           <%= current_user.name %>
         </p>
-        <h3 class="mb-0 text-lg font-semibold text-gray-700">description</h3>
+        <h3 class="mb-0 text-lg font-semibold text-gray-700"><%= t(User.human_attribute_name(:description)) %></h3>
         <p class="mb-4">
           <% if current_user.description.present? %>
             <%= current_user.description %>
@@ -22,7 +22,7 @@
           <% end %>
         </p>
         <div class="card-actions justify-end">
-          <%= button_to '編集する', edit_profile_path, method: :get, class: 'btn btn-primary' %>
+          <%= button_to t('defaults.edit'), edit_profile_path, method: :get, class: 'btn btn-primary' %>
         </div>
       </div>
     </div>

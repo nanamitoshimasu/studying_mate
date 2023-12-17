@@ -1,11 +1,12 @@
 <div class="pl-12 flex justify-start items-center min-h-screen bg-gray-100">
   <div class="card bg-base-200 shadow-xl w-full lg:w-3/4 xl:w-1/2">
     <div class="card-body">
-      <h1 class="card-title">Profile Edit</h1>
+      <h1 class="card-title"><%= t '.title' %></h1>
       <!-- Form -->
       <%= form_with model: @user, url: profile_path do |f| %>
+        <%= render 'shared/errors_messages', model: f.object %>
         <div class="form-group" data-controller="avatar-preview">
-          <%= f.label :avatar %>
+          <%= f.label :avatar, t(User.human_attribute_name(:avatar)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
           <%= f.file_field :avatar, 
                             class: "file-input", 
                             accept: 'image/*', 
@@ -19,16 +20,16 @@
           </div>
         </div>
         <div class="mb-4">
-          <%= f.label :name, class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+          <%= f.label :name, t(User.human_attribute_name(:name)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
           <%= f.text_field :name, class: 'input input-bordered input-success w-full max-w-xs' %>
         </div>
         <div class="mb-4">
-          <%= f.label :description, class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+          <%= f.label :description, t(User.human_attribute_name(:description)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
           <%= f.text_area :description, class: 'textarea textarea-success w-full max-w-xs', placeholder: '簡単な自己紹介を書いてみよう！' %>
         </div>
           <!-- Button --->
         <div class="card-actions justify-end">
-          <%= f.submit 'Update Profile', class: 'btn btn-primary' %>
+          <%= f.submit t('defaults.register'), class: 'btn btn-primary' %>
         </div>
       <% end %>
     </div>
