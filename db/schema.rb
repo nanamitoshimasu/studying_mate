@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_11_075510) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.string "email"
+    t.string "email", null: false
     t.string "avatar"
     t.text "description"
     t.datetime "created_at", null: false
