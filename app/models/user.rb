@@ -2,6 +2,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   
   validates :name, presence: true
+  validates :email, presence: true
   validates :description, length: { maximum: 655 }
   
   class << self

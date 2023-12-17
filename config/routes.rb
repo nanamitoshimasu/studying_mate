@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   delete 'log_out', to: 'sessions#destroy', as: 'log_out'
-  get '/:username', to: 'user#show'
 
-  resources :users, only: %i[show destroy]
   resources :sessions, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
+  
+  # 他の全てのurlがget '/:username'で処理されないように最下部に
+  get '/:username', to: 'users#show'
+  delete '/users/:id', to: 'users#destroy'
 end
