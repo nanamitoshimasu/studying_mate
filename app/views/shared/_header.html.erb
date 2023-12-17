@@ -1,6 +1,8 @@
 <div class="navbar bg-base-100">
   <div class="navbar-start">
-    <a class="btn btn-ghost text-xl">やる気の森</a>
+    <%= button_to root_path, class: "btn btn-ghost text-xl", method: :get do %>
+      やる気の森
+    <% end %>
   </div>
   <div class="navbar-end">
     <% if logged_in? %>
