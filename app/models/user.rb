@@ -5,6 +5,8 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :description, length: { maximum: 655 }
   
+  has_many :teams, dependent: :destroy
+  
   class << self
     def find_or_create_from_auth_hash(auth_hash)
       user_params = user_params_from_auth_hash(auth_hash)

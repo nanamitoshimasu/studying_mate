@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   delete 'log_out', to: 'sessions#destroy', as: 'log_out'
 
+  resources :teams
   resources :sessions, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
   

@@ -2,7 +2,7 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
-      team: '仲間'
+      team: 'チーム'
     attributes:
       user:
         name: 'なまえ'

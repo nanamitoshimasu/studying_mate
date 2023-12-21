@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_back_or_to root_path, success: t('.success') 
     else
-      flash[:error] = t('.fail') 
+      flash.now[:error] = t('.fail') 
       redirect_to root_path, status: :unprocessable_entity
     end
   end
