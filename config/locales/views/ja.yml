@@ -14,6 +14,9 @@ ja:
       not_deleted: "%{item}を削除できませんでした"
       delete_confirm: "削除しますか？"
       not_page: "お探しのページは存在しないか、表示する権限がありません。"
+  users:
+    show:
+      title: "プロフィール"
   sessions:
     create:
       success: "ログインしました"

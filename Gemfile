@@ -50,11 +50,15 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 
-#image
+# image
 gem 'carrierwave'
 gem "mini_magick"
 
+# language
 gem 'rails-i18n'
+
+# decorater
+gem 'draper'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
