@@ -1,2 +1,40 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<div class="pl-12 flex justify-start items-center min-h-screen bg-gray-100">
+  <div class="card w-200 bg-base-100 shadow-xl image-full">
+    <div class="card-body">
+      <figure>
+        <%= image_tag @team.thumbnail.url =%>  
+      </figure>
+      <h2 class="card-title"><%= @team.title %> </h2>
+      <hr class="my-5">
+      <div>
+        <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:target_time)) %></h3>
+        <p class="mb-4">
+          <%= @team.target_time %> 時間
+        </p>
+      </div>
+      <div>
+        <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:capacity)) %></h3>
+        <p class="mb-4">
+          <%= @team.capacity %> 人
+        </p>
+      </div>
+      <div>
+        <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t('.term') %></h3>
+        <p class="mb-4">
+          <%= l @team.start_date, format: :short %>~<%= l @team.end_date, format: :short%>
+        </p>
+      </div>
+      <div>
+        <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:description)) %></h3>
+        <p class="mb-4">
+          <%= @team.description %>
+        </p>
+      </div>
+      <% if current_user.owner?(@team) %>
+        <div class="card-actions justify-end">
+          <%= button_to t('defaults.edit'), edit_team_path(@team), method: :get, class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

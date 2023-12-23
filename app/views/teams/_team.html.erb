@@ -1,0 +1,36 @@
+<div class="card w-96 bg-base-100 shadow-xl">
+  <div class="card h-100">
+    <figure class="px-10 pt-10">
+      <%= link_to team_path(team) do %>
+        <%= image_tag team.thumbnail.url %>
+      <% end %>
+    </figure>
+    <div class="card-body items-center text-center">
+      <h2 class="card-title">
+        <%= link_to team.title, team_path(team)  %>
+      </h2>
+      <p class="card-text"><%= team.description %></p>
+      <hr />
+      <div class="d-flex justify-content-between">
+        <div>
+          <i class="bi bi-geo-alt"></i>
+          <%= team.target_time %>
+        </div>
+        <div>
+          <i class="bi bi-calendar"></i>
+          <%= l team.start_date, format: :short %>
+        </div>
+      </div>
+      <hr />
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-3">
+          <%= image_tag team.user.avatar.url, class: 'avatar-sm rounded-circle' %>
+          <%= link_to team.user.name, profile_path(team.user.id) %>
+        </div>
+      </div>
+      <div class="card-actions">
+        <%= button_to "くわしく！", team_path(team), method: :get, class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>

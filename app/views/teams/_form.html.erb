@@ -1,0 +1,46 @@
+<%= form_with model: team, local: true do |f| %>
+  <%= render 'shared/errors_messages', model: f.object %>
+    <div class="form-group" data-controller="thumbnail-preview">
+      <%= f.label :thumbnail, t(User.human_attribute_name(:thumbnail)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+      <%= f.file_field :thumbnail, 
+                        class: "file-input", 
+                        accept: 'image/*', 
+                        data: { "action" => "change->thumbnail-preview#preview", "thumbnail-preview-target" => "input" } %>
+      <%= f.hidden_field :thumbnail_cache %>
+      <div class='mt-2 mb-4'>
+        <%= image_tag team.thumbnail.url, 
+                      id: 'preview', 
+                      class: "px-10 pt-10", 
+                      data: { "thumbnail-preview-target" => "preview" } %>
+      </div>
+    </div>
+    <div class="mb-4">
+      <%= f.label :title, t(User.human_attribute_name(:title)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+      <%= f.text_field :title, class: 'input input-bordered input-success w-full max-w-xs' %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :target_time, t(User.human_attribute_name(:target_time)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+      <%= f.select :target_time, options_for_select((10..400).step(10)), { include_blank: '何時間勉強する？' }, { class: 'select select-success w-full max-w-xs' } %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :capacity, t(User.human_attribute_name(:capacity)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+      <%= f.select :capacity, options_for_select(2..5), { include_blank: '何人でがんばる？' }, { class: 'select select-success w-full max-w-xs' } %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :start_date, t(User.human_attribute_name(:start_date)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+      <%= f.date_field :start_date, class: 'select select-success w-full max-w-xs' %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :end_date, t(User.human_attribute_name(:end_date)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+      <%= f.date_field :end_date, class: 'select select-success w-full max-w-xs' %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :description, t(User.human_attribute_name(:description)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+      <%= f.text_area :description, class: 'textarea textarea-success w-full max-w-xs', placeholder: '意気込みやどんなことを頑張りたいか書いてね' %>
+    </div>
+    <!-- Button --->
+    <div class="card-actions justify-end">
+      <%= f.submit t('defaults.register'), class: 'btn btn-primary' %>
+    </div>
+<% end %>
+

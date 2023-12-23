@@ -25,4 +25,8 @@ class User < ApplicationRecord
       }
     end
   end
+  
+  def owner?(team)
+    team.user_id == id
+  end 
 end

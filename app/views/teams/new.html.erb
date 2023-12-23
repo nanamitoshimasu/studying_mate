@@ -1,2 +1,8 @@
-<h1>Teams#new</h1>
-<p>Find me in app/views/teams/new.html.erb</p>
+<div class="pl-12 flex justify-start items-center min-h-screen bg-gray-100">
+  <div class="card bg-base-200 shadow-xl w-full lg:w-3/4 xl:w-1/2">
+    <div class="card-body">
+      <h1 class="card-title"><%= t '.title' %></h1>
+      <%= render 'form', team: @team %>
+    </div>
+  </div>
+</div>
