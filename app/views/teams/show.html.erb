@@ -1,9 +1,6 @@
 <div class="pl-12 flex justify-start items-center min-h-screen bg-gray-100">
   <div class="card w-96 bg-base-100 shadow-xl image-full">
-    <div role="alert" class="alert alert-error">
-      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-    </div>
-    <figure>
+   <figure>
       <%= image_tag @team.decorate.thumbnail =%>  
     </figure>
   <div class="card-body">
@@ -39,7 +36,7 @@
         <%= @team.description %>
       </p>
     </div>
-    <% if current_user.owner?(@team) %>
+    <% if current_user.owner?(team) %>
       <div class="card-actions justify-end">
         <%= button_to t('defaults.edit'), edit_team_path(@team), method: :get, class: 'btn btn-primary' %>
       </div>
