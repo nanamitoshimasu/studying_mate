@@ -10,9 +10,9 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = current_user.teams.build(team_prams)
+    @team = current_user.teams.build(team_params)
     if @team.save
-      redirect_to team_path, success: t('defaults.message.created', item: t('team.model_name.human'))
+      redirect_to team_path(@team), success: t('defaults.message.created', item: t('team.model_name.human'))
     else
       flash.now[:error] = t('defaults.message.not_created', item: t('team.model_name.human')) 
       render :new
@@ -46,6 +46,6 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:title, :description, :capacity, :target_time, :start_date, :end_time, :thumbnail)
+    params.require(:team).permit(:title, :description, :capacity, :target_time, :start_date, :end_date, :thumbnail, :thumbnail_cache)
   end
 end

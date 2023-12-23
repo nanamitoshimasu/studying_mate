@@ -6,7 +6,7 @@ class CreateTeams < ActiveRecord::Migration[7.0]
       t.datetime :start_date, null: false
       t.datetime :end_date, null: false
       t.integer :capacity, null: false
-      t.string :thubmnail 
+      t.string :thumbnail 
       t.text :description
       t.string :title
       t.references :user, null: false, foreign_key: true

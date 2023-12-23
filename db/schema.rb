@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_133154) do
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
     t.integer "capacity", null: false
-    t.string "thubmnail"
+    t.string "thumbnail"
     t.text "description"
     t.string "title"
     t.bigint "user_id", null: false

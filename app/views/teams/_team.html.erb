@@ -2,7 +2,7 @@
   <div class="card h-100">
     <figure class="px-10 pt-10">
       <%= link_to team_path(team) do %>
-        <%= image_tag team.decorate.thumbnail %>
+        <%= image_tag team.thumbnail.url %>
       <% end %>
     </figure>
     <div class="card-body items-center text-center">
@@ -18,14 +18,14 @@
         </div>
         <div>
           <i class="bi bi-calendar"></i>
-          <%= l team.start_at, format: :short %>
+          <%= l team.start_date, format: :short %>
         </div>
       </div>
       <hr />
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-3">
-          <%= image_tag team.user.decorate.avatar, class: 'avatar-sm rounded-circle' %>
-          <%= link_to team.user.name, user_path(team.user.id) %>
+          <%= image_tag team.user.avatar.url, class: 'avatar-sm rounded-circle' %>
+          <%= link_to team.user.name, profile_path(team.user.id) %>
         </div>
       </div>
       <div class="card-actions">

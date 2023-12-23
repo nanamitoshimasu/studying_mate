@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import AvatarPreviewController from "./avatar_preview_controller"
 application.register("avatar-preview", AvatarPreviewController)
+
+import ThumbnailPreviewController from "./thumbnail_preview_controller"
+application.register("thumbnail-preview", ThumbnailPreviewController)
