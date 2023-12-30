@@ -12,3 +12,6 @@ application.register("avatar-preview", AvatarPreviewController)
 
 import ThumbnailPreviewController from "./thumbnail_preview_controller"
 application.register("thumbnail-preview", ThumbnailPreviewController)
+
+import ImageDisplayController from "./image_display_controller"
+application.register("image-display", ImageDisplayController)

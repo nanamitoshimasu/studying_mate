@@ -18,9 +18,18 @@
       <%= f.label :title, t(User.human_attribute_name(:title)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
       <%= f.text_field :title, class: 'input input-bordered input-success w-full max-w-xs' %>
     </div>
-    <div class="mb-4">
+    <div class="mb-4" data-controller="image-display">
       <%= f.label :target_time, t(User.human_attribute_name(:target_time)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
-      <%= f.select :target_time, options_for_select((10..400).step(10)), { include_blank: '何時間勉強する？' }, { class: 'select select-success w-full max-w-xs' } %>
+      <%= f.select :target_time,
+        options_for_select(TeamDecorator.options_for_select),
+        { include_blank: '何時間勉強する？' },
+          class:'select select-success w-full max-w-xs',
+          data: { "action" => "change->image-display#display", "image-display-target" => "select" } %>
+        <p class="label mb-0 text-sm font-semibold text-gray-700">救う絶滅危惧種</p>
+        <%= image_tag 'display_images/display_default.png', 
+                            id: 'display', 
+                            class: 'w-24 h-24 rounded-full object-cover', 
+                            data: { "image-display-target" => "display" } %>
     </div>
     <div class="mb-4">
       <%= f.label :capacity, t(User.human_attribute_name(:capacity)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
