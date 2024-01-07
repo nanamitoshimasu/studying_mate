@@ -37,11 +37,11 @@
     </div>
     <div class="mb-4">
       <%= f.label :start_date, t(User.human_attribute_name(:start_date)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
-      <%= f.date_field :start_date, class: 'select select-success w-full max-w-xs' %>
+      <%= f.datetime_field :start_date, class: 'select select-success w-full max-w-xs', data: { controller: "flatpickr" } %>
     </div>
     <div class="mb-4">
       <%= f.label :end_date, t(User.human_attribute_name(:end_date)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
-      <%= f.date_field :end_date, class: 'select select-success w-full max-w-xs' %>
+      <%= f.datetime_field :end_date, class: 'select select-success w-full max-w-xs', data: { controller: "flatpickr" }  %>
     </div>
     <div class="mb-4">
       <%= f.label :description, t(User.human_attribute_name(:description)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>

@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module StudyingMate
   class Application < Rails::Application
+    # 時間
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     # 言語ファイルを階層ごとに設定するための記述

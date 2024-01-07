@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
    
   def destroy
     log_out
-    redirect_to root_path, success: t('.success') 
+    redirect_to root_path, success: t('.success'), status: :see_other
   end
 
   private
