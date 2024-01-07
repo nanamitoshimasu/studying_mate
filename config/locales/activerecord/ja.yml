@@ -1,4 +1,10 @@
 ja:
+  enums:
+    team:
+      status:
+        wanted: '募集中'
+        full: '満員御礼'
+        finished: '募集期間終了'
   activerecord:
     models:
       user: 'ユーザー'

@@ -59,6 +59,10 @@ gem 'rails-i18n'
 
 # decorater
 gem 'draper'
+
+# team status
+gem 'enum_help'
+gem 'whenever', require: false
 # Use Sass to process CSS
 # gem "sassc-rails"
 
