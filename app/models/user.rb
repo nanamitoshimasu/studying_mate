@@ -6,6 +6,8 @@ class User < ApplicationRecord
   validates :description, length: { maximum: 655 }
   
   has_many :teams, dependent: :destroy
+  has_many :team_attendances, dependent: :destroy
+  has_many :attend_teams, through: :team_attendances, class_name: 'Team', source: :team
   
   class << self
     def find_or_create_from_auth_hash(auth_hash)
@@ -29,4 +31,16 @@ class User < ApplicationRecord
   def owner?(team)
     team.user_id == id
   end 
+
+  def attend(team)
+    team_attendances.find_or_create_by(team_id: team.id)
+  end
+
+  def attend?(team)
+    attend_teams.include?(team)
+  end
+
+  def cancel_attend(team)
+    attend_teams.destroy(team)
+  end
 end

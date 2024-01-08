@@ -12,11 +12,13 @@ class Team < ApplicationRecord
   validate :valid_term
 
   belongs_to :user
+  has_many :team_attendances, dependent: :destroy
+  has_many :attendees, through: :team_attendances, class_name: 'User', source: :user
 
   enum status: { wanted: 0, full: 1, finished: 2 }
 
   def full?
-    team_attendances.count >= capacity
+    attendees.count >= capacity
   end
 
   def deadline?

@@ -3,6 +3,7 @@ ja:
     register: 'これでよし！'
     update: 'アップデート'
     edit: '編集する'
+    destroy: '削除する'
     back: 'もどる'
     message:
       require_login: "ログインしてください"
