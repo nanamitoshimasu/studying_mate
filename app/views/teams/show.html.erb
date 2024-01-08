@@ -1,5 +1,5 @@
-<div class="pl-12 flex justify-start items-center min-h-screen bg-gray-100">
-  <div class="card w-200 bg-base-100 shadow-xl image-full">
+<div class="pl-12 flex justify-center items-center min-h-screen bg-gray-100">
+  <div class="card w-100 bg-teal-300 shadow-xl image-full">
     <div class="card-body">
       <figure>
         <%= image_tag @team.thumbnail.url =%>  
@@ -30,11 +30,43 @@
           <%= @team.description %>
         </p>
       </div>
+      <div class="card-actions justify-end">
+        <% if logged_in? %>
+          <% if !current_user.owner?(@team) %>
+            <% if current_user.attend?(@team) %>
+              <%= button_to 'キャンセルする',
+                          team_attendance_url(@team),
+                           class: 'btn btn-primary',
+                           method: :delete,
+                           data: { confirm: 'キャンセルする' } %>
+            <% else %>
+              <%= button_to 'このチームに参加する',
+                          team_attendance_url(@team),
+                          class: 'btn btn-accent',
+                          method: :post,
+                          data: { confirm: '参加する' } %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
       <% if current_user.owner?(@team) %>
         <div class="card-actions justify-end">
-          <%= button_to t('defaults.edit'), edit_team_path(@team), method: :get, class: 'btn btn-primary' %>
+          <%= button_to t('defaults.edit'), edit_team_path(@team), method: :get, class: 'btn btn-accent' %>
+          <%= button_to t('defaults.destroy'), teams_path, method: :delete, class: 'btn btn-primary' %>
         </div>
       <% end %>
+    </div>
+  </div>
+  <div class="card w-96 bg-primary text-primary-content">
+    <div class="card-body">
+      <h2 class="card-title">参加者</h2>
+      <ul class="list-unstyled">
+        <% if @team.attendees.present? %>
+          <%= render partial: 'teams/attendee', collection: @team.attendees %>
+        <% else %>
+          <li>まだ参加者はいません</li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
