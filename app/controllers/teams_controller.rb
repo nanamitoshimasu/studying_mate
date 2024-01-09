@@ -2,7 +2,7 @@ class TeamsController < ApplicationController
   skip_before_action :check_logged_in, only: %i[index show]
 
   def index
-    @team = Team.all
+    @team = Team.all.order(created_at: :desc)
   end
 
   def new
@@ -12,7 +12,7 @@ class TeamsController < ApplicationController
   def create
     @team = current_user.teams.build(team_params)
     if @team.save
-      redirect_to team_path(@team), success: t('defaults.message.created', item: t('team.model_name.human'))
+      redirect_to teams_path, success: t('defaults.message.created', item: t('team.model_name.human'))
     else
       flash.now[:error] = t('defaults.message.not_created', item: t('team.model_name.human')) 
       render :new, status: :unprocessable_entity
