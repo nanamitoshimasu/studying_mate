@@ -1,12 +1,12 @@
-<div class="card w-96 bg-base-100 shadow-xl">
-  <div class="card h-100">
+<div class="card max-w-full bg-base-100 shadow-xl">
+  <div class="card h-4/5 ">
     <% if team.status == "wanted" %>
-      <p class="text-sky-700 text-center text-xl border-2  border-sky-700 mb-4 rounded-md"><%= team.status_i18n %><p>
+      <p class="text-info text-center text-xl border-2  border-info mb-4 rounded-md w-48 max-w-full sm:max-w-xs mx-auto"><%= team.status_i18n %><p>
     <% else %>
-      <p class="text-indigo-500 text-center text-xl border-2 border-indigo-500 mb-4 rounded-md"><%= team.status_i18n %><p>
+      <p class="text-indigo-500 text-center text-xl border-2 border-indigo-500 mb-4 rounded-md w-48 max-w-full sm:max-w-xs mx-auto"><%= team.status_i18n %><p>
     <% end %>
     <figure class="px-10 pt-10">
-      <%= image_tag team.thumbnail.url %>
+      <%= image_tag team.thumbnail.url, class: 'rounded-md' %>
     </figure>
     <div class="card-body items-center text-center">
       <h2 class="card-title">
