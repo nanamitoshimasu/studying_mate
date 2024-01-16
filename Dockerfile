@@ -26,6 +26,9 @@ RUN yarn add daisyui
 
 COPY . /studying_mate/
 
+RUN bundle exec whenever --update-crontab 
+RUN service cron start
+
 COPY entrypoint.sh /usr/bin/
 
 RUN chmod +x /usr/bin/entrypoint.sh
@@ -33,6 +36,3 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 
 CMD ["./bin/dev"]
-
-RUN bundle exec whenever --update-crontab # wheneverでcrontab書き込み
-RUN service cron start
