@@ -1,6 +1,6 @@
 databases:
   - name: yarumori_app 
-    databaseName: yarumori_bd 
+    databaseName: yarumori_db
     user: yarumori_user
     region: singapore 
 
