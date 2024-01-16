@@ -16,5 +16,3 @@ application.register("thumbnail-preview", ThumbnailPreviewController)
 import ImageDisplayController from "./image_display_controller"
 application.register("image-display", ImageDisplayController)
 
-import FlatpickrController from "./flatpickr_controller"
-application.register("flatpickr", FlatpickrController)
