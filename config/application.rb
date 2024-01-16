@@ -23,7 +23,8 @@ module StudyingMate
     # config.i18n.default_locale = :en
     config.i18n.default_locale = :ja
     config.autoload_paths << "#{Rails.root}/app/uploaders"
-
+    # Hosts を追加
+    config.hosts << 'yaruki_morimori.onrender.com'
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
