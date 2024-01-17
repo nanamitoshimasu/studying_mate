@@ -18,7 +18,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   host: db
-  username: user
+  username: postgres 
   password: password
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
@@ -84,4 +84,4 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  database: studying_mate_production
