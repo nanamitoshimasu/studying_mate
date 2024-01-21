@@ -63,6 +63,9 @@ gem 'draper'
 # team status
 gem 'enum_help'
 gem 'whenever', require: false
+
+#pagenate
+gem 'kaminari'
 # Use Sass to process CSS
 # gem "sassc-rails"
 

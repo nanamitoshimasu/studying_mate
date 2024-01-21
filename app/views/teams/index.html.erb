@@ -5,18 +5,24 @@
     <% end %>
   </div>
   <div class="container mx-auto py-4">
-    <% if @team.empty? %>
-      <div class="flex-left h-full">
-        <div role="alert" class="alert">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span class="text-gray-600">
-            まだチームの募集がありません。
-          </span>
+    <%= turbo_frame_tag "teams" do %>
+      <% if @teams.empty? %>
+        <div class="flex-left h-full">
+          <div role="alert" class="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span class="text-gray-600">
+              まだチームの募集がありません。
+            </span>
+          </div>
         </div>
-      </div>
-    <% else %>
-      <div class="grid grid-cols-4 gap-6">
-        <%= render @team %>
+      <% else %>
+        <div class="grid grid-cols-4 gap-6">
+          <%= render @teams %>
+        </div>
+      <% end %>
+      <!-- ページネーション -->
+      <div class="flex justify-center text-center text-3xl pb-20">
+        <%= paginate @teams %>
       </div>
     <% end %>
   </div> 
