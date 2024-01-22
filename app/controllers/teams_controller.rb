@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
   def create
     @team = current_user.teams.build(team_params)
     if @team.save
+      @team.attendees << current_user
       redirect_to teams_path, success: t('defaults.message.created', item: t('team.model_name.human'))
     else
       flash.now[:error] = t('defaults.message.not_created', item: t('team.model_name.human')) 
