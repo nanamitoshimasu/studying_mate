@@ -18,45 +18,45 @@ export default class extends Controller {
     // console.log("文字列に変換した値:", stringValue);
 
     if (["10", "20"].includes(selectedValue)) {
-      return '/display_images/image-1.jpg';
+      return '/assets/image-1.jpg';
     } else if (["30", "40"].includes(selectedValue)) {
-      return '/display_images/image-2.jpg';
+      return '/assets/image-2.jpg';
     } else if (["50", "60"].includes(selectedValue)) {
-      return '/display_images/image-3.jpg';
+      return '/assets/image-3.jpg';
     } else if (["70", "80"].includes(selectedValue)) {
-      return '/display_images/image-4.jpg';
+      return '/assets/image-4.jpg';
     } else if (["90", "100"].includes(selectedValue)) {
-      return '/display_images/image-5.jpg';
+      return '/assetsdisplay_images/image-5.jpg';
     } else if (["110", "120"].includes(selectedValue)) {
-      return '/display_images/image-6.jpg';
+      return '/assetsdisplay_images/image-6.jpg';
     } else if (["130", "140"].includes(selectedValue)) {
-      return '/display_images/image-7.jpg';
+      return '/assets/image-7.jpg';
     } else if (["150", "160"].includes(selectedValue)) {
-      return '/display_images/image-8.jpg';
+      return '/assets/image-8.jpg';
     } else if (["170", "180"].includes(selectedValue)) {
-      return '/display_images/image-9.jpg';
+      return '/assets/image-9.jpg';
     } else if (["190", "200"].includes(selectedValue)) {
-      return '/display_images/image-10.jpg';
+      return '/assets/image-10.jpg';
     } else if (["210", "220"].includes(selectedValue)) {
-      return '/display_images/image-11.jpg';
+      return '/assets/image-11.jpg';
     } else if (["230", "240"].includes(selectedValue)) {
-      return '/display_images/image-12.jpg';
+      return '/assets/image-12.jpg';
     } else if (["250", "260"].includes(selectedValue)) {
-      return '/display_images/image-13.jpg';
+      return '/assets/image-13.jpg';
     } else if (["270", "280"].includes(selectedValue)) {
-      return '/display_images/image-14.jpg';
+      return '/assets/image-14.jpg';
     } else if (["290", "300"].includes(selectedValue)) {
-      return '/display_images/image-15.jpg';
+      return '/assets/image-15.jpg';
     } else if (["310", "320"].includes(selectedValue)) {
-      return '/display_images/image-16.jpg';
+      return '/assets/image-16.jpg';
     } else if (["330", "340"].includes(selectedValue)) {
-      return '/display_images/image-17.jpg';
+      return '/assets/image-17.jpg';
     } else if (["350", "360"].includes(selectedValue)) {
-      return '/display_images/image-18.jpg';
+      return '/assets/image-18.jpg';
     } else if (["370", "380"].includes(selectedValue)) {
-      return '/display_images/image-19.jpg';
+      return '/assets/image-19.jpg';
     } else  (["390", "400"].includes(selectedValue)); {
-      return '/display_images/image-20.jpg';
+      return '/assets/image-20.jpg';
     }
   }
 }
