@@ -1,74 +1,76 @@
 <div class="flex justify-center items-center py-10 bg-gray-100">
-  <div class="max-w-7xl mx-auto grid grid-cols-2 gap-6 items-start">
-    <div class="card bg-base-200 shadow-xl">
-      <div class="card-body">
-        <figure>
-          <%= image_tag @team.thumbnail.url, size: '640x427', class: 'rounded-md' =%>  
-        </figure>
-        <h2 class="card-title"><%= @team.title %> </h2>
-        <hr class="my-5">
-        <div>
-          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:target_time)) %></h3>
-          <p class="mb-4">
-            <%= @team.target_time %> 時間
-          </p>
-        </div>
-        <div>
-          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:capacity)) %></h3>
-          <p class="mb-4">
-            <%= @team.capacity %> 人
-          </p>
-        </div>
-        <div>
-          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t('.term') %></h3>
-          <p class="mb-4">
-            <%= l @team.start_date, format: :short %>~<%= l @team.end_date, format: :short%>
-          </p>
-        </div>
-        <div>
-          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:description)) %></h3>
-          <p class="mb-4">
-            <%= @team.description %>
-          </p>
-        </div>
-        <div class="card-actions justify-end">
-          <% if logged_in? %>
-            <% if !current_user.owner?(@team) %>
-              <% if current_user.attend?(@team) %>
-                <%= button_to 'キャンセルする',
-                            team_attendance_url(@team),
-                             class: 'btn btn-primary',
-                             method: :delete,
-                             data: { confirm: 'キャンセルする' } %>
-              <% else %>
-                <%= button_to 'このチームに参加する',
-                            team_attendance_url(@team),
-                            class: 'btn btn-accent',
-                            method: :post,
-                            data: { confirm: '参加する' } %>
+  <%= turbo_frame_tag "teams" do %>
+    <div class="max-w-7xl mx-auto grid grid-cols-2 gap-6 items-start">
+      <div class="card bg-base-200 shadow-xl">
+        <div class="card-body">
+          <figure>
+            <%= image_tag @team.thumbnail.url, size: '640x427', class: 'rounded-md' =%>  
+          </figure>
+          <h2 class="card-title"><%= @team.title %> </h2>
+          <hr class="my-5">
+          <div>
+            <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:target_time)) %></h3>
+            <p class="mb-4">
+              <%= @team.target_time %> 時間
+            </p>
+          </div>
+          <div>
+            <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:capacity)) %></h3>
+            <p class="mb-4">
+              <%= @team.capacity %> 人
+            </p>
+          </div>
+          <div>
+            <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t('.term') %></h3>
+            <p class="mb-4">
+              <%= l @team.start_date, format: :short %>~<%= l @team.end_date, format: :short%>
+            </p>
+          </div>
+          <div>
+            <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:description)) %></h3>
+            <p class="mb-4">
+              <%= @team.description %>
+            </p>
+          </div>
+          <div class="card-actions justify-end">
+            <% if logged_in? %>
+              <% if !current_user.owner?(@team) %>
+                <% if current_user.attend?(@team) %>
+                  <%= button_to 'キャンセルする',
+                              team_attendance_url(@team),
+                               class: 'btn btn-primary',
+                               method: :delete,
+                               data: { confirm: 'キャンセルする' } %>
+                <% else %>
+                  <%= button_to 'このチームに参加する',
+                              team_attendance_url(@team),
+                              class: 'btn btn-accent',
+                              method: :post,
+                              data: { confirm: '参加する' } %>
+                <% end %>
               <% end %>
             <% end %>
+          </div>
+          <% if current_user.owner?(@team) %>
+            <div class="card-actions justify-end">
+              <%= button_to t('defaults.edit'), edit_team_path(@team), method: :get, class: 'btn btn-accent' %>
+              <%= button_to t('defaults.destroy'), team_path(@team), method: :delete, class: 'btn btn-primary' %>
+            </div>
           <% end %>
         </div>
-        <% if current_user.owner?(@team) %>
-          <div class="card-actions justify-end">
-            <%= button_to t('defaults.edit'), edit_team_path(@team), method: :get, class: 'btn btn-accent' %>
-            <%= button_to t('defaults.destroy'), team_path(@team), method: :delete, class: 'btn btn-primary' %>
-          </div>
-        <% end %>
+      </div>
+      <div class="card w-96 h-auto bg-base-200 text-primary-content shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title">参加者</h2>
+          <ul class="list-unstyled">
+            <% if @team.attendees.present? %>
+              <%= render partial: 'teams/attendee', collection: @team.attendees %>
+            <% else %>
+              <li>まだ参加者はいません</li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="card w-96 h-auto bg-base-200 text-primary-content shadow-xl">
-      <div class="card-body">
-        <h2 class="card-title">参加者</h2>
-        <ul class="list-unstyled">
-          <% if @team.attendees.present? %>
-            <%= render partial: 'teams/attendee', collection: @team.attendees %>
-          <% else %>
-            <li>まだ参加者はいません</li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <% end %>
 </div>

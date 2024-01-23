@@ -49,6 +49,7 @@ gem "bootsnap", require: false
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
+gem 'dotenv-rails'
 
 # image
 gem 'carrierwave'
