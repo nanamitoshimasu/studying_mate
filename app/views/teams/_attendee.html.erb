@@ -1,6 +1,6 @@
 <li>
   <div class="d-flex align-items-center gap-2 mb-3">
     <%= image_tag image_path(attendee.avatar.url), size: '200x200', class: 'w-24 rounded-full' %>
-    <%= link_to attendee.name, user_path(attendee.id) %>
+    <%= link_to attendee.name, profile_path %>
   </div>
 </li>

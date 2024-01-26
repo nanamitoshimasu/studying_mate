@@ -12,7 +12,7 @@ class Team < ApplicationRecord
   validate :valid_term
 
   belongs_to :user
-  has_many :team_attendances, dependent: :destroy
+  has_many :team_attendances, dependent: :destroy, class_name: 'TeamAttendance'
   has_many :attendees, through: :team_attendances, class_name: 'User', source: :user
 
   enum status: { wanted: 0, full: 1, finished: 2 }
@@ -28,20 +28,15 @@ class Team < ApplicationRecord
   def adjust_state
     Rails.logger.debug "Current status: #{self.status}"
     Rails.logger.debug "Is deadline reached?: #{deadline?}"
-
-    return self.status if wanted?
-
-    new_status = if deadline?
-                   :finished
-                 elsif full?
-                   :full
-                 else
-                   :wanted
-                 end
-
-    Rails.logger.debug "New status: #{new_status}"
-    self.status = new_status
-    self.save
+    
+    # デッドラインを過ぎているか、もしくは定員に達している場合のみステータスを更新する
+    if deadline? || full?
+      new_status = deadline? ? :finished : :full
+      Rails.logger.debug "New status: #{new_status}"
+      
+      self.status = new_status
+      self.save
+    end
   end
     
   scope :wanted_finished, -> { where('deadline <= ?', Time.current) }

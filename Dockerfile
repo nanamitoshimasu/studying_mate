@@ -11,15 +11,16 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
   && apt-get install -y nodejs yarn \
   && apt-get install -y cron
 
-RUN mkdir /studying_mate2
-WORKDIR /studying_mate2
+RUN mkdir /studying_mate
+WORKDIR /studying_mate
 RUN gem install bundler
-COPY Gemfile Gemfile.lock /studying_mate2/
+COPY Gemfile Gemfile.lock /studying_mate/
 RUN bundle install
 RUN service cron start
-COPY . /studying_mate2
+COPY . /studying_mate
 RUN yarn install --frozen-lockfile
 RUN bundle exec whenever --update-crontab 
+CMD ["cron", "-f"]
 # entrypoint.shをコンテナ内の/usr/binにコピーし、実行権限を与える
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh

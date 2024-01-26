@@ -20,20 +20,19 @@
         </div>
         <hr />
         <div>
-          <p>はじまり</p>
           <i class="bi bi-calendar"></i>
-          <%= l team.start_date, format: :short %>
+          <%= l team.start_date, format: :short %> ~
         </div>
       </div>
       <hr />
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-3">
-          <%= image_tag team.user.avatar.url, class: 'w-24 rounded-full' %>
+          <%= image_tag team.user.avatar.url, class: 'w-24 h-24 rounded-full object-cover' %>
           <%= link_to team.user.name, profile_path(team.user.id) %>
         </div>
       </div>
       <div class="card-actions">
-        <%= button_to "くわしく！", team_path(team), method: :get, class: 'btn btn-primary' %>
+        <%= button_to "くわしく！", team_path(team), method: :get, class: 'btn btn-primary', data: {turbo_frame: "_top"} %>
       </div>
     </div>
   </div>
