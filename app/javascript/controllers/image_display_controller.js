@@ -26,9 +26,9 @@ export default class extends Controller {
     } else if (["70", "80"].includes(selectedValue)) {
       return '/assets/image-4.jpg';
     } else if (["90", "100"].includes(selectedValue)) {
-      return '/assetsdisplay_images/image-5.jpg';
+      return '/assets/image-5.jpg';
     } else if (["110", "120"].includes(selectedValue)) {
-      return '/assetsdisplay_images/image-6.jpg';
+      return '/assets/image-6.jpg';
     } else if (["130", "140"].includes(selectedValue)) {
       return '/assets/image-7.jpg';
     } else if (["150", "160"].includes(selectedValue)) {

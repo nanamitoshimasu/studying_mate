@@ -62,11 +62,7 @@
       <div class="card-body">
         <h2 class="card-title">参加者</h2>
         <ul class="list-unstyled">
-          <% if @team.attendees.present? %>
-            <%= render partial: 'teams/attendee', collection: @team.attendees %>
-          <% else %>
-            <li>まだ参加者はいません</li>
-          <% end %>
+          <%= render partial: 'teams/attendee', collection: @team.attendees %>
        </ul>
       </div>
     </div>
