@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :teams, dependent: :destroy
   has_many :team_attendances, dependent: :destroy
   has_many :attend_teams, through: :team_attendances, class_name: 'Team', source: :team
+  has_many :timers, dependent: :destroy
+  has_many :break_times, dependent: :destroy
   
   class << self
     def find_or_create_from_auth_hash(auth_hash)
