@@ -16,3 +16,6 @@ application.register("thumbnail-preview", ThumbnailPreviewController)
 import ImageDisplayController from "./image_display_controller"
 application.register("image-display", ImageDisplayController)
 
+import TimerController from "./timer_controller"
+application.register("timer", TimerController)
+
