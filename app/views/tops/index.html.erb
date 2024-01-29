@@ -6,7 +6,9 @@
       <p class="py-6">仲間と一緒に学習をして「森林」を増やそう！絶滅危惧種を守るんじゃ！</p>
         <div class="flex gap-x-16">
           <%= link_to '仲間を見つける', teams_path, class: 'btn btn-outline btn-info' %>
-          <%= link_to '森林を増やす', "#", class: 'btn btn-outline btn-success' %>
+          <% if logged_in? && @active_team.present? %>
+            <%= link_to '森林を増やす', member_page_team_path(@active_team), class: 'btn btn-outline btn-success' %>
+          <% end %>
         </div>  
     </div>
   </div>
