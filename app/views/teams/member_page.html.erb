@@ -1,15 +1,8 @@
 <div class="pl-12 flex justify-center items-center min-h-screen bg-gray-100">
-  <div class="flex flex-col">
-    <span class="countdown font-mono text-5xl">
-      <span>00</span>
-    </span>
-    時間 
-  </div> 
-  <div class="flex flex-col">
-    <span class="countdown font-mono text-5xl">
-      <span>00</span>
-    </span>
-    分 
-  </div> 
+  <p><%= format_duration(@total_time) %><p>
   <div class="text-md font-bold">増やせました</div>
+  <p>残り時間: <%= format_duration(@team.remaining_time) %></p>
+  <div class="flex flex-initial">
+    <%= button_to "学習時間の計測をはじめる", new_timer_path, method: :get, class: 'btn btn-neutral"' %>
+  </div> 
 </div>

@@ -49,8 +49,7 @@ class TeamsController < ApplicationController
     unless current_user.attend?(@team) && @team.start_date <= Time.current && Time.current <= @team.end_date
       redirect_to root_path, alert: 'まだチームに参加していないようですね？チームに参加しましょう！'
     end
-    # ここに限定ページの内容を実装
-  end
+  end 
   
   private
 

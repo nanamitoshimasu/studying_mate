@@ -3,13 +3,13 @@ class Timer < ApplicationRecord
   has_many :break_times, dependent: :destroy
   
   def calculated_time
-    duration = end_time - start_time
+    duration = end_time ? end_time - start_time : 0
 
-    # 休憩時間がある場合のみ差し引く
-    if break_times.any?
-      duration -= break_times.sum { |bt| bt.break_end_time - bt.break_start_time }
+    # 休憩時間を差し引く
+    total_break_time = break_times.sum do |break_time|
+      break_time.break_end_time ? break_time.break_end_time - break_time.break_start_time : 0
     end
 
-    duration
+    duration - total_break_time
   end
 end

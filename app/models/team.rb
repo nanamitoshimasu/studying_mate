@@ -16,7 +16,8 @@ class Team < ApplicationRecord
   has_many :attendees, through: :team_attendances, class_name: 'User', source: :user
 
   enum status: { wanted: 0, full: 1, finished: 2 }
-
+  
+  # ステータスのメソッド
   def full?
     attendees.count >= capacity
   end
@@ -40,6 +41,19 @@ class Team < ApplicationRecord
   end
     
   scope :wanted_finished, -> { where('deadline <= ?', Time.current) }
+
+  # チームの合計学習時間数のメソッド
+  def total_calculated_time
+    attendees.includes(:timers).inject(0) do |sum, attendee|
+      attendee_timers_sum = attendee.timers.inject(0) { |attendee_sum, timer| attendee_sum + timer.calculated_time }
+      sum + attendee_timers_sum
+    end
+  end
+
+  # チーム学習目標時間残数
+  def remaining_time
+    target_time - total_calculated_time
+  end
   
   private
 
