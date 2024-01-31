@@ -39,7 +39,7 @@ class User < ApplicationRecord
   end
 
   def attend?(team)
-    attend_teams.include?(team)
+    attend_teams.map(&:id).include?(team.id)
   end
 
   def cancel_attend(team)

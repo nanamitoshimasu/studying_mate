@@ -9,7 +9,6 @@ class Timer < ApplicationRecord
     total_break_time = break_times.sum do |break_time|
       break_time.break_end_time ? break_time.break_end_time - break_time.break_start_time : 0
     end
-
     duration - total_break_time
   end
 end
