@@ -46,9 +46,10 @@ class TeamsController < ApplicationController
   
   def member_page
     @team = Team.find(params[:id])
-    unless current_user.attend?(@team) && @team.start_date <= Time.current && Time.current <= @team.end_date
+    unless current_user.attend?(@team)
       redirect_to root_path, alert: 'まだチームに参加していないようですね？チームに参加しましょう！'
     end
+      @is_activity_period = @team.start_date <= Time.current && Time.current <= @team.end_date
   end 
   
   private
