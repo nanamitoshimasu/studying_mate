@@ -29,3 +29,7 @@ ja:
       title: "プロフィール"
     edit:
       title: "プロフィール編集"
+  teams:
+    show:
+      title: "チーム募集詳細"
+      term: "活動期間"
