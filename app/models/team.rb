@@ -56,7 +56,55 @@ class Team < ApplicationRecord
   def remaining_time
     (target_time * 3600) - total_calculated_time
   end
-  
+ 
+  # チーム目標時間動物表示
+  def image_for_time
+    case target_time
+      when 10..20
+        "image-1.jpg"
+      when 30..40
+        "image-2.jpg"
+      when 50..60
+        "image-3.jpg"
+      when 70..80
+        "image-4.jpg"
+      when 90..100
+        "image-5.jpg"
+      when 110..120
+        "image-6.jpg"
+      when 130..140
+        "image-7.jpg"
+      when 150..160
+        "image-8.jpg"
+      when 170..180
+        "image-9.jpg"
+      when 190..200
+        "image-10.jpg"
+      when 210..220
+        "image-11.jpg"
+      when 230..240
+        "image-12.jpg"
+      when 250..260
+        "image-13.jpg"
+      when 270..280
+        "image-14.jpg"
+      when 290..300
+        "image-15.jpg"
+      when 310..320
+        "image-16.jpg"
+      when 330..340
+        "image-17.jpg"
+      when 350..360
+        "image-18.jpg"
+      when 370..380
+        "image-19.jpg"
+      when 390..400
+        "image-20.jpg"
+      else
+        "display_default.png"
+    end
+  end
+
   private
 
   def valid_start_date

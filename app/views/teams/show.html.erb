@@ -1,4 +1,4 @@
-<div class="flex justify-center items-center py-10 bg-gray-100">
+<div class="pl-12 items-center min-h-screen bg-gray-100">
   <div class="max-w-7xl mx-auto grid grid-cols-2 gap-6 items-start">
     <div class="card bg-base-200 shadow-xl">
       <div class="card-body">
@@ -8,25 +8,29 @@
         <h2 class="card-title"><%= @team.title %> </h2>
         <hr class="my-5">
         <div>
-          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:target_time)) %></h3>
+          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(Team.human_attribute_name(:target_time)) %></h3>
           <p class="mb-4">
             <%= @team.target_time %> 時間
           </p>
         </div>
         <div>
-          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:capacity)) %></h3>
+          <p class="font-semibold">救う絶滅危惧種</p>
+          <%= image_tag @team.image_for_time, class: 'w-24 h-24 rounded-full object-cover'%>
+        </div>
+        <div>
+          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(Team.human_attribute_name(:capacity)) %></h3>
           <p class="mb-4">
             <%= @team.capacity %> 人
           </p>
         </div>
         <div>
-          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t('.term') %></h3>
+          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t'.term' %></h3>
           <p class="mb-4">
             <%= l @team.start_date, format: :short %>~<%= l @team.end_date, format: :short%>
           </p>
         </div>
         <div>
-          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:description)) %></h3>
+          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(Team.human_attribute_name(:description)) %></h3>
           <p class="mb-4">
             <%= @team.description %>
           </p>
