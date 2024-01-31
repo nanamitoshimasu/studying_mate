@@ -43,7 +43,15 @@ class TeamsController < ApplicationController
     @team.destroy!
     redirect_to teams_path, success: t('defaults.message.deleted', item: t('team.model_name.human')), status: :see_other
   end
-
+  
+  def member_page
+    @team = Team.find(params[:id])
+    unless current_user.attend?(@team)
+      redirect_to root_path, alert: 'まだチームに参加していないようですね？チームに参加しましょう！'
+    end
+      @is_activity_period = @team.start_date <= Time.current && Time.current <= @team.end_date
+  end 
+  
   private
 
   def team_params

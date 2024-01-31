@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   resources :teams do
     resource :attendance, only: %i[create destroy], module: :teams
+    member do
+      get 'member_page'
+    end
+  
   end
 
   resources :timers, only: %i[new create update] do
