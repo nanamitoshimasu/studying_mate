@@ -1,5 +1,6 @@
 class Timer < ApplicationRecord
   belongs_to :user
+  belongs_to :team
   has_many :break_times, dependent: :destroy
   
   def calculated_time

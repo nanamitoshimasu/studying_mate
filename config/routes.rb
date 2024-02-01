@@ -9,13 +9,11 @@ Rails.application.routes.draw do
     member do
       get 'member_page'
     end
-  
+    resources :timers, only: %i[new create update] do
+      resources :break_times, only: %i[create update]
+    end
   end
 
-  resources :timers, only: %i[new create update] do
-    resources :break_times, only: %i[create update]
-  end
-  
   resources :sessions, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
   

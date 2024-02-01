@@ -2,7 +2,7 @@ class BreakTimesController < ApplicationController
   # POST /break_times/pause
   def create 
     # 現在のタイマーを取得または適切なタイマーを特定する
-    current_timer = current_user.timers.last
+    current_timer = @team.timers.last
 
     # current_timerがnilでないことを確認
     unless current_timer
@@ -16,7 +16,7 @@ class BreakTimesController < ApplicationController
   
     # POST /break_times/resume
   def update 
-    @break_time = current_user.break_times.last
+    @break_time = @team.break_times.last
     if @break_time.update(break_end_time: Time.current)
       render json: @break_time, status: :ok
     else
