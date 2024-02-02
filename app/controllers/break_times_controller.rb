@@ -1,4 +1,6 @@
 class BreakTimesController < ApplicationController
+  before_action :set_team
+  
   # POST /break_times/pause
   def create 
     # 現在のタイマーを取得または適切なタイマーを特定する
@@ -22,5 +24,11 @@ class BreakTimesController < ApplicationController
     else
       render json: @break_time.errors, status: :unprocessable_entity
     end
+  end
+
+  private
+      
+  def set_team
+    @team = current_user.teams.find(params[:team_id])
   end
 end

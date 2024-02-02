@@ -1,4 +1,5 @@
 class TimersController < ApplicationController
+  before_action :set_team
   
   def new
     @timer = Timer.new
@@ -6,7 +7,7 @@ class TimersController < ApplicationController
 
     # POST /timers/start
   def create
-    @timer = @team.timers.create(timer_params.merge(user: current_user, start_time: Time.current))
+    @timer = @team.timers.create(user: current_user, start_time: Time.current)
     render json: @timer, status: :ok
   end
 
@@ -18,5 +19,11 @@ class TimersController < ApplicationController
     else
       render json: @timer.errors, status: :unprocessable_entity
     end
+  end
+
+  private
+  
+  def set_team
+    @team = current_user.teams.find(params[:team_id])
   end
 end

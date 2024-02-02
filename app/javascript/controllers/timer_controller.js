@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["hours", "minutes", "pauseResumeButton", "modalTime", "flashMessage", "modal"]
-  static values = { timerId: Number, breakTimeId: Number}
+  static values = { teamId: Number, timerId: Number, breakTimeId: Number}
   timerStarted = false;
   
   initialize() {
@@ -15,6 +15,7 @@ export default class extends Controller {
   connect(){
     console.log(this.timerIdValue); //タイマーID
     console.log(this.breakTimeIdValue);
+    console.log(this.teamIdValue);
         // The class we should toggle on the container
     this.toggleClass = this.data.get('class') || 'hidden'
     console.log("toggleClass:", this.toggleClass);
@@ -50,7 +51,7 @@ export default class extends Controller {
   start() {
     if (this.timerInterval) return; //すでにタイマーが起動していたら何もしない
     // サーバーにスタート時刻を送信
-    fetch('/timers', { 
+    fetch(`/teams/${this.teamIdValue}/timers`, { 
       method: 'POST',
       credentials: 'same-origin',
       headers: {
@@ -87,7 +88,7 @@ export default class extends Controller {
   if (this.isPaused) {
     // タイマーが一時停止されていた場合、再開する
     // サーバーに再開時刻を送信(break_end_timeを更新)
-    fetch(`/timers/${this.timerIdValue}/break_times/${this.breakTimeIdValue}`, { 
+    fetch(`/teams/${this.teamIdValue}timers/${this.timerIdValue}/break_times/${this.breakTimeIdValue}`, { 
       method: 'PATCH',
       credentials: 'same-origin',
       headers: {
@@ -115,7 +116,7 @@ export default class extends Controller {
   } else {
     // タイマーが動作していた場合、一時停止する
     // サーバーに一時停止時刻を送信(break_start_timeの作成)
-    fetch(`/timers/${this.timerIdVaule}/break_times`, { 
+    fetch(`/teams/${this.teamIdValue}/timers/${this.timerIdVaule}/break_times`, { 
       method: 'POST',
       credentials: 'same-origin',
       headers: {
@@ -149,7 +150,7 @@ export default class extends Controller {
       clearInterval(this.timerInterval);
       this.timerInterval = null;
       // サーバーに終了時刻を送信(end_timeを更新)
-      fetch(`/timers/${this.timerIdValue}`, { 
+      fetch(`/teams/${this.teamIdValue}/timers/${this.timerIdValue}`, { 
         method: 'PATCH',
         credentials: 'same-origin',
         headers: {
