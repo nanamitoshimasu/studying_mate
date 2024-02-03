@@ -67,8 +67,8 @@ export default class extends Controller {
         }
       })
       .then(data => {
-        // タイマー開始
-        this._startTimer();
+        this.timerIdValue = data.timerId; // 取得したタイマーIDを保存
+        this._startTimer(); // タイマー開始
         this.timerStarted = true; // タイマーが開始されたことを追跡   
         this.isPaused = false;
         this.flashMessageTarget.classList.add('hidden');
@@ -81,7 +81,7 @@ export default class extends Controller {
   togglePauseResume() {
     console.log("Toggle pause/resume called. Current state: ", this.isPaused);
     // タイマーが開始されていない場合、フラッシュメッセージを表示して処理を終了する
-  if (!this.timerStarted) {
+  if (!this.timerStarted || !this.timerIdValue) {
     this.showFlashMessage("スタートが押されていません！");
     return;
   }
@@ -116,7 +116,7 @@ export default class extends Controller {
   } else {
     // タイマーが動作していた場合、一時停止する
     // サーバーに一時停止時刻を送信(break_start_timeの作成)
-    fetch(`/teams/${this.teamIdValue}/timers/${this.timerIdVaule}/break_times`, { 
+    fetch(`/teams/${this.teamIdValue}/timers/${this.timerIdValue}/break_times`, { 
       method: 'POST',
       credentials: 'same-origin',
       headers: {
@@ -133,6 +133,7 @@ export default class extends Controller {
       })
       .then(data => {
         console.log("Fetched response: ", data);
+        this.breakTimeIdValue = data.breakTimeId; // 取得したブレイクタイムIDを保存
         clearInterval(this.timerInterval);
         this.timerInterval = null;
         this.pauseResumeButtonTarget.textContent = 'Resume';

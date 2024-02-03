@@ -8,7 +8,11 @@ class TimersController < ApplicationController
     # POST /timers/start
   def create
     @timer = @team.timers.create(user: current_user, start_time: Time.current)
-    render json: @timer, status: :ok
+    if @timer.persisted?
+      render json: { timer: @timer, timerId: @timer.id }, status: :ok
+    else
+      render json: { errors: @timer.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   # POST /timers/stop
