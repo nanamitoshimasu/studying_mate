@@ -88,7 +88,7 @@ export default class extends Controller {
   if (this.isPaused) {
     // タイマーが一時停止されていた場合、再開する
     // サーバーに再開時刻を送信(break_end_timeを更新)
-    fetch(`/teams/${this.teamIdValue}timers/${this.timerIdValue}/break_times/${this.breakTimeIdValue}`, { 
+    fetch(`/teams/${this.teamIdValue}/timers/${this.timerIdValue}/break_times/${this.breakTimeIdValue}`, { 
       method: 'PATCH',
       credentials: 'same-origin',
       headers: {
@@ -173,7 +173,6 @@ export default class extends Controller {
         const hours = Math.floor(duration / 3600);
         const minutes = Math.floor((duration % 3600) / 60);
         this.modalTimeTarget.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
-        //this.modalOpen(e);
       })
       .catch(error => {
         console.error('エラー:', error);
@@ -195,7 +194,11 @@ export default class extends Controller {
 
   modalOpen(e) {
     console.log(e)
-    if (this.preventDefaultActionOpening) {
+    if (!this.timerStarted) {
+    // タイマーが開始されていない場合、モーダルを開かない
+    return;
+    }
+    else if (this.preventDefaultActionOpening) {
       e.preventDefault()
     }
 

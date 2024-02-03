@@ -1,7 +1,9 @@
 <div data-controller="timer" 
      data-timer-team-id-value="<%= @team.id %>" 
-     data-timer-timer-id-value="<%= @timer_id %>" 
-     data-timer-break-time-id-value="<%= @break_time_id %>">
+     data-timer-timer-id-value="<%= @timer.id %>" 
+     <% if @break_time.present? %>
+       data-timer-break-time-id-value="<%= @break_time.id %>"
+     <% end %>>
   <%= render partial: 'timers/modal' %>
   <div data-timer-target="flashMessage" role="alert" class="hidden alert"></div>
  
