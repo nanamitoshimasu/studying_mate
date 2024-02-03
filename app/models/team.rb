@@ -16,7 +16,8 @@ class Team < ApplicationRecord
   belongs_to :user
   has_many :team_attendances, dependent: :destroy, class_name: 'TeamAttendance'
   has_many :attendees, through: :team_attendances, class_name: 'User', source: :user
-
+  has_many :timers
+  
   enum status: { wanted: 0, full: 1, finished: 2 }
   
   # ステータスのメソッド
@@ -46,10 +47,7 @@ class Team < ApplicationRecord
 
   # チームの合計学習時間数のメソッド
   def total_calculated_time
-    attendees.includes(:timers).inject(0) do |sum, attendee|
-      attendee_timers_sum = attendee.timers.inject(0) { |attendee_sum, timer| attendee_sum + timer.calculated_time }
-      sum + attendee_timers_sum
-    end
+    timers.sum(&:calculated_time)
   end
 
   # チーム学習目標時間残数

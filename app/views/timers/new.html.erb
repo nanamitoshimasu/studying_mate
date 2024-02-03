@@ -1,43 +1,40 @@
 <div data-controller="timer" 
-    <% if @timer.present? %>
-      data-timer-timer-id-value="<%= @timer.id %>"
-    <% end %>
-    <% if @break_time.present? %> 
-      data-timer-break_time-id-value="<%= @break_time.id %>"
-    <% end %>>
-      <%= render partial: 'timers/modal' %>
-      <div data-timer-target="flashMessage" role="alert" class="hidden alert"></div>
+     data-timer-team-id-value="<%= @team.id %>" 
+     data-timer-timer-id-value="<%= @timer.id %>" 
+     <% if @break_time.present? %>
+       data-timer-break-time-id-value="<%= @break_time.id %>"
+     <% end %>>
+  <%= render partial: 'timers/modal' %>
+  <div data-timer-target="flashMessage" role="alert" class="hidden alert"></div>
  
-      <div class="flex justify-center items-center min-h-screen bg-gray-100">
-        <div class="text-center">
-          <div class="grid grid-flow-col gap-5 text-center auto-cols-max">
-            <div class="flex flex-col">
-              <span class="font-mono text-5xl">
-                <span data-timer-target="hours">00</span>
-              </span>
-              時間 
-            </div> 
-            <div class="flex flex-col">
-              <span class="font-mono text-5xl">
-                <span data-timer-target="minutes">00</span>
-              </span>
-              分
-            </div>
-          </div>
-          
-          <!-- ストップウォッチのコントロールボタン -->
-          <div class="flex flex-initial">
-            <%= button_tag type: 'button', data: { action: "click->timer#start" }, class: "btn btn-primary mx-2", id: "start-button" do %>
-              Start
-            <% end %>
-            <%= button_tag type: 'button', data: { action: "click->timer#togglePauseResume", timer_target: "pauseResumeButton"}, class: "btn btn-secondary mx-2", id: "pause-resume-button" do %>
-              Pause
-            <% end %>
-            <%= button_tag type: 'button', data: { action: "click->timer#end click->timer#modalOpen" }, class: "btn btn-accent mx-2" do %>
-              End
-            <% end %>
-          </div>
+  <div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="text-center">
+      <div class="grid grid-flow-col gap-5 text-center auto-cols-max">
+        <div class="flex flex-col">
+          <span class="font-mono text-5xl">
+            <span data-timer-target="hours">00</span>
+          </span>
+          時間 
+        </div> 
+        <div class="flex flex-col">
+          <span class="font-mono text-5xl">
+            <span data-timer-target="minutes">00</span>
+          </span>
+          分
         </div>
+      </div>
+          
+      <!-- ストップウォッチのコントロールボタン -->
+      <div class="flex flex-initial">
+        <%= button_tag type: 'button', data: { action: "click->timer#start" }, class: "btn btn-primary mx-2", id: "start-button" do %>
+          Start
+        <% end %>
+        <%= button_tag type: 'button', data: { action: "click->timer#togglePauseResume", timer_target: "pauseResumeButton"}, class: "btn btn-secondary mx-2", id: "pause-resume-button" do %>
+          Pause
+        <% end %>
+        <%= button_tag type: 'button', data: { action: "click->timer#end click->timer#modalOpen" }, class: "btn btn-accent mx-2" do %>
+          End
+        <% end %>
       </div>
     </div>
   </div>
