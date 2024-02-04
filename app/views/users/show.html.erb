@@ -1,19 +1,17 @@
-<div class="grid grid-cols-2 p-8 min-h-screen bg-gray-100 gap-6">
+<div class="grid grid-cols-2 p-8 min-h-screen bg-gray-100">
   <div class="flex-1">
     <div class="card bg-base-200 shadow-lg lg:w-full xl:w-3/4">
       <div class="card-body">
         <h1 class="card-title"><%= t '.title' %></h1>
-        <%= render 'profiles/profile', user: @user %>
+        <%= render 'profile', user: @user %>
         <div class="card-actions justify-end">
           <%= button_to t('defaults.back'), 'javascript:history.back()', class: 'btn btn-primary' %>
         </div>
       </div>
     </div>
   </div>
-  <div class="flex-1 mx-8">
-    <%= render 'profile/total_time', user:@user %>
-  </div>
-  <div class="flex-1 mx-8">
-    <%= render 'profile/saved_animal_images', user:@user %>
+  <div class="flex-1">
+    <%= render 'total_time', user:@user %>
+    <%= render 'saved_animal_images', user:@user %>
   </div>
 </div>
