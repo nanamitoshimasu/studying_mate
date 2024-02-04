@@ -1,15 +1,18 @@
-<div class="min-h-screen bg-cover bg-center flex flex-col justify-center items-center bg-gray-100" >
-  <% if @active_team.present? %>
-    <!-- 現在活動中のチーム情報を表示 -->
-    <%= render 'teams/team_details', team: @active_team %>
-
-  <% end %>
-  <div class="flex flex-col justify-center">
-    <% if @is_activity_period %>
-      <%= button_to "学習時間の計測をはじめる", new_team_timer_path(@team), method: :get, class: 'btn btn-primary' %>
+<div class="min-h-screen bg-gray-100" >
+  <div class="">
+    <% if @active_team.present? %>
+      <!-- 現在活動中のチーム情報を表示 -->
+      <%= render 'teams/team_details', team: @active_team %>
     <% else %>
-      <p>活動期間が終了しました</p>
-      <%= button_to "新しい仲間を見つける", teams_path, method: :get, class: 'btn btn-primary' %>
+      <%= render 'teams/team_details', team: @previous_team %>
     <% end %>
+    <div class="grid justify-center">
+      <% if @is_activity_period %>
+        <%= button_to "学習時間の計測をはじめる", new_team_timer_path(@active_team), method: :get, class: 'btn btn-primary' %>
+      <% else %>
+        <p>活動期間が終了しました</p>
+        <%= button_to "新しい仲間を見つける", teams_path, method: :get, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
   </div>
 </div>
