@@ -1,4 +1,4 @@
-<div class="grid grid-cols-2 p-8 min-h-screen bg-gray-100 gap-6">
+<div class="grid grid-cols-2 p-8 min-h-screen bg-gray-100 ">
   <div class="flex-1">
     <div class="card bg-base-200 shadow-lg lg:w-full xl:w-3/4">
       <div class="card-body">
@@ -10,7 +10,8 @@
       </div>
     </div>
   </div>
-  <div class="flex-1 mx-8">
+  <div class="flex-1">
     <%= render 'total_time', user:current_user %>
+    <%= render 'saved_animal_images', user:current_user %>
   </div>
 </div>

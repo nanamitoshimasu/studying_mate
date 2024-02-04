@@ -1,0 +1,14 @@
+<h1 class="font-medium mt-8">これまでに救った動物たち</h1>
+<div class="w-64 carousel rounded-box">
+  <% if user.teams.any? { |team| team.remaining_time <= 0 } %>
+    <% user.teams.each do |team| %>
+      <% if team.remaining_time <= 0 %>
+        <div class="carousel-item w-full">
+          <%= image_tag team.image_for_time, class: "w-full", alt:"Tailwind CSS Carousel component" %>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p class="text-center text-neutral font-bold mt-6">まだ救った動物はいません。</p>
+  <% end %>
+</div>
