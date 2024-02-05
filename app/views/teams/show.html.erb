@@ -54,11 +54,13 @@
             <% end %>
           <% end %>
         </div>
-        <% if current_user.owner?(@team) %>
-          <div class="card-actions justify-end">
-            <%= button_to t('defaults.edit'), edit_team_path(@team), method: :get, class: 'btn btn-accent' %>
-            <%= button_to t('defaults.destroy'), team_path(@team), method: :delete, class: 'btn btn-primary' %>
-          </div>
+        <% if logged_in? %>
+          <% if current_user.own?(@team) %>
+            <div class="card-actions justify-end">
+              <%= button_to t('defaults.edit'), edit_team_path(@team), method: :get, class: 'btn btn-accent' %>
+              <%= button_to t('defaults.destroy'), team_path(@team), method: :delete, class: 'btn btn-primary' %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
