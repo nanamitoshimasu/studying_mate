@@ -16,7 +16,7 @@ class Team < ApplicationRecord
   belongs_to :user
   has_many :team_attendances, dependent: :destroy, class_name: 'TeamAttendance'
   has_many :attendees, through: :team_attendances, class_name: 'User', source: :user
-  has_many :timers
+  has_many :timers, dependent: :destroy
   
   enum status: { wanted: 0, full: 1, finished: 2 }
   

@@ -46,6 +46,10 @@ class User < ApplicationRecord
     attend_teams.destroy(team)
   end
   
+  def own?(team)
+    team.user_id == id
+  end
+  
   def total_calculated_time
     timers.inject(0) { |sum, timer| sum + timer.calculated_time }
   end

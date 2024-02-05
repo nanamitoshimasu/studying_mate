@@ -8,6 +8,8 @@
           <%= link_to '仲間を見つける', teams_path, class: 'btn btn-outline btn-info' %>
           <% if logged_in? && @active_team.present? %>
             <%= link_to '森林を増やす', member_page_team_path(@active_team), class: 'btn btn-outline btn-success' %>
+          <% elsif logged_in? && @previous_team.present? %>
+            <%= link_to '森林を増やす', member_page_team_path(@previous_team), class: 'btn btn-outline btn-success' %>
           <% end %>
         </div>  
     </div>
