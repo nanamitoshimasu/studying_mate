@@ -1,6 +1,6 @@
 <!-- 目標達成 -->
 <div
-  data-target-time-modal-target="showGoalAchievedModal"
+  data-result-modal-target="goalAchieved"
   class="hidden bg-gray-300 bg-opacity-50 fixed inset-0 overflow-y-auto flex items-center justify-center"
   style="z-index: 9999;">
   <div class="max-h-screen w-full max-w-2lg relative">
@@ -12,7 +12,7 @@
         <div class="flex justify-end items-center flex-wrap mt-6">
           <button
             class="btn btn-accent mx-2"
-            data-action="click->timer#modalClose">
+            data-action="click->result-modal#modalClose">
             Close
           </button>
         </div>
@@ -23,7 +23,7 @@
 
 <!-- 目標未達 -->
 <div
-  data-target-time-modal-target="showGoalNotAchievedModal"
+  data-result-modal-target="goalNotAchieved"
   class="hidden bg-gray-300 bg-opacity-50 fixed inset-0 overflow-y-auto flex items-center justify-center"
   style="z-index: 9999;">
   <div class="max-h-screen w-full max-w-2lg relative">
@@ -35,7 +35,7 @@
         <div class="flex justify-end items-center flex-wrap mt-6">
           <button
             class="btn btn-accent mx-2"
-            data-action="click->timer#modalClose">
+            data-action="click->result-modal#modalClose">
             Close
           </button>
         </div>
