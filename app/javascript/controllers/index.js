@@ -19,3 +19,6 @@ application.register("image-display", ImageDisplayController)
 import TimerController from "./timer_controller"
 application.register("timer", TimerController)
 
+import ResultModalController from "./result_modal_controller"
+application.register("result-modal", ResultModalController)
+

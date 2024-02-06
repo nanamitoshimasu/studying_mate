@@ -7,7 +7,7 @@
       <%= render 'teams/team_details', team: @previous_team %>
     <% end %>
     <div class="grid justify-center">
-      <% if @is_activity_period %>
+      <% if @active_team.present? %>
         <%= button_to "学習時間の計測をはじめる", new_team_timer_path(@active_team), method: :get, class: 'btn btn-primary' %>
       <% else %>
         <p>活動期間が終了しました</p>

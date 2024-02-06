@@ -1,15 +1,13 @@
-import { Controller } from "stimulus"
+import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["remainingTime", "showGoalAchievedModal", "showGoalNotAchievedModal"]
+  static targets = ["remainingTime", "goalAchieved", "goalNotAchieved"]
   static values = { endDate: String }
 
   connect() {
+    console.log("Stimulus controller connected");
     this.checkStatus()
-    // The class we should toggle on the container
-    this.toggleClass = this.data.get('class') || 'hidden'
-    console.log("toggleClass:", this.toggleClass);
-    // The ID of the background to hide/remove
+   // The ID of the background to hide/remove
     this.backgroundId = this.data.get('backgroundId') || 'modal-background'
     console.log("backgroundId:", this.backgroundId);
     
@@ -29,9 +27,9 @@ export default class extends Controller {
     // console.log("preventDefaultActionOpening:", this.preventDefaultActionOpening);
     
     // Prevent the default action of the clicked element (following a link for example) when closing the modal
-    this.preventDefaultActionClosing =
-      (this.data.get('preventDefaultActionClosing') || 'true') === 'true'
-    console.log("preventDefaultActionClosing:", this.preventDefaultActionClosing);
+    // this.preventDefaultActionClosing =
+      // (this.data.get('preventDefaultActionClosing') || 'true') === 'true'
+    // console.log("preventDefaultActionClosing:", this.preventDefaultActionClosing);
   }
 
   disconnect() {
@@ -39,20 +37,28 @@ export default class extends Controller {
   }
 
   checkStatus() {
+    console.log("checking status");
     const remainingTime = parseInt(this.remainingTimeTarget.textContent)
     const endDate = new Date(this.endDateValue)
     const now = new Date()
     
+    console.log("Remaining Time:", remainingTime, "End Date:", endDate, "Now:", now);   
+    
     if (remainingTime <= 0) {
+      console.log("Showing Goal Achieved Modal");
       this.showGoalAchievedModal()
     } else if (now > endDate) {
+      console.log("Showing Goal Not Achieved Modal");
       this.showGoalNotAchievedModal()
+    } else {
+      console.log("No condition met");
     }
   }
 
   showGoalAchievedModal() {
+    console.log("Inside showGoalAchievedModal");
     // Unhide the modal
-    this.showGoalAchievedModalTarget.classList.remove(this.toggleClass)
+    this.goalAchievedTarget.classList.remove(this.toggleClass)
     // Insert the background
     if (!this.data.get('disable-backdrop')) {
       document.body.insertAdjacentHTML('beforeend', this.backgroundHtml)
@@ -63,8 +69,9 @@ export default class extends Controller {
   }
   
   showGoalNotAchievedModal() {
+    console.log("Inside showGoalNotAchievedModal");
     // Unhide the modal
-    this.showGoalNotAchievedModalTarget.classList.remove(this.toggleClass)
+    this.goalNotAchievedTarget.classList.remove('hidden')
     // Insert the background
     if (!this.data.get('disable-backdrop')) {
       document.body.insertAdjacentHTML('beforeend', this.backgroundHtml)
@@ -75,19 +82,24 @@ export default class extends Controller {
   }
   
   modalClose(e) {
-    if (e && this.preventDefaultActionClosing) {
-      e.preventDefault()
+    console.log("Modal close triggered");
+    if (e) e.preventDefault();
+    
+    // Goal Achieved Modalを非表示にする
+    if (this.hasGoalAchievedTarget) {
+      this.goalAchievedTarget.classList.add('hidden');
     }
 
-    // Unlock the scroll and restore previous scroll position
-    this.unlockScroll()
-
-    // Hide the modal
-    this.modalTarget.classList.add(this.toggleClass)
+    // Goal Not Achieved Modalを非表示にする
+    if (this.hasGoalNotAchievedTarget) {
+      this.goalNotAchievedTarget.classList.add('hidden');
+    }
 
     // Remove the background
     if (this.background) {
       this.background.remove()
+    // Unlock the scroll and restore previous scroll position
+    this.unlockScroll()
     }
   }
 
