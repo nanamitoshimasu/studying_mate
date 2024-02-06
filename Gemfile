@@ -68,6 +68,9 @@ gem 'whenever', require: false
 # pagenate
 gem 'kaminari'
 
+# search
+gem 'ransack'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

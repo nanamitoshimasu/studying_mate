@@ -1,0 +1,22 @@
+<div class="card-body">
+  <%= search_form_for @q, url: teams_path do |f| %>
+    <div class="input-group mb-3">
+      <%= f.search_field :title_or_description_cont, class: 'input input-bordered input-secondary w-full max-w-xs', placeholder: "タイトル・詳細ワードからさがす" %>
+      <div class="mb-4">
+        <%= f.label :target_time_eq, t(Team.human_attribute_name(:target_time)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+        <%= f.select :target_time_eq, options_for_select((10..200).step(10)), { include_blank: '何時間？' }, { class:'select select-secondary w-full max-w-xs' } %>
+      </div>
+      <div class="mb-4">
+        <%= f.label :capacity_eq, t(Team.human_attribute_name(:capacity)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+        <%= f.select :capacity_eq, options_for_select(2..5), { include_blank: '何人？' }, { class: 'select select-secondary w-full max-w-xs' } %>
+      </div>
+      <div class="mb-4">
+        <%= f.label :start_date_eq, t(Team.human_attribute_name(:start_date)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+        <%= f.date_field :start_date_eq, class: 'select select-secondary w-full max-w-xs' %>
+      </div>
+      <div class="input-group-append">
+        <%= f.submit class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>
