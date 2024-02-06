@@ -2,7 +2,8 @@ class TeamsController < ApplicationController
   skip_before_action :check_logged_in, only: %i[index show]
 
   def index
-    @teams = Team.all.includes(:user).order(created_at: :desc).page(params[:page]).per(4)
+    @q = Team.ransack(params[:q])
+    @teams = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def new

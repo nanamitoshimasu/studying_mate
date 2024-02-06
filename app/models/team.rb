@@ -103,6 +103,14 @@ class Team < ApplicationRecord
     end
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["title", "target_time", "capacity", "start_date", "description"]
+  end
+  
+  def self.ransackable_associations(auth_object = nil)
+     []
+  end
+
   private
 
   def valid_start_date
