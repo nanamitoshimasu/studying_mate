@@ -13,7 +13,7 @@ ja:
       not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
       not_deleted: "%{item}を削除できませんでした"
-      delete_confirm: "削除しますか？"
+      delete_confirm: "本当に削除しますか？"
       not_page: "お探しのページは存在しないか、表示する権限がありません。"
   users:
     show:
@@ -30,8 +30,10 @@ ja:
     edit:
       title: "プロフィール編集"
   teams:
+    new:
+      title: "仲間の募集"
     show:
-      title: "チーム募集詳細"
+      title: "仲間の募集詳細"
       term: "活動期間"
   tops:
     privacy_policy:

@@ -15,8 +15,10 @@ ja:
         avatar: 'アイコン'
         description: 'がんばっていること、意気込み！'
       team:
+        title: '募集タイトル'
         target_time: '目標時間'
         start_date: '開始日'
         end_date: '終了日'
         capacity: '募集人数'
         description: '詳細'
+        thumbnail: '募集画像'

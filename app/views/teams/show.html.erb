@@ -1,6 +1,6 @@
-<div class="pl-12 items-center min-h-screen bg-gray-100">
+<div class="items-center min-h-screen bg-gray-100">
   <div class="max-w-7xl mx-auto grid grid-cols-2 gap-6 items-start">
-    <div class="card bg-base-200 shadow-xl">
+    <div class="card bg-base-200 shadow-xl my-12">
       <div class="card-body">
         <figure>
           <%= image_tag @team.thumbnail.url, size: '640x427', class: 'rounded-md' =%>  
@@ -45,11 +45,11 @@
                              method: :delete,
                              data: { confirm: 'キャンセルする' } %>
               <% else %>
-                <%= button_to 'このチームに参加する',
+                <%= button_to 'この仲間になる',
                             team_attendance_url(@team),
                             class: 'btn btn-accent',
                             method: :post,
-                            data: { confirm: '参加する' } %>
+                            data: { confirm: '仲間になる〜！' } %>
               <% end %>
             <% end %>
           <% end %>
@@ -64,9 +64,9 @@
         <% end %>
       </div>
     </div>
-    <div class="card w-96 h-auto bg-base-200 text-primary-content shadow-xl">
+    <div class="card w-96 h-auto bg-base-200 text-primary-content shadow-xl my-12">
       <div class="card-body">
-        <h2 class="card-title">参加者</h2>
+        <h2 class="card-title">仲間たち</h2>
         <ul class="list-unstyled">
           <%= render partial: 'teams/attendee', collection: @team.attendees %>
        </ul>

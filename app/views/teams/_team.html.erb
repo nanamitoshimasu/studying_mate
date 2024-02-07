@@ -1,19 +1,18 @@
 <div class="card max-w-full bg-base-100 shadow-xl">
   <div class="card h-4/5 ">
     <% if team.status == "wanted" %>
-      <p class="text-info text-center text-xl border-2  border-info mb-4 rounded-md w-48 max-w-full sm:max-w-xs mx-auto"><%= team.status_i18n %><p>
+      <p class="text-info text-center text-xl border-2  border-info mb-4 rounded-md w-48 max-w-full sm:max-w-xs m-auto"><%= team.status_i18n %><p>
     <% else %>
       <p class="text-indigo-500 text-center text-xl border-2 border-indigo-500 mb-4 rounded-md w-48 max-w-full sm:max-w-xs mx-auto"><%= team.status_i18n %><p>
     <% end %>
-    <figure class="px-10 pt-10">
+    <figure class="mx-8 mt-8">
       <%= image_tag team.thumbnail.url, class: 'rounded-md' %>
     </figure>
-    <div class="card-body items-center text-center">
+    <div class="card-body items-start text-start">
       <h2 class="card-title">
-        <%= link_to team.title, team_path(team)  %>
+        <%= team.title %>
       </h2>
       <hr />
-      <div class="d-flex justify-content-between">
         <div>
           <i class="bi bi-geo-alt"></i>
           <%= team.target_time %> 時間
@@ -23,17 +22,16 @@
           <i class="bi bi-calendar"></i>
           <%= l team.start_date, format: :short %> ~
         </div>
-      </div>
       <hr />
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-3">
-          <%= image_tag team.user.avatar.url, class: 'w-24 h-24 rounded-full object-cover' %>
+          <%= image_tag team.user.avatar.url, class: 'h-16 w-16 rounded-full' %>
           <%= link_to team.user.name, profile_path(team.user.id) %>
         </div>
       </div>
-      <div class="card-actions">
-        <%= button_to "くわしく！", team_path(team), method: :get, class: 'btn btn-primary', data: {turbo_frame: "_top"} %>
-      </div>
+    </div>
+    <div class="card-actions justify-end mb-8 mx-8">
+      <%= button_to "くわしく！", team_path(team), method: :get, class: 'btn btn-primary', data: {turbo_frame: "_top"} %>
     </div>
   </div>
 </div>

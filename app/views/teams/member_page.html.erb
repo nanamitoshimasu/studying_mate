@@ -1,12 +1,12 @@
 <div class="min-h-screen bg-gray-100" >
-  <div class="">
+  <div class="container">
     <% if @active_team.present? %>
       <!-- 現在活動中のチーム情報を表示 -->
       <%= render 'teams/team_details', team: @active_team %>
     <% else %>
-      <%= render 'teams/team_details', team: @previous_team %>
+      <%= render'teams/team_details', team: @previous_team %>
     <% end %>
-    <div class="grid justify-center">
+    <div class="">
       <% if @active_team.present? %>
         <%= button_to "学習時間の計測をはじめる", new_team_timer_path(@active_team), method: :get, class: 'btn btn-primary' %>
       <% else %>

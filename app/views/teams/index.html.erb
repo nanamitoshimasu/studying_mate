@@ -1,7 +1,7 @@
 <div class="min-h-screen bg-gray-100">
   <div class="container flex justify-start mx-auto py-4">
     <% if logged_in? %>
-      <%= button_to "チームを募集する", new_team_path, method: :get, class: 'btn btn-success btn-lg' %> 
+      <%= button_to "仲間を募集する", new_team_path, method: :get, class: 'btn btn-success btn-lg' %> 
     <% end %>
     <div class="dropdown dropdown-right ml-10">
       <div tabindex="0" role="button" class="btn btn-secondary btn-lg">くわしくさがす</div>
@@ -17,7 +17,7 @@
           <div role="alert" class="alert">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             <span class="text-gray-600">
-              まだチームの募集がありません。
+              まだ仲間の募集がありません。
             </span>
           </div>
         </div>
@@ -27,7 +27,7 @@
         </div>
       <% end %>
       <!-- ページネーション -->
-      <div class="flex justify-center text-center text-md pt-10" >
+      <div class="flex justify-center text-center text-md" >
         <%= paginate @teams %>
       </div>
     <% end %>
