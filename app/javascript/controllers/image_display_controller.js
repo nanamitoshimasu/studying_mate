@@ -18,45 +18,45 @@ export default class extends Controller {
     // console.log("文字列に変換した値:", stringValue);
 
     if (["10", "20"].includes(selectedValue)) {
-      return '/assets/image-1.jpg';
+      return '/image-1.jpg';
     } else if (["30", "40"].includes(selectedValue)) {
-      return '/assets/image-2.jpg';
+      return '/image-2.jpg';
     } else if (["50", "60"].includes(selectedValue)) {
-      return '/assets/image-3.jpg';
+      return '/image-3.jpg';
     } else if (["70", "80"].includes(selectedValue)) {
-      return '/assets/image-4.jpg';
+      return '/image-4.jpg';
     } else if (["90", "100"].includes(selectedValue)) {
-      return '/assets/image-5.jpg';
+      return '/image-5.jpg';
     } else if (["110", "120"].includes(selectedValue)) {
-      return '/assets/image-6.jpg';
+      return '/image-6.jpg';
     } else if (["130", "140"].includes(selectedValue)) {
-      return '/assets/image-7.jpg';
+      return '/image-7.jpg';
     } else if (["150", "160"].includes(selectedValue)) {
-      return '/assets/image-8.jpg';
+      return '/image-8.jpg';
     } else if (["170", "180"].includes(selectedValue)) {
-      return '/assets/image-9.jpg';
+      return '/image-9.jpg';
     } else if (["190", "200"].includes(selectedValue)) {
-      return '/assets/image-10.jpg';
+      return '/image-10.jpg';
     } else if (["210", "220"].includes(selectedValue)) {
-      return '/assets/image-11.jpg';
+      return '/image-11.jpg';
     } else if (["230", "240"].includes(selectedValue)) {
-      return '/assets/image-12.jpg';
+      return '/image-12.jpg';
     } else if (["250", "260"].includes(selectedValue)) {
-      return '/assets/image-13.jpg';
+      return '/image-13.jpg';
     } else if (["270", "280"].includes(selectedValue)) {
-      return '/assets/image-14.jpg';
+      return '/image-14.jpg';
     } else if (["290", "300"].includes(selectedValue)) {
-      return '/assets/image-15.jpg';
+      return '/image-15.jpg';
     } else if (["310", "320"].includes(selectedValue)) {
-      return '/assets/image-16.jpg';
+      return '/image-16.jpg';
     } else if (["330", "340"].includes(selectedValue)) {
-      return '/assets/image-17.jpg';
+      return '/image-17.jpg';
     } else if (["350", "360"].includes(selectedValue)) {
-      return '/assets/image-18.jpg';
+      return '/image-18.jpg';
     } else if (["370", "380"].includes(selectedValue)) {
-      return '/assets/image-19.jpg';
+      return '/image-19.jpg';
     } else  (["390", "400"].includes(selectedValue)); {
-      return '/assets/image-20.jpg';
+      return '/image-20.jpg';
     }
   }
 }
