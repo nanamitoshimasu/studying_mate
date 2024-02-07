@@ -14,9 +14,9 @@ class TeamsController < ApplicationController
     @team = current_user.teams.build(team_params)
     if @team.save
       @team.attendees << current_user
-      redirect_to teams_path, success: t('defaults.message.created', item: t('team.model_name.human'))
+      redirect_to teams_path, success: t('defaults.message.created', item: t('team.new.title'))
     else
-      flash.now[:error] = t('defaults.message.not_created', item: t('team.model_name.human')) 
+      flash.now[:error] = t('defaults.message.not_created', item: t('team.new.title')) 
       render :new, status: :unprocessable_entity
     end
   end
@@ -34,7 +34,7 @@ class TeamsController < ApplicationController
     if @team.update(team_prams)
       redirect_to team_path(@team)
     else
-      flash.now[:error] = t('defaults.message.not_updated', item: t('team.model_name.human')) 
+      flash.now[:error] = t('defaults.message.not_updated', item: t('team.new.title')) 
       render :edit, status: :unprocessable_entity
     end
   end
@@ -42,7 +42,7 @@ class TeamsController < ApplicationController
   def destroy
     @team = current_user.teams.find(params[:id])
     @team.destroy!
-    redirect_to teams_path, success: t('defaults.message.deleted', item: t('team.model_name.human')), status: :see_other
+    redirect_to teams_path, success: t('defaults.message.deleted', item: t('team.new.title')), status: :see_other
   end
   
   def member_page
