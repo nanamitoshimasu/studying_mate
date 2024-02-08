@@ -1,4 +1,4 @@
-<div class="items-center min-h-screen bg-gray-100">
+<div class="items-center min-h-screen bg-base-100">
   <div class="max-w-7xl mx-auto grid grid-cols-2 gap-6 items-start">
     <div class="card bg-base-200 shadow-xl my-12">
       <div class="card-body">
@@ -39,17 +39,16 @@
           <% if logged_in? %>
             <% if !current_user.owner?(@team) %>
               <% if current_user.attend?(@team) %>
-                <%= button_to 'キャンセルする',
+                <%= link_to 'キャンセルする',
                             team_attendance_url(@team),
                              class: 'btn btn-primary',
                              method: :delete,
-                             data: { confirm: 'キャンセルする' } %>
+                             data: { turbo_confirm: '本当にキャンセル' } %>
               <% else %>
-                <%= button_to 'この仲間になる',
+                <%= link_to 'この仲間になる',
                             team_attendance_url(@team),
                             class: 'btn btn-accent',
-                            method: :post,
-                            data: { confirm: '仲間になる〜！' } %>
+                            method: :post %>
               <% end %>
             <% end %>
           <% end %>
@@ -58,7 +57,10 @@
           <% if current_user.own?(@team) %>
             <div class="card-actions justify-end">
               <%= button_to t('defaults.edit'), edit_team_path(@team), method: :get, class: 'btn btn-accent' %>
-              <%= button_to t('defaults.destroy'), team_path(@team), method: :delete, class: 'btn btn-primary' %>
+              <%= button_to t('defaults.destroy'),
+                            team_path(@team), 
+                            method: :delete, data: { turbo_confirm: '削除しますか？チームメンバーの学習記録も削除されます。' },  
+                            class: 'btn btn-primary' %>
             </div>
           <% end %>
         <% end %>

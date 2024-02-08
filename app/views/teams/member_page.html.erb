@@ -1,5 +1,5 @@
-<div class="min-h-screen bg-gray-100" >
-  <div class="container mx-auto">
+<div class="min-h-screen bg-base-100">
+  <div class="mx-auto">
     <% if @active_team.present? %>
       <!-- 現在活動中のチーム情報を表示 -->
       <%= render 'teams/team_details', team: @active_team %>
@@ -8,7 +8,7 @@
     <% end %>
     <div class="w-fit mx-auto">
       <% if @active_team.present? %>
-        <%= button_to "学習時間の計測をはじめる", new_team_timer_path(@active_team), method: :get, class: 'btn btn-primary' %>
+        <%= link_to "学習時間の計測をはじめる", new_team_timer_path(@active_team), target: "_blank", rel: "noopener noreferrer", method: :get, class: 'btn btn-primary' %>
       <% else %>
         <p>活動期間が終了しました</p>
         <%= button_to "新しい仲間を見つける", teams_path, method: :get, class: 'btn btn-primary' %>
