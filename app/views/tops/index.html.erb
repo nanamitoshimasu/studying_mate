@@ -1,15 +1,15 @@
-<div class="hero min-h-screen bg-base-200">
+<div class="hero min-h-screen bg-base-100">
   <div class="hero-content flex-col lg:flex-row-reverse">
     <%= image_tag 'undraw_environment_iaus-removebg-preview.png', class:"max-w-sm rounded-lg" %>
     <div>
       <h1 class="text-5xl font-bold">ようこそ、やる気の森へ!</h1>
       <p class="py-6">仲間と一緒に学習をして「森林」を増やして絶滅危惧種を救おう！</p>
         <div class="flex gap-x-16">
-          <%= link_to '仲間を見つける', teams_path, class: 'btn btn-outline btn-info' %>
+          <%= link_to '仲間を見つける', teams_path, class: 'btn btn-info' %>
           <% if logged_in? && @active_team.present? %>
-            <%= link_to '森林を増やす', member_page_team_path(@active_team), class: 'btn btn-outline btn-success' %>
+            <%= link_to '森林を増やす', member_page_team_path(@active_team), class: 'btn btn-success' %>
           <% elsif logged_in? && @previous_team.present? %>
-            <%= link_to '森林を増やす', member_page_team_path(@previous_team), class: 'btn btn-outline btn-success' %>
+            <%= link_to '森林を増やす', member_page_team_path(@previous_team), class: 'btn btn-success' %>
           <% end %>
         </div>  
     </div>

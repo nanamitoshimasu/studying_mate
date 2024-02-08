@@ -1,28 +1,24 @@
 <div data-controller="result-modal" data-result-modal-end-date-value="<%= team.end_date.iso8601 %>">
   <%= render 'teams/result_modal', team: team %>
-  <div class="">
-    <h1 class="text-2xl font-bold text-center border pt-8"><%= team.title %></h1>
-  </div>
-      <ul class="menu">
-        <li>
-          <% team.attendees.each do |attendee| %>
-            <div class="avatar">
-              <div class="w-16 rounded-full">
-                <%= image_tag image_path(attendee.avatar.url) %>
-              </div>
+  <h1 class="text-5xl font-bold text-center pt-8"><%= team.title %></h1>
+    <ul class="mx-auto border">
+      <li>
+        <% team.attendees.each do |attendee| %>
+          <div class="avatar">
+            <div class="w-16 rounded-full justify-center">
+              <%= image_tag image_path(attendee.avatar.url) %>
             </div>
-          <% end %>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="w-1/2 mx-auto mb-10 bg-white p-5">
+          </div>
+        <% end %>
+      </li>
+    </ul>
+  <div class="card w-1/2 glass mx-auto my-10 p-5">
     <p class="text-left text-xl">みんなで</p>
     <h1 class="text-center text-7xl"><%= format_duration(team.total_calculated_time) %></h1>
     <p class="text-center text-lg">&emsp;&emsp;時間&emsp;&emsp;&emsp;&emsp;分</p>
     <p class="text-right text-xl">森林を増やせました</p>
   </div>
-  <div class="w-1/2 mx-auto">
+  <div class="card w-1/2 glass mx-auto mb-10 p-5">
     <p class="text-left text-xl">絶滅から守るためにあと</p>
     <h1 class="text-center text-7xl" data-result-modal-target="remainingTime"><%= format_duration(team.remaining_time) %></h1>
     <p class="text-center text-lg">&emsp;&emsp;時間&emsp;&emsp;&emsp;&emsp;分</p>

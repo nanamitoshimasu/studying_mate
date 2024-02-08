@@ -7,17 +7,17 @@
   <%= render partial: 'timers/modal' %>
   <div data-timer-target="flashMessage" role="alert" class="hidden alert"></div>
  
-  <div class="flex justify-center items-center min-h-screen bg-gray-100">
+  <div class="flex justify-center items-center min-h-screen bg-base-100">
     <div class="text-center">
       <div class="grid grid-flow-col gap-5 text-center auto-cols-max">
         <div class="flex flex-col">
-          <span class="font-mono text-5xl">
+          <span class="font-mono text-8xl">
             <span data-timer-target="hours">00</span>
           </span>
           時間 
         </div> 
         <div class="flex flex-col">
-          <span class="font-mono text-5xl">
+          <span class="font-mono text-8xl">
             <span data-timer-target="minutes">00</span>
           </span>
           分
@@ -25,7 +25,7 @@
       </div>
           
       <!-- ストップウォッチのコントロールボタン -->
-      <div class="flex flex-initial">
+      <div class="flex flex-initial mt-10">
         <%= button_tag type: 'button', data: { action: "click->timer#start" }, class: "btn btn-primary mx-2", id: "start-button" do %>
           Start
         <% end %>
