@@ -16,11 +16,6 @@ export default class extends Controller {
       this.data.get('backgroundHtml') || this._backgroundHTML()
     console.log("backgroundHtml:", this.backgroundHtml);
     
-    // Let the user close the modal by clicking on the background
-    this.allowBackgroundClose =
-      (this.data.get('allowBackgroundClose') || 'true') === 'true'
-    console.log("allowBackgroundClose:", this.allowBackgroundClose);
-    
     // Prevent the default action of the clicked element (following a link for example) when opening the modal
     // this.preventDefaultActionOpening =
       // (this.data.get('preventDefaultActionOpening') || 'true') === 'true'
@@ -85,11 +80,6 @@ export default class extends Controller {
     console.log("Modal close triggered");
     if (e) e.preventDefault();
     
-    // Goal Achieved Modalを非表示にする
-    if (this.hasGoalAchievedTarget) {
-      this.goalAchievedTarget.classList.add('hidden');
-    }
-
     // Goal Not Achieved Modalを非表示にする
     if (this.hasGoalNotAchievedTarget) {
       this.goalNotAchievedTarget.classList.add('hidden');

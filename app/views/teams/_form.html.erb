@@ -26,6 +26,11 @@
           class:'select select-success w-full max-w-xs',
           data: { "action" => "change->image-display#display", "image-display-target" => "select" } %>
         <p class="label mb-0 text-sm font-semibold text-gray-700">救う絶滅危惧種</p>
+        <div id="image-options" style="display:none;">
+          <% TeamDecorator.options_for_select.each do |option| %>
+            <%= tag.div id: "image-option-#{option[0]}", data: { url: asset_path("image-#{option[0]}.jpg") } %>
+          <% end %>
+        </div>
         <%= image_tag 'display_default.png', 
                             id: 'display', 
                             class: 'w-24 h-24 rounded-full object-cover', 
