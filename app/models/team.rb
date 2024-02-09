@@ -57,48 +57,87 @@ class Team < ApplicationRecord
  
   # チーム目標時間動物表示
   def image_for_time
-    case target_time
-      when 10..20
-        "image-1.jpg"
-      when 30..40
-        "image-2.jpg"
-      when 50..60
-        "image-3.jpg"
-      when 70..80
-        "image-4.jpg"
-      when 90..100
-        "image-5.jpg"
-      when 110..120
-        "image-6.jpg"
-      when 130..140
-        "image-7.jpg"
-      when 150..160
-        "image-8.jpg"
-      when 170..180
-        "image-9.jpg"
-      when 190..200
-        "image-10.jpg"
-      when 210..220
-        "image-11.jpg"
-      when 230..240
-        "image-12.jpg"
-      when 250..260
-        "image-13.jpg"
-      when 270..280
-        "image-14.jpg"
-      when 290..300
-        "image-15.jpg"
-      when 310..320
-        "image-16.jpg"
-      when 330..340
-        "image-17.jpg"
-      when 350..360
-        "image-18.jpg"
-      when 370..380
-        "image-19.jpg"
-      when 390..400
-        "image-20.jpg"
-      else
+    if target_time == 10
+      return "image-10.jpg"
+    elsif target_time == 20
+      return "image-20.jpg"
+    elsif target_time == 30
+      return "image-30.jpg"
+    elsif target_time == 40 
+      return "image-40.jpg"
+    elsif target_time == 50
+      return "image-50.jpg"
+    elsif target_time == 60
+      return "image-60.jpg"
+    elsif target_time == 70
+      return "image-70.jpg"
+    elsif target_time == 80
+      return "image-80.jpg"
+    elsif target_time == 90
+      return "image-90.jpg"
+    elsif target_time == 100
+      return "image-100.jpg"
+    elsif target_time == 110
+      return "image-110.jpg"
+    elsif target_time == 120
+      return "image-120.jpg"
+    elsif target_time == 130
+      return "image-130.jpg"
+    elsif target_time == 140
+      return "image-140.jpg"
+    elsif target_time == 150
+      return "image-150.jpg"
+    elsif target_time == 160
+      return "image-160.jpg"
+    elsif target_time == 170
+      return "image-170.jpg"
+    elsif target_time == 180
+      return "image-180.jpg"
+    elsif target_time == 190
+      return "image-190.jpg"
+    elsif target_time == 200
+      return "image-200.jpg"
+    elsif target_time == 210
+      return "image-210.jpg"
+    elsif target_time == 220
+      return "image-220.jpg"
+    elsif target_time == 230
+      return "image-230.jpg"
+    elsif target_time == 240
+      return "image-240.jpg"
+    elsif target_time == 250
+      return "image-250.jpg"
+    elsif target_time == 260
+      return "image-260.jpg"
+    elsif target_time == 270
+      return "image-270.jpg"
+    elsif target_time == 280
+      return "image-280.jpg"
+    elsif target_time == 290
+      return "image-290.jpg"
+    elsif target_time == 300
+      return "image-300.jpg"
+    elsif target_time == 310
+      return "image-310.jpg"
+    elsif target_time == 320
+      return "image-320.jpg"
+    elsif target_time == 330
+      return "image-330.jpg"
+    elsif target_time == 340
+      return "image-340.jpg"
+    elsif target_time == 350
+      return "image-350.jpg"
+    elsif target_time == 360
+      return "image-360.jpg"
+    elsif target_time == 370
+      return "image-370.jpg"
+    elsif target_time == 380
+      return "image-380.jpg"
+    elsif target_time == 390
+      return "image-390.jpg"
+    elsif target_time == 400
+      return "image-400.jpg"
+    else
         "display_default.png"
     end
   end
