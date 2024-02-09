@@ -1,11 +1,11 @@
 <div data-controller="result-modal" data-result-modal-end-date-value="<%= team.end_date.iso8601 %>">
   <%= render 'teams/result_modal', team: team %>
-  <h1 class="text-5xl font-bold text-center pt-8"><%= team.title %></h1>
-    <ul class="mx-auto border">
-      <li>
+  <h1 class="text-5xl font-bold text-center p-8"><%= team.title %></h1>
+    <ul class="mx-auto w-1/2">
+      <li class="flex justify-center">
         <% team.attendees.each do |attendee| %>
           <div class="avatar">
-            <div class="w-16 rounded-full justify-center">
+            <div class="w-16 rounded-full">
               <%= image_tag image_path(attendee.avatar.url) %>
             </div>
           </div>
