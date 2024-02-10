@@ -3,7 +3,7 @@
     <div class="card bg-base-200 shadow-lg lg:w-full xl:w-3/4">
       <div class="card-body">
         <h1 class="card-title"><%= t '.title' %></h1>
-        <%= render 'profiles/profile', user: team.user %>
+        <%= render 'profiles/profile', user: @user %>
         <div class="card-actions justify-end">
           <%= button_to t('defaults.back'), 'javascript:history.back()', class: 'btn btn-primary' %>
         </div>
@@ -12,6 +12,6 @@
   </div>
   <div class="flex-1">
     <%= render 'total_time', user: user %>
-    <%= render 'saved_animal_images', user: team.user %>
+    <%= render 'saved_animal_images', user: @user %>
   </div>
 </div>
