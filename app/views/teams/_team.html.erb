@@ -29,7 +29,7 @@
           <% if team.user == current_user %>
             <%= link_to team.user.name, profile_path, method: :get %>
           <% else %>
-            <%= link_to team.user.name, user_path(user), method: :get %>
+            <%= link_to team.user.name, user_path(user.id), method: :get %>
           <% end %>
         </div>
       </div>
