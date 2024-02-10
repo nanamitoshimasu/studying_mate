@@ -2,9 +2,9 @@
   <div class="d-flex align-items-center gap-2 mb-3">
     <%= image_tag image_path(attendee.avatar.url), size: '200x200', class: 'w-24 h-24 rounded-full object-cover' %>
     <% if attendee == current_user %>
-      <%= link_to attendee.name, profile_path %>
+      <%= link_to attendee.name, profile_path, method: :get %>
     <% else %>
-      <%= link_to attendee.name, user_path(attendee.id) %>
+      <%= link_to attendee.name, user_path(attendee.id), method: :get %>
     <% end %>
   </div>
 </li>
