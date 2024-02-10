@@ -26,7 +26,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-3">
           <%= image_tag team.user.avatar.url, class: 'h-14 w-14 rounded-full' %>
-          <% if current_user %>
+          <% if team.user == current_user %>
             <%= link_to team.user.name, profile_path %>
           <% else %>
             <%= link_to team.user.name, user_path(team.user.id) %>
