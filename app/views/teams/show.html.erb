@@ -43,8 +43,7 @@
                   <%= link_to 'キャンセルする',
                               team_attendance_path(@team),
                                class: 'btn btn-primary',
-                               data: { turbo_method: :delete },
-                               data: { turbo_confirm: '本当にキャンセル？' } %>
+                               data: { turbo_method: :delete, turbo_confirm: '本当にキャンセル？' } %>
                 <% else %>
                   <%= link_to '仲間になる',
                               team_attendance_path(@team),
