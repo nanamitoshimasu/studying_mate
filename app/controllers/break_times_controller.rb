@@ -9,7 +9,7 @@ class BreakTimesController < ApplicationController
       return
     end
 
-    @break_time = @timer.break_times.create(break_start_time: Time.current, user: current_user)
+    @break_time = @timer.break_times.create(break_start_time: Time.current, user: @team.user)
     if @break_time.persisted?
       render json: { break_time: @break_time, breakTimeId: @break_time.id }, status: :ok
     end
@@ -18,7 +18,7 @@ class BreakTimesController < ApplicationController
     # POST /break_times/resume
   def update
     @break_time = @timer.break_times.last
-    if @break_time.update(break_end_time: Time.current, user: current_user)
+    if @break_time.update(break_end_time: Time.current, user: @team.user)
       render json: @break_time, status: :ok
     else
       render json: @break_time.errors, status: :unprocessable_entity

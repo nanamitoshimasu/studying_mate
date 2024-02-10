@@ -7,7 +7,7 @@ class TimersController < ApplicationController
 
     # POST /timers/start
   def create
-    @timer = @team.timers.create(user: current_user, start_time: Time.current)
+    @timer = @team.timers.create(user: @team.user, start_time: Time.current)
     if @timer.persisted?
       render json: { timer: @timer, timerId: @timer.id }, status: :ok
     else
@@ -18,7 +18,7 @@ class TimersController < ApplicationController
   # POST /timers/stop
   def update 
     @timer = @team.timers.last
-    if @timer.update(user: current_user, end_time: Time.current)
+    if @timer.update(user: @team.user, end_time: Time.current)
       render json: { timer: @timer, calculated_time: @timer.calculated_time }, status: :ok     
     else
       render json: @timer.errors, status: :unprocessable_entity
