@@ -38,7 +38,7 @@
         <div class="card-actions justify-end">
           <% if logged_in? %>
             <% if !current_user.owner?(@team) %>
-              <% if @team.status == 0 %> 
+              <% if @team.status == "wanted" %> 
                 <% if current_user.attend?(@team) %>
                   <%= link_to 'キャンセルする',
                               team_attendance_path(@team),
@@ -46,7 +46,7 @@
                                method: :delete,
                                data: { turbo_confirm: '本当にキャンセル？' } %>
                 <% else %>
-                  <%= link_to 'この仲間になる',
+                  <%= link_to '仲間になる',
                               team_attendance_path(@team),
                               class: 'btn btn-accent',
                               method: :post %>

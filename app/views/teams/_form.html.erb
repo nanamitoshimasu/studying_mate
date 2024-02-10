@@ -21,7 +21,7 @@
     <div class="mb-4" data-controller="image-display">
       <%= f.label :target_time, t(Team.human_attribute_name(:target_time)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
       <%= f.select :target_time,
-        options_for_select(TeamDecorator.options_for_select),
+        options_for_select(TeamDecorator.options_for_select, @team.target_time),
         { include_blank: '何時間勉強する？' },
           class:'select select-success w-full max-w-xs',
           data: { "action" => "change->image-display#display", "image-display-target" => "select" } %>
@@ -38,7 +38,7 @@
     </div>
     <div class="mb-4">
       <%= f.label :capacity, t(Team.human_attribute_name(:capacity)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
-      <%= f.select :capacity, options_for_select(2..5), { include_blank: 'あなたを含めた人数を入れてね' }, { class: 'select select-success w-full max-w-xs' } %>
+      <%= f.select :capacity, options_for_select((2..5).to_a, @team.capacity), { include_blank: 'あなたを含めた人数を入れてね' }, { class: 'select select-success w-full max-w-xs' } %>
     </div>
     <div class="mb-4">
       <%= f.label :start_date, t(Team.human_attribute_name(:start_date)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
