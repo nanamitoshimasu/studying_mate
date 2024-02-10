@@ -49,7 +49,7 @@
                   <%= link_to '仲間になる',
                               team_attendance_path(@team),
                               class: 'btn btn-accent',
-                              method: :post %>
+                              data: { "turbo-method": :post } %>
                 <% end %>
               <% end %>
             <% end %>
