@@ -27,9 +27,9 @@
         <div class="d-flex align-items-center gap-3">
           <%= image_tag team.user.avatar.url, class: 'h-14 w-14 rounded-full' %>
           <% if team.user == current_user %>
-            <%= link_to team.user.name, profile_path, method: :get, data: {turbo_frame: "_top"} %>
+            <%= link_to team.user.name, profile_path, method: :get %>
           <% else %>
-            <%= link_to team.user.name, user_path(@user), method: :get, data: {turbo_frame: "_top"} %>
+            <%= link_to team.user.name, user_path(@user), method: :get %>
           <% end %>
         </div>
       </div>
