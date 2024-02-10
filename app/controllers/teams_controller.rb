@@ -31,7 +31,7 @@ class TeamsController < ApplicationController
 
   def update
     @team = current_user.teams.find(params[:id])
-    if @team.update(team_prams)
+    if @team.update(team_params)
       redirect_to team_path(@team)
     else
       flash.now[:error] = t('defaults.message.not_updated', item: t('teams.new.title')) 
