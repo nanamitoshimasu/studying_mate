@@ -3,7 +3,26 @@
     <div class="card bg-base-200 shadow-lg lg:w-full xl:w-3/4">
       <div class="card-body">
         <h1 class="card-title"><%= t '.title' %></h1>
-        <%= render 'profiles/profile', user: @user %>
+        <div class="avatar">
+          <div class="w-24 rounded-full">  
+            <%= image_tag @user.avatar.url, size: '200x200' %>
+          </div>
+        </div>
+        <hr class="my-5">
+        <div>
+          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:name)) %></h3>
+          <p class="mb-4">
+            <%= @user.name %>
+          </p>
+          <h3 class="mb-0 text-lg font-semibold text-gray-700"><%= t(User.human_attribute_name(:description)) %></h3>
+          <p class="mb-4">
+            <% if @user.description.present? %>
+              <%= @user.description %>
+            <% else %>
+              No Data
+            <% end %>
+          </p>
+        </div>
         <div class="card-actions justify-end">
           <%= button_to t('defaults.back'), 'javascript:history.back()', class: 'btn btn-primary' %>
         </div>
