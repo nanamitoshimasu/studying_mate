@@ -28,6 +28,9 @@ class TimersController < ApplicationController
   private
   
   def set_team
-    @team = current_user.teams.find(params[:team_id])
+    @team = Team.find(params[:team_id])
+    unless @team.user == current_user || @team.attendees.include?(current_user)
+      redirect_to root_path, alert: 'アクセス権限がありません。'
+    end
   end
 end
