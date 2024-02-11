@@ -30,7 +30,26 @@
     </div>
   </div>
   <div class="flex-1">
-    <%= render 'profiles/total_time', user: @user %>
-    <%= render 'profile/saved_animal_images', user: @user %>
+    <div class="stats shadow mb-8 bg-base-200">
+      <div class="stat place-items-center">
+        <div class="stat-title text-primary-content">これまでに増やした森林</div>
+        <div class="stat-value text-primary"><%= format_duration(@user.total_calculated_time) %></div>
+        <div class="stat-desc">&emsp;&emsp;時間&emsp;&emsp;&emsp;分</div>
+      </div>
+    </div>
+    <h1 class="font-medium mt-8">これまでに救った動物たち</h1>
+    <div class="w-64 carousel rounded-box">
+      <% if @user.teams.any? { |team| team.remaining_time <= 0 } %>
+        <% @user.teams.each do |team| %>
+          <% if team.remaining_time <= 0 %>
+            <div class="carousel-item w-full">
+              <%= image_tag team.image_for_time, class: "w-full", alt:"Tailwind CSS Carousel component" %>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p class="text-center text-neutral font-bold mt-6">まだ救った動物はいません。</p>
+      <% end %>
+    </div>
   </div>
 </div>
