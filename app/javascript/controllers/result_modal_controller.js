@@ -80,8 +80,16 @@ export default class extends Controller {
     console.log("Modal close triggered");
     if (e) e.preventDefault();
     
+     // Goal Achieved Modalを非表示にする
+    if (this.hasGoalAchievedTarget) {
+      this.goalAchievedTarget.classList.add('hidden');
+      // Unlock the scroll and restore previous scroll position
+      this.unlockScroll()
+
+    } 
+    
     // Goal Not Achieved Modalを非表示にする
-    if (this.hasGoalNotAchievedTarget) {
+    else if (this.hasGoalNotAchievedTarget) {
       this.goalNotAchievedTarget.classList.add('hidden');
       // Unlock the scroll and restore previous scroll position
       this.unlockScroll()
