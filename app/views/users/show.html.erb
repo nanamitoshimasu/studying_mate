@@ -3,12 +3,12 @@
     <div class="card bg-base-200 shadow-lg lg:w-full xl:w-3/4">
       <div class="card-body">
         <h1 class="card-title"><%= t '.title' %></h1>
-        <%= render 'profile', user: @user %>
+        <%= render 'profiles/profile', user: @user %>
       </div>
     </div>
   </div>
   <div class="flex-1">
-    <%= render 'total_time', user: @user %>
-    <%= render 'saved_animal_images', user: @user %>
+    <%= render 'profiles/total_time', user: @user %>
+    <%= render 'profiles/saved_animal_images', user: @user %>
   </div>
 </div>
