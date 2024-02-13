@@ -104,6 +104,7 @@ https://www.figma.com/file/APtDnf6tTURLfPYZeyrXrS/%E3%82%84%E3%82%8B%E3%82%82%E3
   - X共有機能
 
 ### その後の機能
+  - チャット機能(ActionCable)
   - タグ投稿機能
   - タグ編集機能
   - タグ削除機能
