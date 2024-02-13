@@ -4,7 +4,7 @@
 https://www.figma.com/file/APtDnf6tTURLfPYZeyrXrS/%E3%82%84%E3%82%8B%E3%82%82%E3%82%8A%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=zRG6aChBaXVxw17S-1
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/7eeeb69eb5230357dc8cea8fe45b1f84.png)](https://gyazo.com/7eeeb69eb5230357dc8cea8fe45b1f84)
+[![Image from Gyazo](https://i.gyazo.com/9b1318ba3c3b065c6469936fbb859e1c.png)](https://gyazo.com/9b1318ba3c3b065c6469936fbb859e1c)
 
 ## サービス概要
 - `やる気の森(やるもり)`は同じような学習目的や目標を持ったプログラミング学習者同士をつなげ、
@@ -99,7 +99,6 @@ https://www.figma.com/file/APtDnf6tTURLfPYZeyrXrS/%E3%82%84%E3%82%8B%E3%82%82%E3
   - チームメイト募集詳細
   - マルチ検索機能(時間数・人数・期間)
   - チーム参加
-  - チャット機能(Action Cable)
   - 学習時間計測機能
   - X共有機能
 
