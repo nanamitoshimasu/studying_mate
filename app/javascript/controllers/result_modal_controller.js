@@ -33,7 +33,7 @@ export default class extends Controller {
 
   checkStatus() {
     console.log("checking status");
-    const remainingTime = parseInt(this.remainingTimeTarget.textContent)
+    const remainingTime = parseFloat(this.remainingTimeTarget.textContent)
     const endDate = new Date(this.endDateValue)
     const now = new Date()
     
@@ -53,7 +53,7 @@ export default class extends Controller {
   showGoalAchievedModal() {
     console.log("Inside showGoalAchievedModal");
     // Unhide the modal
-    this.goalAchievedTarget.classList.remove(this.toggleClass)
+    this.goalAchievedTarget.classList.remove('hidden')
     // Insert the background
     if (!this.data.get('disable-backdrop')) {
       document.body.insertAdjacentHTML('beforeend', this.backgroundHtml)

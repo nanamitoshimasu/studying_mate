@@ -30,6 +30,10 @@
           </p>
         </div>
         <div>
+          <h3 class="mb-0 text-lg font-semibold text-gray-700">募集期限</h3>
+          <%= l @team.deadline, format: :default %>
+        </div>
+        <div>
           <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(Team.human_attribute_name(:description)) %></h3>
           <p class="mb-4">
             <%= @team.description %>

@@ -1,3 +1,1 @@
-<%= link_to url, class: 'item', title: t('views.pagination.first').html_safe, remote: remote do %>
-  <i class="angle double left icon"></i>
-<% end %>
+<%= link_to_unless current_page.first?, t('views.pagination.first').html_safe, url, remote: remote, class: "py-[8px] w-8 h-8 text-xs text-console font-bold text-center rounded-l-[3px] hover:bg-gray-400 focus:bg-gray-400" , data: { turbo_frame: 'teams' }%>

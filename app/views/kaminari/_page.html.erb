@@ -1,9 +1,5 @@
 <% if page.current? %>
-  <%= link_to url, class: 'item active', title: page, remote: remote do %>
-    <%= page %>
-  <% end %>
+  <%= link_to page, url, remote: remote, rel: page.rel,class: "py-[8px] w-8 h-8  text-xs text-console font-bold text-center rounded-r-[3px] hover:bg-gray-400 focus:bg-gray-400 cursor-default", data: { turbo_frame: 'articles' }, disabled: true %>
 <% else %>
-  <%= link_to url, class: 'item', title: page, remote: remote do %>
-    <%= page %>
-  <% end %>
+  <%= link_to page, url, remote: remote, rel: page.rel, class: "py-[8px] w-8 h-8 text-xs text-console font-bold text-center rounded-r-[3px] hover:bg-gray-400 focus:bg-gray-400", data: { turbo_frame: 'articles' } %>
 <% end %>
