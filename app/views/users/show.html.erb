@@ -1,52 +1,14 @@
-<div class="grid grid-cols-2 p-8 min-h-screen bg-base-100">
+<div class="grid grid-cols-2 p-8 min-h-screen bg-base-100 ">
   <div class="flex-1">
     <div class="card bg-base-200 shadow-lg lg:w-full xl:w-3/4">
       <div class="card-body">
         <h1 class="card-title"><%= t '.title' %></h1>
-        <div class="avatar">
-          <div class="w-24 rounded-full">  
-            <%= image_tag @user.avatar.url, size: '200x200' %>
-          </div>
-        </div>
-        <hr class="my-5">
-        <div>
-          <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:name)) %></h3>
-          <p class="mb-4">
-            <%= @user.name %>
-          </p>
-          <h3 class="mb-0 text-lg font-semibold text-gray-700"><%= t(User.human_attribute_name(:description)) %></h3>
-          <p class="mb-4">
-            <% if @user.description.present? %>
-              <%= @user.description %>
-            <% else %>
-              No Data
-            <% end %>
-          </p>
-        </div>
+        <%= render 'profile', user: @user %>
       </div>
     </div>
   </div>
   <div class="flex-1">
-    <div class="stats shadow mb-8 bg-base-200">
-      <div class="stat place-items-center">
-        <div class="stat-title text-primary-content">これまでに増やした森林</div>
-        <div class="stat-value text-primary"><%= format_duration(@user.total_calculated_time) %></div>
-        <div class="stat-desc">&emsp;&emsp;時間&emsp;&emsp;&emsp;分</div>
-      </div>
-    </div>
-    <h1 class="font-medium mt-8">これまでに救った動物たち</h1>
-    <div class="w-64 carousel rounded-box">
-      <% if @user.teams.any? { |team| team.remaining_time <= 0 } %>
-        <% @user.teams.each do |team| %>
-          <% if team.remaining_time <= 0 %>
-            <div class="carousel-item w-full">
-              <%= image_tag team.image_for_time, class: "w-full", alt:"Tailwind CSS Carousel component" %>
-            </div>
-          <% end %>
-        <% end %>
-      <% else %>
-        <p class="text-center text-neutral font-bold mt-6">まだ救った動物はいません。</p>
-      <% end %>
-    </div>
+    <%= render 'total_time', user: @user %>
+    <%= render 'saved_animal_images', user: @user %>
   </div>
 </div>
