@@ -99,6 +99,7 @@ https://www.figma.com/file/APtDnf6tTURLfPYZeyrXrS/%E3%82%84%E3%82%8B%E3%82%82%E3
   - チームメイト募集詳細
   - マルチ検索機能(時間数・人数・期間)
   - チーム参加
+  - チャット機能(Action Cable)
   - 学習時間計測機能
   - X共有機能
 
@@ -107,7 +108,6 @@ https://www.figma.com/file/APtDnf6tTURLfPYZeyrXrS/%E3%82%84%E3%82%8B%E3%82%82%E3
   - タグ編集機能
   - タグ削除機能
   - タグ検索機能
-  - チャット機能（Action Cable)
   - ユーザー勉強中、休憩中、おやすみステータス表示(ActionCable)
   - 通知機能(OneSignal)
   - テスト機能(RSpec)
