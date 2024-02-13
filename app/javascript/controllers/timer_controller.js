@@ -2,7 +2,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["hours", "minutes", "pauseResumeButton", "modalTime", "flashMessage", "modal"]
+  static targets = ["hours", "minutes", "pauseResumeButton", "modalTime", "flashMessage", "modal", "shareLink"]
   static values = { teamId: Number, timerId: Number, breakTimeId: Number}
   timerStarted = false;
   
@@ -173,7 +173,12 @@ export default class extends Controller {
         const duration = data.calculated_time;
         const hours = Math.floor(duration / 3600);
         const minutes = Math.floor((duration % 3600) / 60);
+        // モーダルに時間を表示
         this.modalTimeTarget.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+        const shareText = `えっへん！学習時間${hours}時間${minutes}分の森林を増やしました！`;
+        const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(shareText)}%0A&hashtags=やる気の森&hashtags=やるもり&hashtags=yarukimorimori`;
+        // シェアリンクターゲットのhref属性を更新
+        this.shareLinkTarget.setAttribute("href", shareUrl);
       })
       .catch(error => {
         console.error('エラー:', error);
