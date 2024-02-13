@@ -13,15 +13,20 @@
         <%= team.title %>
       </h2>
       <hr />
-        <div>
-          <i class="bi bi-geo-alt"></i>
-          <%= team.target_time %> 時間
-        </div>
-        <hr />
-        <div>
-          <i class="bi bi-calendar"></i>
-          <%= l team.start_date, format: :short %> ~
-        </div>
+      <div>
+        <i class="bi bi-geo-alt"></i>
+        目標時間: &emsp;<%= team.target_time %> 時間
+      </div>
+      <hr />
+      <div>
+        <i class="bi bi-calendar"></i>
+        活動期間: &emsp;<%= l team.start_date, format: :short %> ~
+      </div>
+      <hr />
+      <div>
+        <i class="bi bi-calendar"></i>
+        募集期限: &emsp;<%= l team.deadline, format: :default %>
+      </div>
       <hr />
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-3">
