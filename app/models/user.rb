@@ -30,10 +30,10 @@ class User < ApplicationRecord
   def own?(team)
     team.user_id == id
   end
-  
+ 
   def total_calculated_time
     # 参加しているTeamのTimerの合計時間
-    attend_teams_timers_time = teams.inject(0) do |sum, team|
+    attend_teams_timers_time = attend_teams.inject(0) do |sum, team|
       sum + team.timers.inject(0) { |team_sum, timer| team_sum + timer.calculated_time }
     end
 
