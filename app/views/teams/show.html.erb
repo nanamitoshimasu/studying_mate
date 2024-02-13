@@ -43,16 +43,19 @@
           <% if logged_in? %>
             <% if !current_user.owner?(@team) %>
               <% if @team.status == "wanted" %> 
-                <% if current_user.attend?(@team) %>
-                  <%= link_to 'キャンセルする',
-                              team_attendance_path(@team),
-                               class: 'btn btn-primary',
-                               data: { turbo_method: :delete, turbo_confirm: '本当にキャンセル？' } %>
-                <% else %>
-                  <%= link_to '仲間になる',
-                              team_attendance_path(@team),
-                              class: 'btn btn-accent',
-                              data: { "turbo-method": :post } %>
+                <% @active_team = current_user.attend_teams.where('start_date <= ? AND end_date >= ?', Time.current, Time.current).order(:end_date).last %>
+                <% if @active_team.blank? %>
+                  <% if current_user.attend?(@team) %>
+                    <%= link_to 'キャンセルする',
+                                team_attendance_path(@team),
+                                 class: 'btn btn-primary',
+                                 data: { turbo_method: :delete, turbo_confirm: '本当にキャンセル？' } %>
+                  <% else %>
+                    <%= link_to '仲間になる',
+                                team_attendance_path(@team),
+                                class: 'btn btn-accent',
+                                data: { "turbo-method": :post } %>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
