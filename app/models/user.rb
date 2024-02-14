@@ -33,13 +33,9 @@ class User < ApplicationRecord
  
   def user_total_time
     # ユーザーに紐づいている全てのタイマー
-    personal_time = timers.sum(&:calculated_time)
-    # ユーザーが参加しているチームのタイマーの合計時間
-    team_time = attend_teams.includes(:timers).sum do |team|
-      team.timers.sum(&:calculated_time)
+    team_time = TeamAttendance.where(user_id: id).includes(team: :timers).sum do |attendance|
+      attendance.team.timers.where(user_id: id).sum(&:calculated_time)
     end
-
-    personal_time + team_time
   end
 
   class << self
