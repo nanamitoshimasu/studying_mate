@@ -6,13 +6,13 @@ class SessionsController < ApplicationController
     if user.save
       cookies.encrypted[:user_id] = user.id
       log_in user
-      redirect_back_or_to root_path, success: t('.success') 
+      redirect_back_or_to root_path, success: t('.success')
     else
-      flash.now[:error] = t('.fail') 
+      flash.now[:error] = t('.fail')
       redirect_to root_path, status: :unprocessable_entity
     end
   end
-   
+
   def destroy
     log_out
     redirect_to root_path, success: t('.success'), status: :see_other

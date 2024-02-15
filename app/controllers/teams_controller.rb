@@ -16,7 +16,7 @@ class TeamsController < ApplicationController
       @team.attendees << current_user
       redirect_to teams_path, success: t('defaults.message.created', item: t('teams.new.title'))
     else
-      flash.now[:error] = t('defaults.message.not_created', item: t('teams.new.title')) 
+      flash.now[:error] = t('defaults.message.not_created', item: t('teams.new.title'))
       render :new, status: :unprocessable_entity
     end
   end
@@ -34,7 +34,7 @@ class TeamsController < ApplicationController
     if @team.update(team_params)
       redirect_to team_path(@team)
     else
-      flash.now[:error] = t('defaults.message.not_updated', item: t('teams.new.title')) 
+      flash.now[:error] = t('defaults.message.not_updated', item: t('teams.new.title'))
       render :edit, status: :unprocessable_entity
     end
   end
@@ -44,19 +44,24 @@ class TeamsController < ApplicationController
     @team.destroy!
     redirect_to teams_path, success: t('defaults.message.deleted', item: t('teams.new.title')), status: :see_other
   end
-  
+
   def member_page
     @team = Team.find(params[:id])
-    @active_team = current_user.attend_teams.where('start_date <= ? AND end_date >= ?', Time.current, Time.current).order(:end_date).last
-    @previous_team = current_user.attend_teams.where('end_date < ?', Time.current).order(:end_date).last unless @active_team.present?
-    unless current_user.attend?(@team)
-      redirect_to root_path, alert: 'まだチームに参加していないようですね？チームに参加しましょう！'
+    @active_team = current_user.attend_teams.where('start_date <= ? AND end_date >= ?', Time.current,
+                                                   Time.current).order(:end_date).last
+    unless @active_team.present?
+      @previous_team = current_user.attend_teams.where('end_date < ?',
+                                                       Time.current).order(:end_date).last
     end
-  end 
-  
+    return if current_user.attend?(@team)
+
+    redirect_to root_path, alert: 'まだチームに参加していないようですね？チームに参加しましょう！'
+  end
+
   private
 
   def team_params
-    params.require(:team).permit(:title, :description, :capacity, :target_time, :start_date, :end_date, :thumbnail, :thumbnail_cache)
+    params.require(:team).permit(:title, :description, :capacity, :target_time, :start_date, :end_date, :thumbnail,
+                                 :thumbnail_cache)
   end
 end

@@ -19,7 +19,7 @@ set :environment, rails_env
 set :output, error: 'log/crontab_error.log', standard: 'log/crontab.log'
 set :environment, :development
 
-#定期実行したい処理を記入
+# 定期実行したい処理を記入
 every 1.minute do
   rake 'team_state:update_team_state'
 end

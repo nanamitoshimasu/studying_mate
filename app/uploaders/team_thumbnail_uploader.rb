@@ -12,7 +12,7 @@ class TeamThumbnailUploader < CarrierWave::Uploader::Base
   else
     storage :fog
   end
-  
+
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
@@ -20,7 +20,7 @@ class TeamThumbnailUploader < CarrierWave::Uploader::Base
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
-  def default_url(*args)
+  def default_url(*_args)
     'team_thumbnail_default.jpg'
   end
 
@@ -39,7 +39,7 @@ class TeamThumbnailUploader < CarrierWave::Uploader::Base
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_allowlist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 
   # Override the filename of the uploaded files:
