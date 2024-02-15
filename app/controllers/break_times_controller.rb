@@ -9,7 +9,7 @@ class BreakTimesController < ApplicationController
       return
     end
 
-    @break_time = @timer.break_times.create(break_start_time: Time.current, user: @team.user)
+    @break_time = @timer.break_times.create(break_start_time: Time.current, user: current_user)
     if @break_time.persisted?
       render json: { break_time: @break_time, breakTimeId: @break_time.id }, status: :ok
     end
@@ -18,7 +18,7 @@ class BreakTimesController < ApplicationController
     # POST /break_times/resume
   def update
     @break_time = @timer.break_times.last
-    if @break_time.update(break_end_time: Time.current, user: @team.user)
+    if @break_time.update(break_end_time: Time.current, user: current_user)
       render json: @break_time, status: :ok
     else
       render json: @break_time.errors, status: :unprocessable_entity
@@ -29,10 +29,12 @@ class BreakTimesController < ApplicationController
       
   def set_team
     @team = current_user.teams.find(params[:team_id])
+    unless @team.user == current_user || @team.attendees.include?(current_user)
+      redirect_to root_path, alert: 'アクセス権限がありません。'
+    end
   end
 
-  # 現在のタイマーを取得または適切なタイマーを特定する
   def set_timer
-    @timer = @team.timers.last
+    @timer = @team.timers.where(user: current_user, end_time: nil).last
   end
-end
+ end
