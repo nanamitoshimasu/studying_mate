@@ -9,7 +9,11 @@ class TeamsController < ApplicationController
   def new
     @team = Team.new
   end
-
+  
+  def show
+    @team = Team.find(params[:id])
+  end
+  
   def create
     @team = current_user.teams.build(team_params)
     if @team.save
@@ -19,10 +23,6 @@ class TeamsController < ApplicationController
       flash.now[:error] = t('defaults.message.not_created', item: t('teams.new.title'))
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @team = Team.find(params[:id])
   end
 
   def edit
@@ -49,7 +49,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @active_team = current_user.attend_teams.where('start_date <= ? AND end_date >= ?', Time.current,
                                                    Time.current).order(:end_date).last
-    unless @active_team.present?
+    if @active_team.blank?
       @previous_team = current_user.attend_teams.where('end_date < ?',
                                                        Time.current).order(:end_date).last
     end

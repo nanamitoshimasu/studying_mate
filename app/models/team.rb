@@ -30,14 +30,10 @@ class Team < ApplicationRecord
   end
 
   def adjust_state
-    Rails.logger.debug "Current status: #{status}"
-    Rails.logger.debug "Is deadline reached?: #{deadline?}"
-
     # デッドラインを過ぎているか、もしくは定員に達している場合のみステータスを更新する
     return unless deadline? || full?
 
     new_status = deadline? ? :finished : :full
-    Rails.logger.debug "New status: #{new_status}"
 
     self.status = new_status
     save!
