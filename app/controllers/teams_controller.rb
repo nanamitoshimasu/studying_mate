@@ -5,15 +5,19 @@ class TeamsController < ApplicationController
     @q = Team.ransack(params[:q])
     @teams = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(4)
   end
+ 
+  def show
+    @team = Team.find(params[:id])
+  end
 
   def new
     @team = Team.new
   end
-  
-  def show
-    @team = Team.find(params[:id])
+
+  def edit
+    @team = current_user.teams.find(params[:id])
   end
-  
+
   def create
     @team = current_user.teams.build(team_params)
     if @team.save
@@ -23,10 +27,6 @@ class TeamsController < ApplicationController
       flash.now[:error] = t('defaults.message.not_created', item: t('teams.new.title'))
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
-    @team = current_user.teams.find(params[:id])
   end
 
   def update

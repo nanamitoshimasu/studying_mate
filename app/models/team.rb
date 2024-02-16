@@ -1,6 +1,6 @@
 class Team < ApplicationRecord
-  before_create :set_deadline
   before_validation :adjust_start_and_end_dates
+  before_create :set_deadline
   mount_uploader :thumbnail, TeamThumbnailUploader
 
   validates :target_time, presence: true
@@ -149,7 +149,7 @@ class Team < ApplicationRecord
   private
 
   def valid_start_date
-    return unless start_date.present? && start_date <= Date.today
+    return unless start_date.present? && start_date <= Time.zone.today
 
     errors.add(:start_date, 'は明日以降で選択してください。')
   end
