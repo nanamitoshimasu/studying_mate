@@ -14,7 +14,9 @@ ja:
       deleted: "%{item}を削除しました"
       not_deleted: "%{item}を削除できませんでした"
       delete_confirm: "本当に削除しますか？"
-      not_page: "お探しのページは存在しないか、表示する権限がありません。"
+      not_page: "お探しのページは存在しないか、表示する権限がありません"
+      not_authority: "アクセス権限がありません"
+      attend_teams: 'まだチームに参加していないようですね？チームに参加しましょう！'
   users:
     show:
       title: "プロフィール"

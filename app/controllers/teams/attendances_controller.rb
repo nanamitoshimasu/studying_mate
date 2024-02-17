@@ -1,6 +1,6 @@
 class Teams::AttendancesController < ApplicationController
   def create
-    @team =Team.find(params[:team_id])
+    @team = Team.find(params[:team_id])
     team_attendance = current_user.attend(@team)
     redirect_back(fallback_location: root_path, success: '参加の申込をしました')
   end
