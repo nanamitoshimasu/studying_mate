@@ -31,6 +31,6 @@ class TimersController < ApplicationController
     @team = Team.find(params[:team_id])
     return if @team.user == current_user || @team.attendees.include?(current_user)
 
-    redirect_to root_path, alert: 'アクセス権限がありません。'
+    redirect_to root_path, alert: t('defaults.message.not_authority')
   end
 end

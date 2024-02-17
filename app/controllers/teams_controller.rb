@@ -55,7 +55,7 @@ class TeamsController < ApplicationController
     end
     return if current_user.attend?(@team)
 
-    redirect_to root_path, alert: 'まだチームに参加していないようですね？チームに参加しましょう！'
+    redirect_to root_path, alert: t('defaults.message.attend_teams')
   end
 
   private
