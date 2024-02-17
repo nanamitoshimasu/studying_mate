@@ -106,7 +106,7 @@ export default class extends Controller {
       .then(data => {
         // タイマー再開
         this._startTimer();
-        this.pauseResumeButtonTarget.textContent = 'Pause';
+        this.pauseResumeButtonTarget.textContent = 'ちょっと休憩';
         this.isPaused = false;
       })
       .catch(error => {
@@ -136,7 +136,7 @@ export default class extends Controller {
         this.breakTimeIdValue = data.breakTimeId; // 取得したブレイクタイムIDを保存
         clearInterval(this.timerInterval);
         this.timerInterval = null;
-        this.pauseResumeButtonTarget.textContent = 'Resume';
+        this.pauseResumeButtonTarget.textContent = '休憩おしまい';
         this.isPaused = true;
       })
       .catch(error => {
