@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
     @q = Team.ransack(params[:q])
     @teams = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(4)
   end
- 
+
   def show
     @team = Team.find(params[:id])
   end
