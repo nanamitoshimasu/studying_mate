@@ -10,6 +10,7 @@ export default class extends Controller {
     this.timerInterval = null;
     this.totalSeconds = 0;
     this.isPaused = false; //タイマーの情報を追跡する変数
+    this.flashMessageTimeout = null; // フラッシュメッセージのタイマー制御用
   }
 
   connect(){
@@ -71,7 +72,7 @@ export default class extends Controller {
         this._startTimer(); // タイマー開始
         this.timerStarted = true; // タイマーが開始されたことを追跡   
         this.isPaused = false;
-        this.flashMessageTarget.classList.add('hidden');
+        this.showFlashMessage("勉強開始！がんばろう！");
       })
       .catch(error => {
         console.error('エラー:', error);
@@ -108,6 +109,7 @@ export default class extends Controller {
         this._startTimer();
         this.pauseResumeButtonTarget.textContent = 'ちょっと休憩';
         this.isPaused = false;
+        this.showFlashMessage("勉強再開！がんばるぞ〜！");
       })
       .catch(error => {
         this.showFlashMessage(error.message);
@@ -138,6 +140,7 @@ export default class extends Controller {
         this.timerInterval = null;
         this.pauseResumeButtonTarget.textContent = '休憩おしまい';
         this.isPaused = true;
+        this.showFlashMessage("休憩休憩！リフレッシュしよっと。");
       })
       .catch(error => {
         this.showFlashMessage(error.message);
@@ -193,8 +196,16 @@ export default class extends Controller {
   }
   
   showFlashMessage(message) {
+      // 既存のフラッシュメッセージ非表示タイマーをクリアする
+      clearTimeout(this.flashMessageTimeout);
+    
       this.flashMessageTarget.textContent = message;
       this.flashMessageTarget.classList.remove('hidden');
+
+      // 3秒後にフラッシュメッセージを非表示にする
+      this.flashMessageTimeout = setTimeout(() => {
+      this.flashMessageTarget.classList.add('hidden');
+      }, 3000);
     }
   
 
