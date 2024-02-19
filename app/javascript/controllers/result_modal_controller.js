@@ -89,7 +89,7 @@ export default class extends Controller {
     } 
     
     // Goal Not Achieved Modalを非表示にする
-    else if (this.hasGoalNotAchievedTarget) {
+    if (this.hasGoalNotAchievedTarget) {
       this.goalNotAchievedTarget.classList.add('hidden');
       // Unlock the scroll and restore previous scroll position
       this.unlockScroll()
