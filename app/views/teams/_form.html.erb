@@ -17,7 +17,7 @@
           data: { "action" => "change->image-display#display", "image-display-target" => "select" } %>
           <div id="image-options" style="display:none;">
             <% TeamDecorator.options_for_select.each do |option| %>
-              <%= tag.div id: "image-option-#{option[1]}", data: { url: asset_path("image-#{option[1]}.jpg") } %>
+              <%= tag.div id: "image-option-#{option[1]}", data: { url: asset_path("image_#{option[1]}.jpg") } %>
             <% end %>
           </div>
  
