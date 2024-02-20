@@ -97,7 +97,7 @@ class Team < ApplicationRecord
       'display_default.png'
     end
   end
-
+  
   def self.ransackable_attributes(_auth_object = nil)
     %w[title target_time capacity start_date description]
   end
