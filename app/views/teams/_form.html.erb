@@ -5,11 +5,6 @@
       <%= f.text_field :title, class: 'input input-bordered input-success w-full max-w-xs', placeholder: '仲間のタイトルを決めよう' %>
       <div class="mb-4">
         <p class="label mb-0 text-lg font-semibold text-gray-700">救う絶滅危惧種</p>
-        <div id="image-options" style="display:none;">
-          <% TeamDecorator.options_for_select.each do |option| %>
-            <%= tag.div "", id: "image-option-#{option[0]}", data: { url: asset_path("#{option[0]}.jpg") } %>
-          <% end %>
-        </div>
         <%= image_tag 'team_thumbnail_default.jpg', 
                       id: 'display', 
                       class: 'rounded-md object-fill w-1/2 aspect-[4/3] mb-4', 
@@ -20,6 +15,12 @@
           { include_blank: 'どの動物を救う？' },
           class:'select select-success w-full max-w-xs',
           data: { "action" => "change->image-display#display", "image-display-target" => "select" } %>
+          <div id="image-options" style="display:none;">
+            <% TeamDecorator.options_for_select.each do |option| %>
+              <%= tag.div id: "image-option-#{option[1]}", data: { url: asset_path("image-#{option[1]}.jpg") } %>
+            <% end %>
+          </div>
+ 
         <%= f.label :target_time, t(Team.human_attribute_name(:target_time)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
         
       </div>    
