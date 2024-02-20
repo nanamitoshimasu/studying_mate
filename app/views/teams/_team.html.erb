@@ -6,7 +6,7 @@
       <p class="text-lime-600 text-center text-xl border-2 border-lime-600 my-4 rounded-md w-48 max-w-full sm:max-w-xs mx-auto"><%= team.status_i18n %><p>
     <% end %>
     <figure class="mx-8 mt-8">
-      <%= image_tag team.thumbnail.url, class: 'rounded-md object-fill w-full aspect-[4/3]' %>
+      <%= image_tag team.image_for_time, class: 'rounded-md object-cover'%>
     </figure>
     <div class="card-body items-start text-start">
       <h2 class="card-title">

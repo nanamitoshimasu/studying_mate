@@ -1,59 +1,48 @@
 <%= form_with model: team, local: true do |f| %>
   <%= render 'shared/errors_messages', model: f.object %>
-    <div class="form-group" data-controller="thumbnail-preview">
-      <%= f.label :thumbnail, t(Team.human_attribute_name(:thumbnail)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
-      <%= f.file_field :thumbnail, 
-                        class: "file-input", 
-                        accept: 'image/*', 
-                        data: { "action" => "change->thumbnail-preview#preview", "thumbnail-preview-target" => "input" } %>
-      <%= f.hidden_field :thumbnail_cache %>
-      <div class='mt-2 mb-4'>
-        <%= image_tag team.thumbnail.url, 
-                      id: 'preview', 
-                      class: "px-10 pt-10", 
-                      data: { "thumbnail-preview-target" => "preview" } %>
-      </div>
-    </div>
-    <div class="mb-4">
+    <div class="form-group" data-controller="image-display">
       <%= f.label :title, t(Team.human_attribute_name(:title)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
-      <%= f.text_field :title, class: 'input input-bordered input-success w-full max-w-xs' %>
-    </div>
-    <div class="mb-4" data-controller="image-display">
-      <%= f.label :target_time, t(Team.human_attribute_name(:target_time)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
-      <%= f.select :target_time,
-        options_for_select(TeamDecorator.options_for_select, @team.target_time),
-        { include_blank: '何時間勉強する？' },
+      <%= f.text_field :title, class: 'input input-bordered input-success w-full max-w-xs', placeholder: '仲間のタイトルを決めよう' %>
+      <div class="mb-4">
+        <p class="label mb-0 text-lg font-semibold text-gray-700">救う絶滅危惧種</p>
+        <%= image_tag 'team_thumbnail_default.jpg', 
+                      id: 'display', 
+                      class: 'rounded-md object-fill w-1/2 aspect-[4/3] mb-4', 
+                      data: { "image-display-target" => "display" } %>
+
+        <%= f.select :target_time,
+          options_for_select(TeamDecorator.options_for_select, @team.target_time),
+          { include_blank: 'どの動物を救う？' },
           class:'select select-success w-full max-w-xs',
           data: { "action" => "change->image-display#display", "image-display-target" => "select" } %>
-        <p class="label mb-0 text-sm font-semibold text-gray-700">救う絶滅危惧種</p>
-        <div id="image-options" style="display:none;">
-          <% TeamDecorator.options_for_select.each do |option| %>
-            <%= tag.div id: "image-option-#{option[0]}", data: { url: asset_path("image-#{option[0]}.jpg") } %>
-          <% end %>
-        </div>
-        <%= image_tag 'display_default.png', 
-                            id: 'display', 
-                            class: 'w-24 h-24 rounded-full object-cover', 
-                            data: { "image-display-target" => "display" } %>
+          <div id="image-options" style="display:none;">
+            <% TeamDecorator.options_for_select.each do |option| %>
+              <%= tag.div id: "image-option-#{option[1]}", data: { url: asset_path("image_#{option[1]}.jpg") } %>
+            <% end %>
+          </div>
+ 
+        <%= f.label :target_time, t(Team.human_attribute_name(:target_time)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+        <div id="selected-value" data-image-display-target="selectedValue" class="text-4xl text-gray-700"></div>       
+      </div>    
     </div>
-    <div class="mb-4">
-      <%= f.label :capacity, t(Team.human_attribute_name(:capacity)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
-      <%= f.select :capacity, options_for_select((2..5).to_a, @team.capacity), { include_blank: 'あなたを含めた人数を入れてね' }, { class: 'select select-success w-full max-w-xs' } %>
-    </div>
-    <div class="mb-4">
-      <%= f.label :start_date, t(Team.human_attribute_name(:start_date)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
-      <p class="text-sm text-neutral">※ 当日は選択できません！翌日以降でお願いします！</p>
-      <%= f.date_field :start_date, class: 'select select-success w-full max-w-xs' %>
-    </div>
-    <div class="mb-4">
-      <%= f.label :end_date, t(Team.human_attribute_name(:end_date)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
-      <p class="text-sm text-neutral">※ 1~10日間で選択できます！</p>
-      <%= f.date_field :end_date, class: 'select select-success w-full max-w-xs'%>
-    </div>
-    <div class="mb-4">
-      <%= f.label :description, t(Team.human_attribute_name(:description)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
-      <%= f.text_area :description, class: 'textarea textarea-success w-full max-w-xs', placeholder: '意気込みやどんなことを頑張りたいか書いてね' %>
-    </div>
+      <div class="mb-4">
+        <%= f.label :capacity, t(Team.human_attribute_name(:capacity)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+        <%= f.select :capacity, options_for_select((2..5).to_a, @team.capacity), { include_blank: 'あなたを含めた人数を入れてね' }, { class: 'select select-success w-full max-w-xs' } %>
+      </div>
+      <div class="mb-4">
+        <%= f.label :start_date, t(Team.human_attribute_name(:start_date)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+        <p class="text-sm text-neutral">※ 当日は選択できません！翌日以降でお願いします！</p>
+        <%= f.date_field :start_date, class: 'select select-success w-full max-w-xs' %>
+      </div>
+      <div class="mb-4">
+        <%= f.label :end_date, t(Team.human_attribute_name(:end_date)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+        <p class="text-sm text-neutral">※ 1~10日間で選択できます！</p>
+        <%= f.date_field :end_date, class: 'select select-success w-full max-w-xs'%>
+      </div>
+      <div class="mb-4">
+        <%= f.label :description, t(Team.human_attribute_name(:description)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+        <%= f.text_area :description, class: 'textarea textarea-success w-full max-w-xs', placeholder: '意気込みやどんなことを頑張りたいか書いてね' %>
+      </div>
     <!-- Button --->
     <div class="card-actions justify-end">
       <%= f.submit t('defaults.register'), class: 'btn btn-primary' %>

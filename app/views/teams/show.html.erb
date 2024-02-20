@@ -3,19 +3,15 @@
     <div class="card bg-base-200 shadow-xl my-12">
       <div class="card-body">
         <figure>
-          <%= image_tag @team.thumbnail.url, size: '640x427', class: 'rounded-md' =%>  
+          <%= image_tag @team.image_for_time, class: 'rounded-md object-cover'%>
         </figure>
-        <h2 class="card-title"><%= @team.title %> </h2>
+        <h2 class="card-title text-4xl"><%= @team.title %> </h2>
         <hr class="my-5">
         <div>
           <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(Team.human_attribute_name(:target_time)) %></h3>
           <p class="mb-4">
             <%= @team.target_time %> 時間
           </p>
-        </div>
-        <div>
-          <p class="font-semibold">救う絶滅危惧種</p>
-          <%= image_tag @team.image_for_time, class: 'w-24 h-24 rounded-full object-cover'%>
         </div>
         <div>
           <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(Team.human_attribute_name(:capacity)) %></h3>
