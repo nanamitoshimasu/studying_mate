@@ -54,86 +54,46 @@ class Team < ApplicationRecord
   # チーム目標時間動物表示
   def image_for_time
     if target_time == 10
-      'image-10.jpg'
+      'image_10.jpg'
     elsif target_time == 20
-      'image-20.jpg'
+      'image_20.jpg'
     elsif target_time == 30
-      'image-30.jpg'
+      'image_30.jpg'
     elsif target_time == 40
-      'image-40.jpg'
+      'image_40.jpg'
     elsif target_time == 50
-      'image-50.jpg'
+      'image_50.jpg'
     elsif target_time == 60
-      'image-60.jpg'
+      'image_60.jpg'
     elsif target_time == 70
-      'image-70.jpg'
+      'image_70.jpg'
     elsif target_time == 80
-      'image-80.jpg'
+      'image_80.jpg'
     elsif target_time == 90
-      'image-90.jpg'
+      'image_90.jpg'
     elsif target_time == 100
-      'image-100.jpg'
+      'image_100.jpg'
     elsif target_time == 110
-      'image-110.jpg'
+      'image_110.jpg'
     elsif target_time == 120
-      'image-120.jpg'
+      'image_120.jpg'
     elsif target_time == 130
-      'image-130.jpg'
+      'image_130.jpg'
     elsif target_time == 140
-      'image-140.jpg'
+      'image_140.jpg'
     elsif target_time == 150
-      'image-150.jpg'
+      'image_150.jpg'
     elsif target_time == 160
-      'image-160.jpg'
+      'image_160.jpg'
     elsif target_time == 170
-      'image-170.jpg'
+      'image_170.jpg'
     elsif target_time == 180
-      'image-180.jpg'
+      'image_180.jpg'
     elsif target_time == 190
-      'image-190.jpg'
+      'image_190.jpg'
     elsif target_time == 200
-      'image-200.jpg'
-    elsif target_time == 210
-      'image-210.jpg'
-    elsif target_time == 220
-      'image-220.jpg'
-    elsif target_time == 230
-      'image-230.jpg'
-    elsif target_time == 240
-      'image-240.jpg'
-    elsif target_time == 250
-      'image-250.jpg'
-    elsif target_time == 260
-      'image-260.jpg'
-    elsif target_time == 270
-      'image-270.jpg'
-    elsif target_time == 280
-      'image-280.jpg'
-    elsif target_time == 290
-      'image-290.jpg'
-    elsif target_time == 300
-      'image-300.jpg'
-    elsif target_time == 310
-      'image-310.jpg'
-    elsif target_time == 320
-      'image-320.jpg'
-    elsif target_time == 330
-      'image-330.jpg'
-    elsif target_time == 340
-      'image-340.jpg'
-    elsif target_time == 350
-      'image-350.jpg'
-    elsif target_time == 360
-      'image-360.jpg'
-    elsif target_time == 370
-      'image-370.jpg'
-    elsif target_time == 380
-      'image-380.jpg'
-    elsif target_time == 390
-      'image-390.jpg'
-    elsif target_time == 400
-      'image-400.jpg'
-    else
+      'image_200.jpg'
+   else
       'display_default.png'
     end
   end
