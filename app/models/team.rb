@@ -93,11 +93,11 @@ class Team < ApplicationRecord
       'image_190.jpg'
     elsif target_time == 200
       'image_200.jpg'
-   else
+    else
       'display_default.png'
     end
   end
-  
+
   def self.ransackable_attributes(_auth_object = nil)
     %w[title target_time capacity start_date description]
   end
