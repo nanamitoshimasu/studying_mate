@@ -11,14 +11,15 @@
   </div>
   <div class="max-w-7xl mx-auto grid grid-cols-2 items-start">
     <div class="flex-1">
-      <div class="card bg-base-200 shadow-lg lg:w-full xl:w-3/4">
+      <div class="card bg-base-200 shadow-lg mx-auto">
         <div class="card-body">
           <h1 class="card-title"><%= t '.title' %></h1>
+          <hr class="my-5">
           <%= render 'profiles/profile', user: @user %>
         </div>
       </div>
     </div>
-    <div class="flex-1">
+    <div class="flex-1 mx-auto">
       <%= render 'profiles/total_time', user: @user %>
       <%= render 'profiles/saved_animal_images', user: @user %>
     </div>

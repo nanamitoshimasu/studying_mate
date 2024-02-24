@@ -36,6 +36,10 @@ class User < ApplicationRecord
     timers.sum(&:calculated_time)
   end
 
+  def attended_team
+    attend_teams.where('start_date <= ? AND end_date >= ?', Time.current, Time.current).order(:end_date).last
+  end
+  
   class << self
     def find_or_create_from_auth_hash(auth_hash)
       user_params = user_params_from_auth_hash(auth_hash)

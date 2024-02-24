@@ -1,20 +1,32 @@
-<div class="avatar">
-  <div class="w-24 rounded-full">  
-    <%= image_tag user.avatar.url, size: '200x200' %>
+<div class="grid grid-flow-row-dense grid-cols-3">
+  <div class="avatar">
+    <div class="w-24 rounded-full">  
+      <%= image_tag user.avatar.url, size: '200x200' %>
+    </div>
   </div>
-</div>
-<hr class="my-5">
-<div>
-  <h3 class="mb-0 text-lg font-semibold text-gray-700" ><%= t(User.human_attribute_name(:name)) %></h3>
-  <p class="mb-4">
-    <%= user.name %>
-  </p>
-  <h3 class="mb-0 text-lg font-semibold text-gray-700"><%= t(User.human_attribute_name(:description)) %></h3>
-  <p class="mb-4">
-    <% if user.description.present? %>
-      <%= user.description %>
-    <% else %>
-      No Data
-    <% end %>
-  </p>
+  <div class="col-span-2">
+    <h3 class="mb-0 text-lg font-semibold text-gray-700"><%= t(User.human_attribute_name(:description)) %></h3>
+    <p class="mb-4">
+      <% if user.description.present? %>
+        <%= user.description %>
+      <% else %>
+        No Data
+      <% end %>
+    </p>
+  </div>
+  <div>
+    <p class="text-2xl">
+      <%= user.name %>
+    </p>
+  </div>
+  <div class="col-span-2">
+    <h3 class="mb-0 text-lg font-semibold text-gray-700">現在こちらで活動中</h3>
+    <p class="mb-4">
+      <% if user.attended_team.present? %>
+        <%= user.attended_team.title %>
+      <% else %>
+        No Data 
+      <% end %>
+    </p>
+  </div>
 </div>
