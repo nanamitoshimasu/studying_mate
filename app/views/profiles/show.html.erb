@@ -11,9 +11,10 @@
   </div>
   <div class="max-w-7xl mx-auto grid grid-cols-2 items-start">
     <div class="flex-1">
-      <div class="card bg-base-200 shadow-lg lg:w-full xl:w-3/4">
+      <div class="card bg-base-200 shadow-lg mx-auto">
         <div class="card-body">
           <h1 class="card-title"><%= t '.title' %></h1>
+          <hr class="my-5">
           <%= render 'profile', user: current_user %>
           <div class="card-actions justify-end">
             <%= button_to t('defaults.edit'), edit_profile_path, method: :get, class: 'btn btn-primary' %>
@@ -21,7 +22,7 @@
         </div>
       </div>
     </div>
-    <div class="flex-1">
+    <div class="flex-1 mx-auto">
       <%= render 'total_time', user:current_user %>
       <%= render 'saved_animal_images', user:current_user %>
     </div>
