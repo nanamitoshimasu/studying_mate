@@ -94,7 +94,7 @@ class Team < ApplicationRecord
     elsif target_time == 200
       'image_200.jpg'
     else
-      'display_default.png'
+      'team_thumbnail_default.jpg'
     end
   end
 
