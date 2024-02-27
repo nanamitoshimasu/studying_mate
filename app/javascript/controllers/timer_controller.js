@@ -2,7 +2,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["hours", "minutes", "pauseResumeButton", "modalTime", "flashMessage", "modal", "shareLink"]
+  static targets = ["hours", "minutes", "pauseResumeButton", "modalTime", "flashMessage", "modal", "shareLink", "bg"]
   static values = { teamId: Number, timerId: Number, breakTimeId: Number}
   timerStarted = false;
   
@@ -43,6 +43,8 @@ export default class extends Controller {
     this.preventDefaultActionClosing =
       (this.data.get('preventDefaultActionClosing') || 'true') === 'true'
     console.log("preventDefaultActionClosing:", this.preventDefaultActionClosing);
+    
+    this.bgTarget.classList.remove(this.toggleClass)
   }
 
   disconnect() {
@@ -241,9 +243,16 @@ export default class extends Controller {
 
     // Unlock the scroll and restore previous scroll position
     this.unlockScroll()
+    
+    // Hide the start modal 
+    if (this.bgTarget) {
+      this.bgTarget.classList.add(this.toggleClass);
+    } 
 
     // Hide the modal
-    this.modalTarget.classList.add(this.toggleClass)
+    if (this.modalTarget) {
+      this.modalTarget.classList.add(this.toggleClass);
+    }
 
     // Remove the background
     if (this.background) {

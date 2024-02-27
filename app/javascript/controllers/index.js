@@ -21,4 +21,3 @@ application.register("timer", TimerController)
 
 import ResultModalController from "./result_modal_controller"
 application.register("result-modal", ResultModalController)
-
