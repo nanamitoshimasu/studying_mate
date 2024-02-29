@@ -195,6 +195,11 @@
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.1.2.tgz#d261ff4b72844f5af496671346ec478798f4ac2c"
   integrity sha512-KGziTZfbmGm8/fHOpj515xupbYU+49hsp4etfdpoDJ/CEY2bRZR0cyFcJkpK6n0t/sxOHNWY6bo9vSgXZvT7Mg==
 
+"@rails/actioncable@^7.1.3-2":
+  version "7.1.3-2"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.1.3-2.tgz#7105fd8fc6db87d11510d5e9ac8e5b68add6124e"
+  integrity sha512-0j/bo3Aehk3R3LTc/Nu4eegvUR+8kRObq/t1BtBLGF8xdPzrUQciv+KvAABdACl4Vw82yo0LB1r0J0zVH9Gefg==
+
 any-promise@^1.0.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/any-promise/-/any-promise-1.3.0.tgz#abc6afeedcea52e809cdc0376aed3ce39635d17f"

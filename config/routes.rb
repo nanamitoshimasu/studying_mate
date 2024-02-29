@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   root 'tops#index'
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
