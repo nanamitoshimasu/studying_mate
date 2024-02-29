@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   delete 'log_out', to: 'sessions#destroy', as: 'log_out'
   get 'privacy_policy', to: 'tops#privacy_policy'
   get 'terms_of_service', to: 'tops#terms_of_service'
-
+  get 'rooms/show', to:'rooms#show'
+  
   resources :teams do
     resource :attendance, only: %i[create destroy], module: :teams
     member do
