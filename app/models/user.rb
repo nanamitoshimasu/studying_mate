@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :attend_teams, through: :team_attendances, class_name: 'Team', source: :team
   has_many :timers, dependent: :destroy
   has_many :break_times, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   def owner?(team)
     team.user_id == id

@@ -1,6 +1,6 @@
 <div class="card-body">
   <h1 class="card-title">チャット🐈</h1>
-  <div id='messages'>
+  <div id='messages' data-room_id"<%= @room.id %>">
     <%= render partial: 'messages/message', collection: @messages %>
   </div>
   <input type="text" placeholder="メッセージを入力してね" class="input input-bordered input-secondary w-full max-w-xs" data-behavior="room_speaker" />

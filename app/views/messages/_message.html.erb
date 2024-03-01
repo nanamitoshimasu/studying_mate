@@ -1,5 +1,17 @@
 <div class="message">
-  <div class="chat chat-end">
-    <div class="chat-bubble chat-bubble-secondary"><%= message.content%></div>
-  </div>
+  <% if message.user == current_user %>
+    <div class="chat chat-end">
+      <div class="chat-header">
+        <%= message.user.name %>
+      </div>
+      <div class="chat-bubble chat-bubble-secondary"><%= message.content %></div>
+    </div>
+  <% else %>
+    <div class="chat chat-start">
+      <div class="chat-header">
+        <%= message.user.name %>
+      </div>
+      <div class="chat-bubble chat-bubble-primary"><%= message.content %></div>
+    </div>
+  <% end %>
 </div>

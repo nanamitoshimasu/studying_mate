@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :rooms
   resources :sessions, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
 
