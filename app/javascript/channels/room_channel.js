@@ -10,7 +10,8 @@ const chatChannel = consumer.subscriptions.create("RoomChannel", {
   },
 
   received(data) {
-    return alert(data['message']);
+   const messages = document.getElementById('messages');
+   messages.insertAdjacentHTML('beforeend', data['message']);
   },
 
   speak: function(message) {
