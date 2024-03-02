@@ -18,6 +18,8 @@ class Team < ApplicationRecord
   has_many :attendees, through: :team_attendances, class_name: 'User', source: :user
   has_many :timers, dependent: :destroy
   has_one :room, dependent: :destroy
+  after_create :create_associated_room
+  
   enum status: { wanted: 0, full: 1, finished: 2 }
 
   # ステータスのメソッド
@@ -134,6 +136,10 @@ class Team < ApplicationRecord
     return unless overlapping_teams.exists?
 
     errors.add(:base, '指定された期間内に既に他のチームが存在します。')
+  end
+
+  def create_associated_room
+    create_room # has_one :room の関連付けにより提供されるメソッド
   end
 
   # 募集終了時間の設定

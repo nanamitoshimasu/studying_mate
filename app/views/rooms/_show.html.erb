@@ -1,0 +1,7 @@
+<div tabindex="0" class="card-body flex flex-col h-full">
+  <h1 class="card-title">ﾆｬ~🐈</h1>
+  <div id='messages' data-room-id="<%= @room.id %>" class="flex-grow overflow-y-auto">
+    <%= render partial: 'messages/message', collection: @messages %>
+  </div>
+  <input type="text" placeholder="ENTERで送信！" class="input input-bordered input-secondary w-full max-w-xs mt-4" data-behavior="room_speaker" />
+</div>
