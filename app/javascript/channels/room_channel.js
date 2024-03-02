@@ -1,27 +1,28 @@
 import consumer from "./consumer"
 
-const chatChannel = consumer.subscriptions.create("RoomChannel", {
-  connected() {
-    // Called when the subscription is ready for use on the server
-  },
+document.addEventListener('DOMContentLoaded', () =>{
+  const messages = document.getElementById('messages');
+  const roomId = messages.getAttribute('data-room-id');
 
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
+  const chatChannel = consumer.subscriptions.create({ channel: "RoomChannel", room: roomId }, {
+    connected() {
+      // Called when the subscription is ready for use on the server
+    },
 
-  received(data) {
-   const messages = document.getElementById('messages');
-   messages.insertAdjacentHTML('beforeend', data['message']);
-  },
+    disconnected() {
+      // Called when the subscription has been terminated by the server
+    },
 
-  speak: function(message) {
-    return this.perform('speak', {message: message});
-  }
-});
+    received(data) {
+     const messages = document.getElementById('messages');
+     messages.insertAdjacentHTML('beforeend', data['message']);
+    },
 
-// フォーム内でEnterキーが押された時の動作を記述
-// Vanilla JavaScriptで実装
-document.addEventListener('DOMContentLoaded', () => {
+    speak: function(message) {
+      return this.perform('speak', {message: message});
+    }
+  }); 
+
   const inputElement = document.querySelector('.input');
   inputElement.addEventListener('keydown', event => {
     const element = event.target;

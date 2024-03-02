@@ -3,7 +3,7 @@ class MessageBroadcastJob < ApplicationJob
   
   # ブロードキャスト(一つのネットワークの中にあるすべてのホストに対してデータを送る。)
   def perform(message)
-    ActionCable.server.broadcast('room_channel', {message: render_message(message)})
+    ActionCable.server.broadcast("room_channel_#{message.room_id}", {message: render_message(message)})
   end
   
   # app/views/message/_message.html.erbを呼び出す。
