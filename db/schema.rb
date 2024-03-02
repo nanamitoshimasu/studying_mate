@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_01_144958) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_02_061415) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_144958) do
   create_table "rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "team_id", null: false
+    t.index ["team_id"], name: "index_rooms_on_team_id"
   end
 
   create_table "team_attendances", force: :cascade do |t|
@@ -92,6 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_144958) do
   add_foreign_key "break_times", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "rooms", "teams"
   add_foreign_key "team_attendances", "teams"
   add_foreign_key "team_attendances", "users"
   add_foreign_key "teams", "users"

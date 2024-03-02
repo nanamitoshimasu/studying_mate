@@ -17,7 +17,7 @@ class Team < ApplicationRecord
   has_many :team_attendances, dependent: :destroy, class_name: 'TeamAttendance'
   has_many :attendees, through: :team_attendances, class_name: 'User', source: :user
   has_many :timers, dependent: :destroy
-
+  has_one :room, dependent: :destroy
   enum status: { wanted: 0, full: 1, finished: 2 }
 
   # ステータスのメソッド

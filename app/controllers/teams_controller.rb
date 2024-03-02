@@ -47,11 +47,12 @@ class TeamsController < ApplicationController
 
   def member_page
     @team = Team.find(params[:id])
-    @active_team = current_user.attend_teams.where('start_date <= ? AND end_date >= ?', Time.current,
-                                                   Time.current).order(:end_date).last
+    @room = @team.room
+    @messages = @room.messages if @room.present?
+
+    @active_team = current_user.attend_teams.where('start_date <= ? AND end_date >= ?', Time.current, Time.current).order(:end_date).last
     if @active_team.blank?
-      @previous_team = current_user.attend_teams.where('end_date < ?',
-                                                       Time.current).order(:end_date).last
+      @previous_team = current_user.attend_teams.where('end_date < ?', Time.current).order(:end_date).last
     end
     return if current_user.attend?(@team)
 
