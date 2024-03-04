@@ -1,8 +1,9 @@
 import consumer from "./consumer"
 
 document.addEventListener('DOMContentLoaded', () =>{
-  const currentUserID = document.body.getAttribute('data-current-user-id');
   const messages = document.getElementById('messages');
+  messages.scrollTop = messages.scrollHeight;
+  const currentUserId = parseInt(messages.getAttribute('data-current-user-id'));
   const roomId = messages.getAttribute('data-room-id');
 
   const chatChannel = consumer.subscriptions.create({ channel: "RoomChannel", room: roomId }, {
@@ -15,23 +16,28 @@ document.addEventListener('DOMContentLoaded', () =>{
     },
 
     received(data) {
-      const isCurrentUser = data.user_id.toString() === currentUserID;
+      const isCurrentUser = data.user_id === currentUserId;
       const messageClass = isCurrentUser ? `chat chat-end` : `chat chat-start`;
-      const messagesElement = `
+
+      // メッセージの内容を追加
+      const messageElement = `
         <div class="${messageClass}">
           <div class="chat-image avatar">
             <div class="w-10 rounded-full">
-              <img src="${data.user_avatar}" />
+              <img src="${data.user_avatar}">
             </div>
           </div>
           <div class="chat-header">
             ${data.user_name}
             <time class="text-xs opacity-50">${data.formatted_created_at}</time>
           </div>
-          <div class="chat-bubble">${data.content}</div>
+          <div class="chat-bubble chat-bubble-success">${data.message_content}</div>
         </div>
       `;
-      messages.insertAdjacentHTML('beforeend', messagesElement);
+
+      // メッセージ要素をチャットエリアに追加
+      messages.insertAdjacentHTML('beforeend', messageElement);
+      messages.scrollTop = messages.scrollHeight;
     },
 
     speak: function(message) {
