@@ -1,5 +1,26 @@
-<div class="message">
+<% if message.user == current_user %>
   <div class="chat chat-end">
-    <div class="chat-bubble chat-bubble-secondary"><%= message.content%></div>
+    <div class="chat-image avatar">
+      <div class="w-10 rounded-full">
+        <%= image_tag message.user.avatar.url %>
+      </div>
+    </div>
+    <div class="chat-header">
+      <%= message.user.name %>
+      <time class="text-xs opacity-50"><%= l message.created_at, format: :time %></time>
+    </div>
+    <div class="chat-bubble chat-bubble-success"><%= message.content %></div>
   </div>
-</div>
+<% else %>
+  <div class="chat chat-start">
+    <div class="chat-image avatar">
+      <div class="w-10 rounded-full">
+        <%= image_tag message.user.avatar.url %>
+      </div>
+    <div class="chat-header">
+      <%= message.user.name %>
+      <time class="text-xs opacity-50"><%= l message.created_at, format: :time %></time>
+    </div>
+    <div class="chat-bubble chat-bubble-success"><%= message.content %></div>
+  </div>
+<% end %>

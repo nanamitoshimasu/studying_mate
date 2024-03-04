@@ -19,7 +19,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url(*_args)
-    'user_default.jpg'
+    ActionController::Base.helpers.asset_path("user_default.jpg")
+  end
+
+  def asset_host
+    if Rails.env.production?
+      return  "https://yaruki-morimori-62d3be1b19e6.herokuapp.com/"
+    else
+      return "http://localhost:3000"
+    end
   end
 
   # Process files as they are uploaded:

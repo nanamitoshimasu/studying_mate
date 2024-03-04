@@ -1,17 +1,31 @@
 <div data-controller="result-modal" data-result-modal-end-date-value="<%= team.end_date.iso8601 %>">
   <%= render 'teams/result_modal', team: team %>
   <h1 class="text-5xl font-bold text-center p-8"><%= team.title %></h1>
-    <ul class="mx-auto w-1/2">
-      <li class="flex justify-center">
-        <% team.attendees.each do |attendee| %>
-          <div class="avatar">
-            <div class="w-16 rounded-full">
-              <%= image_tag image_path(attendee.avatar.url) %>
-            </div>
+  <div class="w-1/3 mx-auto">
+    <div class="flex justify-end">
+      <div class="dropdown dropdown-right">
+        <div tabindex="0" role="button" class="btn btn-circle btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+          </svg>
+       </div>
+        <div tabindex="0" class="card w-80 h-[32rem] glass dropdown-content z-[1] shadow rounded-box overflow-y-hidden">
+          <%= render 'rooms/show', team: team %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="mx-auto w-1/2">
+    <li class="flex justify-center">
+      <% team.attendees.each do |attendee| %>
+        <div class="avatar">
+          <div class="w-16 rounded-full">
+            <%= image_tag image_path(attendee.avatar.url) %>
           </div>
-        <% end %>
-      </li>
-    </ul>
+        </div>
+      <% end %>
+    </li>
+  </ul>
   <div class="card w-1/2 glass mx-auto my-10 p-5">
     <p class="text-left text-xl">みんなで</p>
     <h1 class="text-center text-7xl"><%= format_duration(team.total_calculated_time) %></h1>
