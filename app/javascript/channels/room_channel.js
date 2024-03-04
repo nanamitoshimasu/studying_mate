@@ -1,6 +1,7 @@
 import consumer from "./consumer"
 
 document.addEventListener('DOMContentLoaded', () =>{
+  const currentUserID = document.body.getAttribute('data-current-user-id');
   const messages = document.getElementById('messages');
   const roomId = messages.getAttribute('data-room-id');
 
@@ -14,8 +15,23 @@ document.addEventListener('DOMContentLoaded', () =>{
     },
 
     received(data) {
-     const messages = document.getElementById('messages');
-     messages.insertAdjacentHTML('beforeend', data['message']);
+      const isCurrentUser = data.user_id.toString() === currentUserID;
+      const messageClass = isCurrentUser ? `chat chat-end` : `chat chat-start`;
+      const messagesElement = `
+        <div class="${messageClass}">
+          <div class="chat-image avatar">
+            <div class="w-10 rounded-full">
+              <img src="${data.user_avatar}" />
+            </div>
+          </div>
+          <div class="chat-header">
+            ${data.user_name}
+            <time class="text-xs opacity-50">${data.formatted_created_at}</time>
+          </div>
+          <div class="chat-bubble">${data.content}</div>
+        </div>
+      `;
+      messages.insertAdjacentHTML('beforeend', messagesElement);
     },
 
     speak: function(message) {
@@ -24,14 +40,13 @@ document.addEventListener('DOMContentLoaded', () =>{
   }); 
 
   const inputElement = document.querySelector('.input');
-  inputElement.addEventListener('keydown', event => {
-    const element = event.target;
-    const isRoomSpeaker = element.matches('[data-behavior~=room_speaker]');
+  const sendMessageButton = document.getElementById('send-message');
 
-    if (event.key === 'Enter' && isRoomSpeaker) {
-      chatChannel.speak(event.target.value);
-      event.target.value = '';
-      event.preventDefault();
+  sendMessageButton.addEventListener('click', event => {
+    const messageValue = inputElement.value;
+    if (messageValue.trim() !== '') {
+      chatChannel.speak(messageValue);
+      inputElement.value = '';
     }
   });
 });

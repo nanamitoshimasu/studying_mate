@@ -48,7 +48,7 @@ class TeamsController < ApplicationController
   def member_page
     @team = Team.find(params[:id])
     @room = @team.room
-    @messages = @room.messages if @room.present?
+    @messages = @room.messages.includes(:user).order(created_at: :asc) if @room.present?
 
     @active_team = current_user.attend_teams.where('start_date <= ? AND end_date >= ?', Time.current, Time.current).order(:end_date).last
     if @active_team.blank?
