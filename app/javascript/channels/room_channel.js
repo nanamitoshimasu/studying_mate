@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
     received(data) {
       const isCurrentUser = data.user_id === currentUserId;
-      const messageClass = isCurrentUser ? `chat chat-end` : `chat chat-start`;
+      const messageClass = isCurrentUser ? `chat chat-end mr-2` : `chat chat-start ml-2`;
 
       // メッセージの内容を追加
       const messageElement = `
