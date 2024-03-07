@@ -1,6 +1,6 @@
-<div tabindex="0" class="card w-80 h-[32rem] glass dropdown-content z-[1] shadow rounded-box overflow-y-hidden flex flex-col">
+<div tabindex="0" class="card w-80 h-[32rem] glass dropdown-content z-[1] shadow rounded-box overflow-y-hidden">
   <h1 class="card-title m-4">ﾆｬ~🐈</h1>
-  <div id='messages' data-room-id="<%= @room.id %>" data-current-user-id="<%= current_user.id %>, "class="flex-grow overflow-y-auto">
+  <div id='messages' data-room-id="<%= @room.id %>" data-current-user-id="<%= current_user.id %>, "class="overflow-y-auto">
     <%= render partial: 'messages/message', collection: @messages %>
   </div>
   <div class="flex">
