@@ -6,7 +6,7 @@ export default class extends Controller {
   }
 
   connect() {
-    if (document.body.classList.contains("background-image")) {
+    if (this.element.classList.contains("background-image")) {
       this.loadBackground();
       this.startTransitonInterval();
     }
@@ -14,7 +14,7 @@ export default class extends Controller {
 
   disconnect() {
     this.restBackground();
-    if(this.interval) {
+    if (this.interval) {
       cleanInterval(this.interval);
     }
   }
