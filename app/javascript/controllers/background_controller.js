@@ -1,68 +1,43 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static values = {
-    images: Array
-  }
-
+  static targets = ["overlay"]
+  static values = { images: Array }
+  
   connect() {
-    if (this.element.classList.contains("background-image")) {
       this.loadBackground();
-      this.startTransitonInterval();
-    }
+      this.startTransitionInterval();
   }
 
   disconnect() {
-    this.restBackground();
+    this.resetBackground();
     if (this.interval) {
-      cleanInterval(this.interval);
+      clearInterval(this.interval);
     }
   }
 
-  startTransitonInterval() {
+  startTransitionInterval() {
     this.interval = setInterval(() => {
       this.loadBackground();
     }, 5000);
   }
 
   loadBackground() {
-    // ランダムに画像を選択
-    const randomImage = this.imagesValue[Math.floor(Math.random() * this.imagesValue.length)];
-
-    // 既存のスタイル要素があれば削除
-    const existingStyle = document.getElementById("dynamic-bg-style");
-    if (existingStyle) {
-      existingStyle.remove();
-    }
-
-    // 新しいスタイル要素を作成してbodyの背景画像を設定
-    const style = document.createElement("style");
-    style.id = "dynamic-bg-style";
-    style.innerHTML = `
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        background-image: url('${randomImage}');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        opacity: 0.5;
-        animation: image-switch-animation 5s infinite;
-      }
-    `;
-
-    document.head.appendChild(style);
-  }
-
-  resetBackground() {
-    const existingStyle = document.getElementById("dynamic-bg-style");
-    if (existingStyle) {
-      existingStyle.remove();
-    }
+    const randomIndex = Math.floor(Math.random() * this.imagesValue.length);
+    const randomImage = this.imagesValue[randomIndex]; 
+    
+    // 新しい背景画像を設定
+    this.overlayTarget.style.backgroundImage = `url(${randomImage})`;
+    
+    // 透明度の変更を行う前に短い遅延を設ける
+    setTimeout(() => {
+      this.overlayTarget.style.transition = 'opacity 1s ease-out';
+      this.overlayTarget.style.opacity = 0;
+      
+      setTimeout(() => {
+        // 透明度を1に戻してフェードイン
+        this.overlayTarget.style.opacity = 1;
+      }, 1); // 透明度を0に設定する操作の直後にフェードインを開始
+    }, 1);
   }
 }

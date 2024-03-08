@@ -5,15 +5,15 @@ module BackgroundImagesConcern
 
   def set_background_images
     @images = [
-      "top-01.jpg",
-      "top-02.jpg",
-      "top-03.jpg",
-      "top-04.jpg",
-      "top-05.jpg",
-      "top-06.jpg",
-      "top-07.jpg",
-      "top-08.jpg",
-      "top-09.jpg"
+      "top-01.webp",
+      "top-02.webp",
+      "top-03.webp",
+      "top-04.webp",
+      "top-05.webp",
+      "top-06.webp",
+      "top-07.webp",
+      "top-08.webp",
+      "top-09.webp"
     ]
   end
 end
