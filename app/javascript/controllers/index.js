@@ -21,3 +21,6 @@ application.register("timer", TimerController)
 
 import ResultModalController from "./result_modal_controller"
 application.register("result-modal", ResultModalController)
+
+import BackgroundController from "./background_controller"
+application.register("background", BackgroundController)

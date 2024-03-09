@@ -1,17 +1,17 @@
-<div class="hero min-h-screen bg-base-100">
-  <div class="hero-content flex-col lg:flex-row-reverse">
-    <%= image_tag 'undraw_environment_iaus-removebg-preview.png', class:"max-w-sm rounded-lg" %>
-    <div>
+<div class="hero min-h-screen" data-controller="background" data-background-images-value="<%= @images.map { |img| asset_path("top_pages/#{img}") }.to_json %>">
+  <div class="hero-overlay bg-opacity-25"></div>
+  <div class="hero-content text-center text-base-200">
+    <div class="max-w-2xl">
       <h1 class="text-5xl font-bold">ようこそ、やる気の森へ!</h1>
-      <p class="py-6">仲間と一緒に学習をして「森林」を増やして絶滅危惧種を救おう！</p>
-        <div class="flex gap-x-16">
-          <%= link_to '仲間を見つける', teams_path, class: 'btn btn-info' %>
-          <% if logged_in? && @active_team.present? %>
-            <%= link_to '森林を増やす', member_page_team_path(@active_team), class: 'btn btn-success' %>
-          <% elsif logged_in? && @previous_team.present? %>
-            <%= link_to '森林を増やす', member_page_team_path(@previous_team), class: 'btn btn-success' %>
-          <% end %>
-        </div>  
+      <p class="py-6 text-lg">仲間と一緒に学習をして「森林」を増やして絶滅危惧種を救おう！</p>
+      <div class="flex justify-center gap-x-16">
+        <%= link_to '仲間を見つける', teams_path, class: 'btn btn-primary' %>
+        <% if logged_in? && @active_team.present? %>
+          <%= link_to '森林を増やす', member_page_team_path(@active_team), class: 'btn btn-secondary' %>
+        <% elsif logged_in? && @previous_team.present? %>
+          <%= link_to '森林を増やす', member_page_team_path(@previous_team), class: 'btn btn-secondary'%>
+        <% end %>
+      </div>  
     </div>
   </div>
 </div>

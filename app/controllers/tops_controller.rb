@@ -1,5 +1,7 @@
 class TopsController < ApplicationController
   skip_before_action :check_logged_in, only: %i[index privacy_policy terms_of_service]
+  include BackgroundImagesConcern
+  before_action :set_background_images, only: [:index]
 
   def index
     # 最後に参加したチームを取得するロジック
