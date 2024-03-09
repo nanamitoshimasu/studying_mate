@@ -11,3 +11,14 @@
 	0% {opacity: 0;}
 	100% {opacity: 1;}
 }
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  10%, 90% { opacity: 1; }
+}
+
+.background-image {
+  animation: fadeInOut 10s infinite;
+  background-size: cover;
+  background-position: center;
+}
