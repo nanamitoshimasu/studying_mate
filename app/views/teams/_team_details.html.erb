@@ -1,6 +1,6 @@
 <div class="w-full" data-controller="result-modal" data-result-modal-end-date-value="<%= team.end_date.iso8601 %>">
   <%= render 'teams/result_modal', team: team %>
-  <h1 class="text-5xl font-bold text-center text-white p-8"><%= team.title %></h1>
+  <h1 class="text-5xl font-bold text-center text-white p-8 text-shadow"><%= team.title %></h1>
 
   <div class="w-1/3 mx-auto">
     <div class="flex justify-end">
@@ -40,7 +40,7 @@
       <p class="text-right text-xl">森林が必要です</p>
     </div>
   </div>
-  <div class="w-fit mx-auto my-4">
+  <div class="w-fit mx-auto my-8">
     <% if @active_team.present? %>
       <%= link_to "学習時間の計測をはじめる", new_team_timer_path(@active_team), target: "_blank", rel: "noopener noreferrer", method: :get, class: 'btn btn-lg btn-primary' %>
     <% else %>

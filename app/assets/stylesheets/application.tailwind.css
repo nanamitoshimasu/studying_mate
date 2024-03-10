@@ -22,3 +22,8 @@
   background-size: cover;
   background-position: center;
 }
+
+.text-shadow {
+  color: #fff;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.7)
+}

@@ -5,6 +5,13 @@ module.exports = {
     './app/assets/stylesheets/**/*.css',
     './app/javascript/**/*.js'
   ],
+  theme: {
+    extend: {
+      fontFamily: {
+        main: ["Kosugi Maru", "sans-serif"]
+      }
+    }
+  },  
   plugins: [require("daisyui")],
 
   daisyui: {
