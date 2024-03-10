@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLCZ1X1R39"></script>
     <script>
@@ -20,7 +21,7 @@
     </script>
   </head>
 
-  <body>
+  <body class="font-main">
     <%= render 'shared/header' %>
     <%= render 'shared/flash_message' %>
     <%= yield %>

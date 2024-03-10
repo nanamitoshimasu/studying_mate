@@ -15,16 +15,6 @@ export default class extends Controller {
     this.backgroundHtml =
       this.data.get('backgroundHtml') || this._backgroundHTML()
     console.log("backgroundHtml:", this.backgroundHtml);
-    
-    // Prevent the default action of the clicked element (following a link for example) when opening the modal
-    // this.preventDefaultActionOpening =
-      // (this.data.get('preventDefaultActionOpening') || 'true') === 'true'
-    // console.log("preventDefaultActionOpening:", this.preventDefaultActionOpening);
-    
-    // Prevent the default action of the clicked element (following a link for example) when closing the modal
-    // this.preventDefaultActionClosing =
-      // (this.data.get('preventDefaultActionClosing') || 'true') === 'true'
-    // console.log("preventDefaultActionClosing:", this.preventDefaultActionClosing);
   }
 
   disconnect() {
