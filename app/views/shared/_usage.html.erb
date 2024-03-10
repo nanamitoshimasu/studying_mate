@@ -1,0 +1,57 @@
+<dialog id="my_modal_4" class="modal">
+  <div class="card w-3/5 h-5/6 bg-base-100 shadow-xl">
+    <div class="card-body">
+      <div class="carousel w-full h-5/6">
+        <div id="slide1" class="carousel-item relative w-full">
+          <%= image_tag "usage-image01.webp", class: "w-full" %> 
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <a href="#slide4" class="btn btn-circle">❮</a> 
+            <a href="#slide2" class="btn btn-circle">❯</a>
+          </div>
+        </div> 
+        <div id="slide2" class="carousel-item relative w-full">
+          <%= image_tag "usage-image02.webp", class: "w-full" %> 
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <a href="#slide1" class="btn btn-circle">❮</a> 
+            <a href="#slide3" class="btn btn-circle">❯</a>
+          </div>
+        </div> 
+        <div id="slide3" class="carousel-item relative w-full">
+          <%= image_tag "usage-image03.gif", class: "w-full" %> 
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <a href="#slide2" class="btn btn-circle">❮</a> 
+            <a href="#slide4" class="btn btn-circle">❯</a>
+          </div>
+        </div> 
+        <div id="slide4" class="carousel-item relative w-full">
+          <%= image_tag "usage-image04.webp", class: "w-full" %> 
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <a href="#slide3" class="btn btn-circle">❮</a> 
+            <a href="#slide5" class="btn btn-circle">❯</a>
+          </div>
+        </div>
+        <div id="slide5" class="carousel-item relative w-full">
+          <%= image_tag "usage-image05.gif", class: "w-full" %> 
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <a href="#slide4" class="btn btn-circle">❮</a> 
+            <a href="#slide6" class="btn btn-circle">❯</a>
+          </div>
+        </div>
+        <div id="slide6" class="carousel-item relative w-full">
+          <%= image_tag "usage-image06.webp", class: "w-full" %> 
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <a href="#slide5" class="btn btn-circle">❮</a> 
+            <a href="#slide1" class="btn btn-circle">❯</a>
+          </div>
+        </div>
+      </div>
+        <div class="card-actions justify-end">
+        <form method="dialog">
+          <!-- if there is a button, it will close the modal -->
+          <button class="btn">オッケー</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</dialog>
+
