@@ -2,7 +2,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["hours", "minutes", "pauseResumeButton", "modalTime", "flashMessage", "modal", "shareLink", "bg"]
+  static targets = ["hours", "minutes", "seconds", "pauseResumeButton", "modalTime", "flashMessage", "modal", "shareLink", "bg"]
   static values = { teamId: Number, timerId: Number, breakTimeId: Number}
   timerStarted = false;
   
@@ -305,19 +305,24 @@ export default class extends Controller {
 
    // プライベートメソッド
   _startTimer() {
-    if (this.timerInterval) return;
-    this.timerInterval = setInterval(() => {
-      this.totalSeconds += 60;
-      const hours = Math.floor(this.totalSeconds / 3600);
-      const minutes = Math.floor((this.totalSeconds % 3600) / 60);
-      this.hoursTarget.textContent = String(hours).padStart(2, '0');
-      this.minutesTarget.textContent = String(minutes).padStart(2, '0');
-    }, 60000);
-  }
+  if (this.timerInterval) return;
+  this.timerInterval = setInterval(() => {
+    this.totalSeconds += 1; // 1秒ごとに増やす
+    const hours = Math.floor(this.totalSeconds / 3600);
+    const minutes = Math.floor((this.totalSeconds % 3600) / 60);
+    const seconds = this.totalSeconds % 60; // 秒数を計算
+    this.hoursTarget.textContent = String(hours).padStart(2, '0');
+    this.minutesTarget.textContent = String(minutes).padStart(2, '0');
+    this.secondsTarget.textContent = String(seconds).padStart(2, '0'); // 秒数を表示
+  }, 1000); // 1000ms = 1秒ごとに実行
+}
 
   _resetTimer() {
+    clearInterval(this.timerInterval); // タイマーを停止
+    this.timerInterval = null; // タイマーIDをリセット
     this.totalSeconds = 0;
     this.hoursTarget.textContent = '00';
     this.minutesTarget.textContent = '00';
+    this.secondsTarget.textContent = '00'; // 秒数もリセット
   }
 }
