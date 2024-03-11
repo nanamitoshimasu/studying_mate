@@ -32,14 +32,15 @@ class Team < ApplicationRecord
     Time.current >= deadline
   end
 
-  def adjust_state
-    # デッドラインを過ぎているか、もしくは定員に達している場合のみステータスを更新する
-    return unless deadline? || full?
+  def finished_state
+    # デッドラインを過ぎている場合ステータスを更新する
+    return unless deadline?
 
-    new_status = deadline? ? :finished : :full
-
-    self.status = new_status
-    save!
+    if set_deadline < Time.current
+      new_status = :finished
+      self.status = new_status
+      save!
+    end
   end
 
   scope :wanted_finished, -> { where('deadline <= ?', Time.current) }
