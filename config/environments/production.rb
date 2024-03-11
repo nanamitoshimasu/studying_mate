@@ -93,4 +93,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # 開発環境でActive Jobのキューアダプターを:inlineに設定
+  config.active_job.queue_adapter = :inline
 end

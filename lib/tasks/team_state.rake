@@ -6,7 +6,7 @@ namespace :team_state do
   end
   task update_team_state: :environment do
     Team.where(status: :wanted).find_each do |team|
-      team.adjust_state
+      team.update_to_finished
     end
   end
 end

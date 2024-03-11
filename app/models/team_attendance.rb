@@ -5,6 +5,9 @@ class TeamAttendance < ApplicationRecord
   validates :user_id, uniqueness: { scope: :team_id }
   validate :attendance_restriction
 
+  after_create :enqueue_adjust_team_state
+  after_destroy :enqueue_adjust_team_state
+  
   private
 
   # 同期間のteamには参加できない
@@ -18,5 +21,9 @@ class TeamAttendance < ApplicationRecord
     return unless overlapping_attendance
 
     errors.add(:user_id, 'は同じ期間中に複数のチームに参加できません')
+  end
+
+  def enqueue_adjust_team_state
+    AdjustTeamStateJob.perform_later(team.id)
   end
 end
