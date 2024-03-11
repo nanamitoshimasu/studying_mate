@@ -12,6 +12,7 @@ class Team < ApplicationRecord
   validate :valid_end_date
   validate :valid_term
   validate :unique_team_in_same_period, on: %i[create update]
+  validate :editable_within_start_date, on: :update
 
   belongs_to :user
   has_many :team_attendances, dependent: :destroy, class_name: 'TeamAttendance'
@@ -152,5 +153,11 @@ class Team < ApplicationRecord
     self.start_date = start_date.beginning_of_day if start_date.present?
 
     self.end_date = end_date.end_of_day if end_date.present?
+  end
+
+  def editable_within_start_date
+    if start_date <= Time.current
+      errors.add(:base,"編集期限をすぎています。")
+    end
   end
 end

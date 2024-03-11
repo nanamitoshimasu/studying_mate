@@ -69,16 +69,18 @@
         </div>
         <% if logged_in? %>
           <% if current_user.own?(@team) %>
-            <div class="card-actions justify-end">
-              <%= link_to "https://twitter.com/intent/tweet?url=#{ request.url }&text=#{@team.title}！森林を増やして一緒に絶滅危惧種を救おう！%0A&hashtags=やる気の森&hashtags=やるもり&hashtags=yarukimorimori",class: "btn btn-primary", target: '_blank' do %>
-                <%= image_tag ("logo-black.png"), size: "20x20" %>シェア！
-              <% end %>
-              <%= button_to t('defaults.edit'), edit_team_path(@team), method: :get, class: 'btn btn-secondary' %>
-              <%= button_to t('defaults.destroy'),
-                            team_path(@team), 
-                            method: :delete, data: { turbo_confirm: '削除しますか？チームメンバーの学習記録も削除されます。' },  
-                            class: 'btn btn-info' %>
-            </div>
+            <% unless @team.start_date <= Time.current %>
+              <div class="card-actions justify-end">
+                <%= link_to "https://twitter.com/intent/tweet?url=#{ request.url }&text=#{@team.title}！森林を増やして一緒に絶滅危惧種を救おう！%0a&hashtags=やる気の森&hashtags=やるもり&hashtags=yarukimorimori",class: "btn btn-primary", target: '_blank' do %>
+                  <%= image_tag ("logo-black.png"), size: "20x20" %>シェア！
+                <% end %>
+                <%= button_to t('defaults.edit'), edit_team_path(@team), method: :get, class: 'btn btn-secondary' %>
+                <%= button_to t('defaults.destroy'),
+                              team_path(@team), 
+                              method: :delete, data: { turbo_confirm: 'ホントに削除しますか？' },  
+                              class: 'btn btn-info' %>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
