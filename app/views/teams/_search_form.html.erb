@@ -3,8 +3,8 @@
     <div class="input-group mb-3">
       <%= f.search_field :title_or_description_cont, class: 'input input-bordered input-secondary w-full max-w-xs', placeholder: "タイトル・詳細ワードからさがす" %>
       <div class="mb-4">
-        <%= f.label :target_time_eq, t(Team.human_attribute_name(:target_time)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
-        <%= f.select :target_time_eq, options_for_select((10..200).step(10)), { include_blank: '何時間？' }, { class:'select select-secondary w-full max-w-xs' } %>
+        <%= f.label :target_time_eq, "救いたい絶滅危惧種", class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+        <%= f.select :target_time_eq, options_for_select(TeamDecorator.options_for_select), { include_blank: 'どの動物？' }, { class:'select select-secondary w-full max-w-xs' } %>
       </div>
       <div class="mb-4">
         <%= f.label :capacity_eq, t(Team.human_attribute_name(:capacity)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
