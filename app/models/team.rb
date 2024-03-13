@@ -13,6 +13,7 @@ class Team < ApplicationRecord
   validate :valid_term
   validate :unique_team_in_same_period, on: %i[create update]
   validate :editable_within_start_date, on: :update
+  validate :achievable_study_plan, on: %i[create update]
 
   belongs_to :user
   has_many :team_attendances, dependent: :destroy, class_name: 'TeamAttendance'
@@ -164,6 +165,20 @@ class Team < ApplicationRecord
   def editable_within_start_date
     if start_date <= Time.current
       errors.add(:base,"編集期限をすぎています。")
+    end
+  end
+
+  def achievable_study_plan
+    return unless target_time && capacity && start_date && end_date
+
+    max_hours_per_day = 12
+    required_hours_per_person = target_time.to_f / capacity
+    total_required_days = (required_hours_per_person / max_hours_per_day).ceil
+    actual_time = ((end_date - start_date).to_i + 1) / 3600 # 設定した期間が秒単位で計算されるので時間に戻す
+    actual_days = actual_time / 24
+
+    if actual_days < total_required_days
+      errors.add(:base, "絶滅危惧種を救うには#{total_required_days}日必要です！")
     end
   end
 end
