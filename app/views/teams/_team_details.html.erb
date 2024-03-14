@@ -23,11 +23,13 @@
     <ul class="mx-auto w-1/2">
       <li class="flex justify-center">
         <% team.attendees.each do |attendee| %>
-          <div class="avatar">
-            <div class="w-16 rounded-full">
-              <%= image_tag image_path(attendee.avatar.url) %>
+          <%= link_to user_path(attendee) do %>
+            <div class="avatar">
+              <div class="w-16 rounded-full">
+                <%= image_tag image_path(attendee.avatar.url) %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </li>
     </ul>
