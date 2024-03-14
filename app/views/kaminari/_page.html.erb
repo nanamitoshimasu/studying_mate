@@ -1,5 +1,5 @@
 <% if page.current? %>
-  <%= link_to page, url, remote: remote, rel: page.rel,class: "py-[8px] w-8 h-8  text-xs text-console font-bold text-center rounded-r-[3px] hover:bg-gray-400 focus:bg-gray-400 cursor-default", data: { turbo_frame: 'articles' }, disabled: true %>
+  <%= link_to page, url, remote: remote, rel: page.rel,class: "py-[8px] w-8 h-8  text-xs text-console font-bold text-center rounded-full-[3px] hover:bg-gray-400 focus:bg-gray-400 cursor-default", data: { turbo_frame: 'articles' }, disabled: true %>
 <% else %>
-  <%= link_to page, url, remote: remote, rel: page.rel, class: "py-[8px] w-8 h-8 text-xs text-console font-bold text-center rounded-r-[3px] hover:bg-gray-400 focus:bg-gray-400", data: { turbo_frame: 'articles' } %>
+  <%= link_to page, url, remote: remote, rel: page.rel, class: "py-[8px] w-8 h-8 text-xs text-console font-bold text-center rounded-full-[3px] hover:bg-gray-400 focus:bg-gray-400", data: { turbo_frame: 'articles' } %>
 <% end %>
