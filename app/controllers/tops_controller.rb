@@ -6,13 +6,9 @@ class TopsController < ApplicationController
   def index
     # 最後に参加したチームを取得するロジック
     return unless logged_in?
-
-    @active_team = current_user.attend_teams.where('start_date <= ? AND end_date >= ?', Time.current,
-                                                   Time.current).order(:end_date).last
+    @active_team = current_user.attend_teams.where('start_date <= ? AND end_date >= ?', Time.current, Time.current).order(:end_date).last
     return if @active_team.present?
-
-    @previous_team = current_user.attend_teams.where('end_date < ?',
-                                                     Time.current).order(:end_date).last
+    @previous_team = current_user.attend_teams.where('end_date < ?', Time.current).order(:end_date).last
   end
 
   def privacy_policy; end
