@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       get 'member_page'
     end
     resources :timers, only: %i[new create update] do
+      get 'edit_all_timestamps', on: :member
+      patch 'update_all_timestamps', on: :member
       resources :break_times, only: %i[create update]
     end
     resource :room, only: %i[show]
