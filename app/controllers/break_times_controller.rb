@@ -28,13 +28,13 @@ class BreakTimesController < ApplicationController
   private
 
   def set_team
-    @team = current_user.teams.find(params[:team_id])
+    @team = Team.find(params[:team_id])
     return if @team.user == current_user || @team.attendees.include?(current_user)
 
     redirect_to root_path, alert: t('defaults.message.not_authority')
   end
 
   def set_timer
-    @timer = @team.timers.where(user: current_user, end_time: nil).last
+    @timer = Timer.find(params[:timer_id])
   end
 end
