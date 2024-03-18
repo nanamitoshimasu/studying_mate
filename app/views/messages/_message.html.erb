@@ -17,6 +17,7 @@
       <div class="w-10 rounded-full">
         <%= image_tag message.user.avatar.url %>
       </div>
+    </div>  
     <div class="chat-header">
       <%= message.user.name %>
       <time class="text-xs opacity-50"><%= l message.created_at, format: :time %></time>

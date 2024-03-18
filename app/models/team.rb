@@ -1,6 +1,6 @@
 class Team < ApplicationRecord
   before_validation :adjust_start_and_end_dates
-  before_create :set_deadline
+  before_validation :set_deadline, if: :start_date_changed?
   mount_uploader :thumbnail, TeamThumbnailUploader
 
   validates :target_time, presence: true
