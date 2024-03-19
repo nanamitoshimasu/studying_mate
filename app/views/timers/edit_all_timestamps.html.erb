@@ -1,1 +1,41 @@
-タイマ〜の編集ぺ〜ジ!
+<div class="min-h-screen bg-base-100">
+  <div class="container flex justify-start mx-auto py-4">
+    <h1 class="text-2xl"><%= t('.title') %></h1>
+  </div>
+  <%= form_with model: @timer, url: update_all_timestamps_team_timer_path(@timer), local: true do |f| %>
+    <%= render 'shared/errors_messages', model: f.object %>
+    <div class="mx-12 grid grid-cols-2 gap-6 justify-items-center">      
+      <div class="card w-[32rem] bg-base-100 shadow-md p-4">
+        <div class="mb-10 field">
+          <%= f.label :start_time, t(Timer.human_attribute_name(:start_time)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+          <%= f.datetime_select :start_time, class: 'select select-success w-full max-w-md' %>
+        </div>
+
+        <div class="mb-10 field">
+          <%= f.label :end_time, t(Timer.human_attribute_name(:end_time)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+          <%= f.datetime_select :end_time, class: 'select select-success w-full max-w-md' %>
+        </div>
+      </div>
+
+      <% if @timer.break_times.any? %>
+        <div class="card w-[32rem] bg-base-100 shadow-md p-4">
+          <% @timer.break_times.each_with_index do |break_time, index| %>
+            <%= fields_for "break_time[#{break_time.id}]", break_time do |bf| %>
+              <div class="mb-10 field">
+                <%= bf.label :break_start_time, "Break Start Time #{index + 1}", class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+                <%= bf.datetime_select :break_start_time, class: 'select select-success w-full max-w-xs' %>
+              </div>
+              <div class="mb-10 field">
+                <%= bf.label :break_end_time, "Break End Time #{index + 1}", class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+                <%= bf.datetime_select :break_end_time, class: 'select select-success w-full max-w-xs' %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="mx-28 flex justify-end py-4">
+      <%= f.submit t('defaults.register'), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
