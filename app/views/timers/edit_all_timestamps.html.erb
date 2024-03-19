@@ -3,7 +3,7 @@
     <h1 class="text-2xl"><%= t('.title') %></h1>
   </div>
   <%= form_with model: @timer, url: update_all_timestamps_team_timer_path(@timer),
-    local: true, data: { controller: "edit-timer-modal", action: "ajax:success->edit-timer-modal#submitEnd" } do |f| %>
+    local: true, data: { controller: "edit-timer", action: "ajax:success->edit-timer#submitEnd" } do |f| %>
     <%= render 'shared/errors_messages', model: f.object %>
     <div class="mx-12 grid grid-cols-2 gap-6 justify-items-center">      
       <div class="card w-[32rem] bg-base-100 shadow-md p-4">
@@ -38,5 +38,6 @@
     <div class="mx-28 flex justify-end py-4">
       <%= f.submit t('defaults.register'), class: 'btn btn-primary' %>
     </div>
+    <%= render partial: 'timers/edit_modal' %>
   <% end %>
 </div>

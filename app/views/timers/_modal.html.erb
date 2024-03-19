@@ -11,6 +11,7 @@
           <%= link_to "#", class: "btn btn-primary", target: '_blank', data: { timer_target: "shareLink" } do %>
             <%= image_tag ("logo-black.png"), size: "20x20" %> シェア！
           <% end %>
+          <%= link_to "編集する", edit_all_timestamps_team_timer_path(@timer), class: "btn btn-secondary" %>
           <button class="btn btn-accent mx-2" data-action="click->timer#modalClose">
             とじる 
           </button>

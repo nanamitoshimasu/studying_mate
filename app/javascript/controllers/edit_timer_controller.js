@@ -28,7 +28,7 @@ export default class extends Controller {
       const duration = data.calculated_time;
       const hours = Math.floor(duration / 3600);
       const minutes = Math.floor((duration % 3600) / 60);
-      this.modalTimeTarget.textContent = `編集後の計測時間:${String(hours).padStart(2, '0')}時間${String(minutes).padStart(2, '0')}分`;
+      this.modalTimeTarget.textContent = `${String(hours).padStart(2, '0')}時間${String(minutes).padStart(2, '0')}分`;
       const shareText = `えっへん！学習時間${hours}時間${minutes}分の森林を増やしました！`;
       const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(shareText)}%0A&hashtags=やる気の森&hashtags=やるもり&hashtags=yarukimorimori`;
       // シェアリンクターゲットのhref属性を更新
