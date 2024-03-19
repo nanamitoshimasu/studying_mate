@@ -37,7 +37,7 @@ class TimersController < ApplicationController
     end_time = Time.zone.local(*params[:timer].values_at('end_time(1i)', 'end_time(2i)', 'end_time(3i)', 'end_time(4i)', 'end_time(5i)'))
     @timer.start_time = start_time
     @timer.end_time = end_time
-    save.success = @timer.save
+    save_success = @timer.save
 
     # break_timeが存在するかどうか確認
     if params[:break_time].present?
@@ -49,15 +49,14 @@ class TimersController < ApplicationController
         break_end_time = Time.zone.local(*params[:break_time].values_at('break_end_time(1i)', 'break_end_time(2i)', 'break_end_time(3i)', 'break_end_time(4i)', 'break_end_time(5i)'))
         break_time.break_start_time = break_start_time
         break_time.break_end_time = break_end_time
-        save.success &= break_time.save
+        save_success &= break_time.save
       end
     end
 
-    if save.succuess 
-      redirect_to update_all_timestamps_team_timer_path, success: "できたよ"
+    if save_succuess 
+      render json: { status: "success", calculated_time: @timer.calculated_time }, status: :ok
     else
-      flash.now[:error] = "できなかったよ" 
-      render :edit_all_timestamps, status: :unprocessable_entity
+      render json: { status: "error", errors: @timer.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

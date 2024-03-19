@@ -2,7 +2,8 @@
   <div class="container flex justify-start mx-auto py-4">
     <h1 class="text-2xl"><%= t('.title') %></h1>
   </div>
-  <%= form_with model: @timer, url: update_all_timestamps_team_timer_path(@timer), local: true do |f| %>
+  <%= form_with model: @timer, url: update_all_timestamps_team_timer_path(@timer),
+    local: true, data: { controller: "edit-timer-modal", action: "ajax:success->edit-timer-modal#submitEnd" } do |f| %>
     <%= render 'shared/errors_messages', model: f.object %>
     <div class="mx-12 grid grid-cols-2 gap-6 justify-items-center">      
       <div class="card w-[32rem] bg-base-100 shadow-md p-4">
