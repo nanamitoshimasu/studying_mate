@@ -3,7 +3,7 @@
     <h1 class="text-2xl"><%= t('.title') %></h1>
   </div>
   <%= form_with model: @timer, url: update_all_timestamps_team_timer_path(team_id: @team.id, id: @timer.id),
-    local: true, data: { turbo: false, controller: "edit-timer", target: "edit-timer.form" } do |f| %>
+    local: false, data: { turbo: false, controller: "edit-timer", target: "edit-timer.form", action: "submit->edit-timer#submitForm" } do |f| %>
     <%= render 'shared/errors_messages', model: f.object %>
     <div class="mx-12 grid grid-cols-2 gap-6 justify-items-center">      
       <div class="card w-[32rem] bg-base-100 shadow-md p-4">

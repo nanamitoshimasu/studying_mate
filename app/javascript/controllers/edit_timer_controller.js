@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["form", "modal", "modalTime"]
+  static targets = ["form", "modal", "modalTime", "shareLink"]
 
    connect() {
     console.log("Stimulus controller connected");
@@ -132,4 +132,12 @@ export default class extends Controller {
     // Remove the negative top inline style from body
     document.body.style.top = null
   } 
+
+  saveScrollPosition() {
+    this.scrollPosition = window.pageYOffset || document.body.scrollTop
+  }
+
+  restoreScrollPosition() {
+    document.documentElement.scrollTop = this.scrollPosition
+  }
 }
