@@ -1,11 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["modal", "modalTime"]
+  static targets = ["form", "modal", "modalTime"]
 
    connect() {
     console.log("Stimulus controller connected");
-    this.checkStatus()
    // The ID of the background to hide/remove
     this.backgroundId = this.data.get('backgroundId') || 'modal-background'
     console.log("backgroundId:", this.backgroundId);
@@ -20,11 +19,28 @@ export default class extends Controller {
     this.modalClose()
   }
 
-  editEnd(event) {
-    event.preventDefault()
-    const [data, status, xhr] = event.detail
+  submitForm(event) {
+    event.preventDefault();
+    const formData = new FormData(this.formTarget); // ここでフォームデータを取得
+
+    fetch(this.formTarget.action, { // ここでフォームのアクション（サーバーエンドポイント）にリクエストを送信
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
+        },
+    })
+    .then(response => response.json())
+    .then(data => this.editEnd(data)) // レスポンスデータをeditEndメソッドに渡す
+    .catch(error => console.error('エラー:', error));
+  }
+
+  // レスポンス処理（editEndメソッド）
+  editEnd(data) {
+    // ここにレスポンスデータを処理するコードを記述
     if (data.status === "success") {
-      // 成功時の処理: モーダルを表示
+      // 成功時の処理
       const duration = data.calculated_time;
       const hours = Math.floor(duration / 3600);
       const minutes = Math.floor((duration % 3600) / 60);
@@ -33,10 +49,11 @@ export default class extends Controller {
       const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(shareText)}%0A&hashtags=やる気の森&hashtags=やるもり&hashtags=yarukimorimori`;
       // シェアリンクターゲットのhref属性を更新
       this.shareLinkTarget.setAttribute("href", shareUrl);
-      this.modalTarget.classList.remove("hidden") // モーダルを表示
+
+      this.modalTarget.classList.remove("hidden");
     } else {
-      // 失敗時の処理: エラーメッセージを表示
-      this.showFlashMessage("編集できませんでした");
+        // 失敗時の処理
+        this.showFlashMessage("編集できませんでした");
     }
   }
 
