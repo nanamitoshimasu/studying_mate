@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["form", "modal", "modalTime", "shareLink"]
+  static targets = ["form", "modal", "modalTime", "flashMessage", "shareLink"]
 
    connect() {
     console.log("Stimulus controller connected");
@@ -54,7 +54,8 @@ export default class extends Controller {
       this.modalTarget.classList.remove("hidden");
     } else {
         // 失敗時の処理
-        this.showFlashMessage("編集できませんでした");
+        const errorMessage = data.errors.join(", ");
+        this.showFlashMessage(errorMessage);
     }
   }
 

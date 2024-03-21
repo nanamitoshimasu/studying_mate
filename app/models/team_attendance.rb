@@ -20,7 +20,7 @@ class TeamAttendance < ApplicationRecord
 
     return unless overlapping_attendance
 
-    errors.add(:user_id, 'は同じ期間中に複数のチームに参加できません')
+    errors.add('同じ期間中に複数のチームに参加できません')
   end
 
   def enqueue_adjust_team_state
