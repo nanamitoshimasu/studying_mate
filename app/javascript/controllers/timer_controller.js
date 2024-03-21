@@ -187,6 +187,10 @@ export default class extends Controller {
         this.shareLinkTarget.setAttribute("href", shareUrl);
         if (data.persisted) {
           console.log("Timer is persisted.");
+        // 既存の編集ボタンを削除
+        const existingEditButtons = document.querySelectorAll("#modal-button .btn-secondary");
+        existingEditButtons.forEach(button => button.remove());
+
           const editButtonHTML = 
             `<a href="/teams/${this.teamIdValue}/timers/${this.timerIdValue}/edit_all_timestamps" class="btn btn-secondary">編集する</a>`;
           document.querySelector("#modal-button").insertAdjacentHTML('beforeend', editButtonHTML);
