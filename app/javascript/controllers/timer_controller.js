@@ -197,10 +197,9 @@ export default class extends Controller {
       });
     }
 
-    else if (!this.timerStarted) {
+    else {
       // タイマーがまだ開始されていない場合、フラッシュメッセージを表示
       this.showFlashMessage("スタートが押されていません！");
-      return;
     }
   }
   
