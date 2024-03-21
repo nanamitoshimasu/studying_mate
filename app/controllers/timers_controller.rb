@@ -20,7 +20,7 @@ class TimersController < ApplicationController
   def update
     @timer = @team.timers.last
     if @timer.update(user: current_user, end_time: Time.current)
-      render json: { timer: @timer, calculated_time: @timer.calculated_time }, status: :ok
+      render json: { timer: @timer, calculated_time: @timer.calculated_time, persisted: @timer.persisted? }, status: :ok
     else
       render json: @timer.errors, status: :unprocessable_entity
     end
