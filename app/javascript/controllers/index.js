@@ -24,3 +24,6 @@ application.register("result-modal", ResultModalController)
 
 import BackgroundController from "./background_controller"
 application.register("background", BackgroundController)
+
+import EditTimerController from "./edit_timer_controller"
+application.register("edit-timer", EditTimerController)

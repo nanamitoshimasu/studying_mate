@@ -2,7 +2,6 @@ import consumer from "./consumer"
 
 document.addEventListener('DOMContentLoaded', () =>{
   const messages = document.getElementById('messages');
-  messages.scrollTop = messages.scrollHeight;
   const currentUserId = parseInt(messages.getAttribute('data-current-user-id'));
   const roomId = messages.getAttribute('data-room-id');
 

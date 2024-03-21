@@ -42,3 +42,6 @@ ja:
       title: "プライバシーポリシー"
     terms_of_service:
       title: "利用規約"
+  timers:
+    edit_all_timestamps:
+      title: "タイマー編集"

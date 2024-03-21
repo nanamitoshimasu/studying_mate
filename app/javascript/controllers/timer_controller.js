@@ -179,21 +179,27 @@ export default class extends Controller {
         const hours = Math.floor(duration / 3600);
         const minutes = Math.floor((duration % 3600) / 60);
         // モーダルに時間を表示
-        this.modalTimeTarget.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+        this.modalTimeTarget.textContent = `${String(hours).padStart(2, '0')}時間${String(minutes).padStart(2, '0')}分`;
         const shareText = `えっへん！学習時間${hours}時間${minutes}分の森林を増やしました！`;
-        const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(shareText)}%0A&hashtags=やる気の森&hashtags=やるもり&hashtags=yarukimorimori`;
+        const rootUrl = "http://www.yaruki-morimori.com";
+        const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(rootUrl)}&text=${encodeURIComponent(shareText)}%0A&hashtags=やる気の森&hashtags=やるもり&hashtags=yarukimorimori`;
         // シェアリンクターゲットのhref属性を更新
         this.shareLinkTarget.setAttribute("href", shareUrl);
+        if (data.persisted) {
+          console.log("Timer is persisted.");
+          const editButtonHTML = 
+            `<a href="/teams/${this.teamIdValue}/timers/${this.timerIdValue}/edit_all_timestamps" class="btn btn-secondary">編集する</a>`;
+          document.querySelector("#modal-button").insertAdjacentHTML('beforeend', editButtonHTML);
+        }
       })
       .catch(error => {
         console.error('エラー:', error);
       });
     }
 
-    else if (!this.timerStarted) {
+    else {
       // タイマーがまだ開始されていない場合、フラッシュメッセージを表示
       this.showFlashMessage("スタートが押されていません！");
-      return;
     }
   }
   

@@ -1,0 +1,22 @@
+<div
+  data-edit-timer-target="modal"
+  class="hidden bg-gray-300 bg-opacity-50 fixed inset-0 overflow-y-auto flex items-center justify-center"
+  style="z-index: 9999;">
+  <div class="max-h-screen w-1/2 max-w-2lg relative">
+    <div class="bg-white shadow-xl rounded-lg">
+      <div class="p-8">
+        <h2 class="text-xl mb-4">編集後の学習時間</h2>
+        <p class="mb-4"><span data-edit-timer-target="modalTime"></span></p>
+        <div class="flex justify-end items-center flex-wrap mt-6">
+          <%= link_to "#", class: "btn btn-primary mx-2", target: '_blank', data: { edit_timer_target: "shareLink" } do %>
+            <%= image_tag ("logo-black.png"), size: "20x20" %> シェア！
+          <% end %>
+          <%= link_to "学習計測する", new_team_timer_path(@team), class: "btn btn-secondary m-2" %>
+          <button class="btn btn-accent mx-2" data-action="click->edit-timer#modalClose">
+            編集し直す 
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

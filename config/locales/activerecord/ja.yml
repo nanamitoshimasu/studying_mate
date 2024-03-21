@@ -25,3 +25,10 @@ ja:
         capacity: '募集人数'
         description: '詳細'
         thumbnail: '募集画像'
+      timer:
+        start_time: '開始時間'
+        end_time: '終了時間'
+      break_time:
+        break_start_time: '休憩開始時間'
+        break_end_time: '休憩終了時間'
+        
