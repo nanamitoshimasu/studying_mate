@@ -1,7 +1,8 @@
 import consumer from "./consumer"
 
-document.addEventListener('DOMContentLoaded', () =>{
+document.addEventListener('turbo:load', () =>{
   const messages = document.getElementById('messages');
+  if (!messages) return; // messages が存在しない場合はここで処理を終了
   const currentUserId = parseInt(messages.getAttribute('data-current-user-id'));
   const roomId = messages.getAttribute('data-room-id');
 
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             ${data.user_name}
             <time class="text-xs opacity-50">${data.formatted_created_at}</time>
           </div>
-          <div class="chat-bubble chat-bubble-success">${data.message_content}</div>
+          <div class="chat-bubble chat-bubble-success body">${data.message_content}</div>
         </div>
       `;
 
