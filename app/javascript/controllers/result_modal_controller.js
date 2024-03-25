@@ -6,7 +6,6 @@ export default class extends Controller {
 
   connect() {
     console.log("Stimulus controller connected");
-    this.checkStatus()
    // The ID of the background to hide/remove
     this.backgroundId = this.data.get('backgroundId') || 'modal-background'
     console.log("backgroundId:", this.backgroundId);
@@ -15,6 +14,8 @@ export default class extends Controller {
     this.backgroundHtml =
       this.data.get('backgroundHtml') || this._backgroundHTML()
     console.log("backgroundHtml:", this.backgroundHtml);
+
+    this.checkStatus()
   }
 
   disconnect() {
@@ -23,13 +24,12 @@ export default class extends Controller {
 
   checkStatus() {
     console.log("checking status");
-    const remainingTime = parseFloat(this.remainingTimeTarget.textContent)
+    const remainingTimeText = this.remainingTimeTarget.textContent;
     const endDate = new Date(this.endDateValue)
     const now = new Date()
+    console.log("Remaining Time:", remainingTimeText, "End Date:", endDate, "Now:", now);   
     
-    console.log("Remaining Time:", remainingTime, "End Date:", endDate, "Now:", now);   
-    
-    if (remainingTime <= 0) {
+    if (remainingTimeText.startsWith("-")) {
       console.log("Showing Goal Achieved Modal");
       this.showGoalAchievedModal()
     } else if (now > endDate) {
@@ -42,48 +42,45 @@ export default class extends Controller {
 
   showGoalAchievedModal() {
     console.log("Inside showGoalAchievedModal");
+    // Lock the scroll and save current scroll position
+    this.lockScroll()
     // Unhide the modal
     this.goalAchievedTarget.classList.remove('hidden')
     // Insert the background
     if (!this.data.get('disable-backdrop')) {
       document.body.insertAdjacentHTML('beforeend', this.backgroundHtml)
       this.background = document.querySelector(`#${this.backgroundId}`)
-      // Lock the scroll and save current scroll position
-      this.lockScroll()
     }
   }
   
   showGoalNotAchievedModal() {
     console.log("Inside showGoalNotAchievedModal");
+    // Lock the scroll and save current scroll position
+    this.lockScroll()
     // Unhide the modal
     this.goalNotAchievedTarget.classList.remove('hidden')
     // Insert the background
     if (!this.data.get('disable-backdrop')) {
       document.body.insertAdjacentHTML('beforeend', this.backgroundHtml)
       this.background = document.querySelector(`#${this.backgroundId}`)
-      // Lock the scroll and save current scroll position
-      this.lockScroll()
     }
   }
   
   modalClose(e) {
     console.log("Modal close triggered");
     if (e) e.preventDefault();
-    
+
+    // Unlock the scroll and restore previous scroll position
+    this.unlockScroll()
+ 
      // Goal Achieved Modalを非表示にする
     if (this.hasGoalAchievedTarget) {
       this.goalAchievedTarget.classList.add('hidden');
-      // Unlock the scroll and restore previous scroll position
-      this.unlockScroll()
-
     } 
     
     // Goal Not Achieved Modalを非表示にする
     if (this.hasGoalNotAchievedTarget) {
       this.goalNotAchievedTarget.classList.add('hidden');
-      // Unlock the scroll and restore previous scroll position
-      this.unlockScroll()
-
     }
 
     // Remove the background
