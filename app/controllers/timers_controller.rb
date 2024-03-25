@@ -18,7 +18,7 @@ class TimersController < ApplicationController
 
   # POST /timers/stop
   def update
-    @timer = @team.timers.last
+    @timer = @team.timers.find(params[:id])
     if @timer.update(user: current_user, end_time: Time.current)
       render json: { timer: @timer, calculated_time: @timer.calculated_time, persisted: @timer.persisted? }, status: :ok
     else
