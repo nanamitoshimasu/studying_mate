@@ -62,49 +62,15 @@ class Team < ApplicationRecord
   end
 
   # チーム目標時間動物表示
-  def image_for_time
-    if target_time == 10
-      'image_10.jpg'
-    elsif target_time == 20
-      'image_20.jpg'
-    elsif target_time == 30
-      'image_30.jpg'
-    elsif target_time == 40
-      'image_40.jpg'
-    elsif target_time == 50
-      'image_50.jpg'
-    elsif target_time == 60
-      'image_60.jpg'
-    elsif target_time == 70
-      'image_70.jpg'
-    elsif target_time == 80
-      'image_80.jpg'
-    elsif target_time == 90
-      'image_90.jpg'
-    elsif target_time == 100
-      'image_100.jpg'
-    elsif target_time == 110
-      'image_110.jpg'
-    elsif target_time == 120
-      'image_120.jpg'
-    elsif target_time == 130
-      'image_130.jpg'
-    elsif target_time == 140
-      'image_140.jpg'
-    elsif target_time == 150
-      'image_150.jpg'
-    elsif target_time == 160
-      'image_160.jpg'
-    elsif target_time == 170
-      'image_170.jpg'
-    elsif target_time == 180
-      'image_180.jpg'
-    elsif target_time == 190
-      'image_190.jpg'
-    elsif target_time == 200
-      'image_200.jpg'
+  TARGET_TIME_MIN = 10
+  TARGET_TIME_MAX = 200
+  TARGET_TIME_INCREMENT = 10
+
+  def image_for_time(target_time)
+    if target_time.between?(TARGET_TIME_MIN, TARGET_TIME_MAX) && target_time % TARGET_TIME_INCREMENT == 0
+      "image_#{target_time}.webp"
     else
-      'team_thumbnail_default.jpg'
+      'team_thumbnail_default.webp'
     end
   end
 
@@ -164,7 +130,7 @@ class Team < ApplicationRecord
 
   def editable_within_start_date
     if start_date <= Time.current
-      errors.add(:base,"編集期限をすぎています。")
+      errors.add(:base, '編集期限をすぎています。')
     end
   end
 
