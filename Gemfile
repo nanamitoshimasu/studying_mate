@@ -74,6 +74,8 @@ gem 'kaminari'
 # search
 gem 'ransack'
 
+# ogp
+gem 'meta-tags'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
