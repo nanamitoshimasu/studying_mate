@@ -11,7 +11,7 @@
     <div class="card bg-base-200 shadow-xl">
       <div class="card-body">
         <figure>
-          <%= image_tag @team.image_for_time, class: 'rounded-md object-cover'%>
+          <%= image_tag @team.image_for_time(@team.target_time), class: 'rounded-md object-cover'%>
         </figure>
         <h2 class="card-title text-4xl"><%= @team.title %> </h2>
         <hr class="my-5">
