@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        main: ["Kosugi Maru", "sans-serif"]
+        main: ["Kiwi Maru", "Kosugi Maru", "sans-serif"]
       }
     }
   },  
