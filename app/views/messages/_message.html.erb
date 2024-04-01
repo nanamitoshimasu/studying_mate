@@ -9,7 +9,7 @@
       <%= message.user.name %>
       <time class="text-xs opacity-50"><%= l message.created_at, format: :time %></time>
     </div>
-    <div class="chat-bubble chat-bubble-success"><%= message.content %></div>
+    <div class="chat-bubble chat-bubble-success body"><%= message.content %></div>
   </div>
 <% else %>
   <div class="chat chat-start ml-2">
