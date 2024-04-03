@@ -108,7 +108,7 @@ export default class extends Controller {
       })
       .then(data => {
         // タイマー再開
-        this._startTimer();
+        this._breaktimeStartTimer();
         this.pauseResumeButtonTarget.textContent = 'ちょっと休憩';
         this.isPaused = false;
         this.showFlashMessage("勉強再開！がんばるぞ〜！");
@@ -315,25 +315,38 @@ export default class extends Controller {
 
    // プライベートメソッド
   _startTimer() {
-  // タイマー開始時の時刻を記録
-  const startTime = Date.now();
+    // タイマー開始時の時刻を記録
+    const startTime = Date.now();
 
-  this.timerInterval = setInterval(() => {
-    // 現在時刻と開始時刻の差分を計算
-    const elapsedTime = Date.now() - startTime;
+    this.timerInterval = setInterval(() => {
+      // 現在時刻と開始時刻の差分を計算
+      const elapsedTime = Date.now() - startTime;
 
-    // 経過時間を秒単位に変換
-    this.totalSeconds = Math.floor(elapsedTime / 1000);
+      // 経過時間を秒単位に変換
+      this.totalSeconds = Math.floor(elapsedTime / 1000);
 
-    // UIを更新
-    const hours = Math.floor(this.totalSeconds / 3600);
-    const minutes = Math.floor((this.totalSeconds % 3600) / 60);
-    const seconds = this.totalSeconds % 60;
-    this.hoursTarget.textContent = String(hours).padStart(2, '0');
-    this.minutesTarget.textContent = String(minutes).padStart(2, '0');
-    this.secondsTarget.textContent = String(seconds).padStart(2, '0');
-  }, 1000);
-}
+      // UIを更新
+      const hours = Math.floor(this.totalSeconds / 3600);
+      const minutes = Math.floor((this.totalSeconds % 3600) / 60);
+      const seconds = this.totalSeconds % 60;
+      this.hoursTarget.textContent = String(hours).padStart(2, '0');
+      this.minutesTarget.textContent = String(minutes).padStart(2, '0');
+      this.secondsTarget.textContent = String(seconds).padStart(2, '0');
+    }, 1000);
+  }
+
+  _breaktimeStartTimer() {
+    if (this.timerInterval) return;
+    this.timerInterval = setInterval(() => {
+      this.totalSeconds += 1;
+      const hours = Math.floor(this.totalSeconds / 3600);
+      const minutes = Math.floor((this.totalSeconds % 3600) / 60);
+      const seconds = this.totalSeconds % 60;
+      this.hoursTarget.textContent = String(hours).padStart(2, '0');
+      this.minutesTarget.textContent = String(minutes).padStart(2, '0');
+      this.secondsTarget.textContent = String(seconds).padStart(2, '0'); // 秒数を表示
+    }, 1000);
+  }
 
   _resetTimer() {
     clearInterval(this.timerInterval); // タイマーを停止
