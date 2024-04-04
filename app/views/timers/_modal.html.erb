@@ -5,7 +5,13 @@
   <div class="max-h-screen w-1/2 max-w-2lg relative">
     <div class="bg-white shadow-xl rounded-lg">
       <div class="flex justify-end">
-        <button class="btn btn-sm btn-circle btn-ghost m-2" data-action="click->timer#modalClose">✕</button>
+        <div class="tooltip tooltip-left"  data-tip="学習計測へ">
+          <%= link_to new_team_timer_path(@team), class: "btn btn-sm btn-circle btn-ghost m-2" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          <% end %>
+        </div>
       </div>
       <div class="pb-8 px-8">
         <h2 class="text-xl mb-4">学習時間</h2>
