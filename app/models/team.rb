@@ -43,9 +43,9 @@ class Team < ApplicationRecord
 
   def update_to_finished
     # デッドラインを過ぎている場合ステータスを更新する
-    if wanted_finished && (status == "wanted")
+    if deadline? && status == "wanted"
       self.status = :finished
-      save!
+      save
     end
   end
 
