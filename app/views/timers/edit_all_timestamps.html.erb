@@ -24,11 +24,11 @@
           <% @timer.break_times.each_with_index do |break_time, index| %>
             <%= fields_for "break_time[#{break_time.id}]", break_time do |bf| %>
               <div class="mb-10 field">
-                <%= bf.label :break_start_time, "Break Start Time #{index + 1}", class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+                <%= bf.label :break_start_time, "休憩開始時間 #{index + 1}", class: 'label mb-0 text-lg font-semibold text-gray-700' %>
                 <%= bf.datetime_select :break_start_time, class: 'select select-success w-full max-w-xs' %>
               </div>
               <div class="mb-10 field">
-                <%= bf.label :break_end_time, "Break End Time #{index + 1}", class: 'label mb-0 text-lg font-semibold text-gray-700' %>
+                <%= bf.label :break_end_time, "休憩終了時間 #{index + 1}", class: 'label mb-0 text-lg font-semibold text-gray-700' %>
                 <%= bf.datetime_select :break_end_time, class: 'select select-success w-full max-w-xs' %>
               </div>
             <% end %>
