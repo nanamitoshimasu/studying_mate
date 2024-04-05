@@ -4,7 +4,7 @@
     <% user.attend_teams.each do |team| %>
       <% if team.remaining_time <= 0 %>
         <div class="carousel-item w-full">
-          <%= image_tag team.image_for_time, class: "w-full", alt:"Tailwind CSS Carousel component" %>
+          <%= image_tag team.image_for_time(team.target_time), class: "w-full", alt:"Tailwind CSS Carousel component" %>
         </div>
       <% end %>
     <% end %>
