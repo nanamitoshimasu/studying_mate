@@ -4,6 +4,7 @@ namespace :team_state do
     puts 'scheduler test'
     puts 'it works.'
   end
+
   task update_team_state: :environment do
     Team.where(status: :wanted).find_each do |team|
       team.update_to_finished
