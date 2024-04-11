@@ -9,6 +9,8 @@
 
 ## サービスURL
 - https://www.yaruki-morimori.com/
+## 記事
+- https://qiita.com/nanamitoshimasu/items/efb55eb8edf55c2f3a3d
 
 ## 想定されるユーザー層
 - プログラミング学習を継続して行いたい方。
