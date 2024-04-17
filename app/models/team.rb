@@ -107,7 +107,7 @@ class Team < ApplicationRecord
   def unique_team_in_same_period
     overlapping_teams = Team.where.not(id: self.id).where(user_id: self.user_id)
                             .where('? < end_date AND start_date < ?', start_date, end_date)
-    overlapping_attendance_teams = Team.joins(team_attendances).where.not(id: self.id).where(team_attendances: {user_id: self.user_id})
+    overlapping_attendance_teams = Team.joins(:team_attendances).where.not(id: self.id).where(team_attendances: {user_id: self.user_id})
                                        .where('? < end_date AND start_date < ?', start_date, end_date)
     if overlapping_teams.exists? || overlapping_attendance_teams.exists?
       errors.add(:base, '指定された期間内に既に他のチームが存在します。')
