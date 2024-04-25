@@ -1,4 +1,4 @@
-<div tabindex="0" class="card w-80 h-[32rem] glass dropdown-content z-[1] shadow rounded-box overflow-y-hidden flex flex-col justify-between">
+<div tabindex="0" class="card md:w-80 sm:w-64 md:h-[32rem] sm:h-80 glass dropdown-content z-[1] shadow rounded-box overflow-y-hidden flex flex-col justify-between">
   <h1 class="card-title m-4"><%= image_tag "chat_cats.png" %></h1>
   <div id='messages' data-room-id="<%= @room.id %>" data-current-user-id="<%= current_user.id %>", class="overflow-y-auto">
     <%= render partial: 'messages/message', collection: @messages %>

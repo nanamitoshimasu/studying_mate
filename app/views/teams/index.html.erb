@@ -3,7 +3,7 @@
     <% if logged_in? %>
       <%= button_to "仲間を募集する", new_team_path, method: :get, class: 'btn btn-success btn-lg' %> 
     <% end %>
-    <div class="dropdown dropdown-right ml-10">
+    <div class="dropdown dropdown-bottom dropdown-end ml-10">
       <div tabindex="0" role="button" class="btn btn-secondary btn-lg">くわしくさがす</div>
       <div tabindex="0" class="dropdown-content z-[1] card card-normalcompact w-72 p-2 shadow bg-neutral-content opacity-75 text-primary-content ">
         <%= render 'teams/search_form' %> 

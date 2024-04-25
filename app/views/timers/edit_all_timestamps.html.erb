@@ -6,8 +6,8 @@
     local: false, data: { turbo: false, controller: "edit-timer", target: "edit-timer.form", action: "submit->edit-timer#submitForm" } do |f| %>
     <%= render 'shared/errors_messages', model: f.object %>
     <div data-edit-timer-target="flashMessage" role="alert" class="hidden alert"></div>
-    <div class="mx-12 my-12 grid grid-cols-2 gap-6 justify-items-center">      
-      <div class="card w-[32rem] bg-base-200 shadow-md p-4">
+    <div class="mx-12 my-12 grid grid-cols-2 gap-6 md:justify-items-center sm:justify-center">      
+      <div class="card md:w-[32rem] sm:w-[22rem] bg-base-200 shadow-md p-4">
         <div class="mb-10 field">
           <%= f.label :start_time, t(Timer.human_attribute_name(:start_time)), class: 'label mb-0 text-lg font-semibold text-gray-700' %>
           <%= f.datetime_select :start_time, class: 'select select-success w-full max-w-md' %>
@@ -20,7 +20,7 @@
       </div>
 
       <% if @timer.break_times.any? %>
-        <div class="card w-[32rem] bg-base-200 shadow-md p-4">
+        <div class="card md:w-[32rem] sm:w-[22rem] bg-base-200 shadow-md p-4">
           <% @timer.break_times.each_with_index do |break_time, index| %>
             <%= fields_for "break_time[#{break_time.id}]", break_time do |bf| %>
               <div class="mb-10 field">
